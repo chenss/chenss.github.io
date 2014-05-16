@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Chiv]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://chenss.github.io//"/>
+  <updated>2014-05-16T12:49:37.804Z</updated>
+  <id>http://chenss.github.io//</id>
+  
+  <author>
+    <name><![CDATA[Chiv]]></name>
+    
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hexo配置测试]]></title>
+    <link href="http://chenss.github.io/2014/05/15/Hexo%E9%85%8D%E7%BD%AE%E6%B5%8B%E8%AF%95/"/>
+    <id>http://chenss.github.io/2014/05/15/Hexo配置测试/</id>
+    <published>2014-05-14T16:10:22.000Z</published>
+    <updated>2014-05-14T17:04:06.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录-->
+
+<p>我的scaffolds/post.md示例：</p>
+<pre><code>title: Hexo配置测试
+date: Thu May 15 2014 00:10:22 GMT+0800 (中国标准时间) 
+categories: 
+tags:
+---
+<span class="comment">&lt;!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录--&gt;</span>
+</code></pre><p>我的多说评论框（第四行替换为自己的short name即可）：</p>
+<pre><code><span class="comment">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%= item.title %&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%- item.permalink %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+<span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"your_short_name"</span>};
+(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> ds = document.createElement(<span class="string">'script'</span>);
+    ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;
+    ds.src = <span class="string">'http://static.duoshuo.com/embed.js'</span>;
+    ds.charset = <span class="string">'UTF-8'</span>;
+    (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] 
+    || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);
+})();
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="comment">&lt;!-- Duoshuo Comment END --&gt;</span>
+</code></pre><a id="more"></a>
+
+<p>我的Jiathis分享按钮：</p>
+<pre><code><span class="comment">&lt;!-- JiaThis Button BEGIN --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"jiathis_style"</span> <span class="attribute">style</span>=<span class="value">"float:right"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.jiathis.com/share"</span> <span class="attribute">class</span>=<span class="value">"jiathis jiathis_txt"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://v3.jiathis.com/code_mini/images/btn/v1/jiathis1.gif"</span> <span class="attribute">border</span>=<span class="value">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"jiathis_counter_style_margin:3px 0 0 2px"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://v3.jiathis.com/code_mini/jia.js?uid=1394722311483959"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="comment">&lt;!-- JiaThis Button END --&gt;</span>
+</code></pre><p>二级分类： <code>categories: [软件, hexo]</code></p>
+<p><img src="/image/erjiruanjianhexo1ryuowrt5434.JPG" alt=""></p>
+<p>多个标签： <code>tags: [hexo, test]</code></p>
+<p><img src="/image/ehxotest5re845.JPG" alt=""></p>
+]]></content>
+    <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录-->
+
+<p>我的scaffolds/post.md示例：</p>
+<pre><code>title: Hexo配置测试
+date: Thu May 15 2014 00:10:22 GMT+0800 (中国标准时间) 
+categories: 
+tags:
+---
+<span class="comment">&lt;!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录--&gt;</span>
+</code></pre><p>我的多说评论框（第四行替换为自己的short name即可）：</p>
+<pre><code><span class="comment">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%= item.title %&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%- item.permalink %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+<span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"your_short_name"</span>};
+(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> ds = document.createElement(<span class="string">'script'</span>);
+    ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;
+    ds.src = <span class="string">'http://static.duoshuo.com/embed.js'</span>;
+    ds.charset = <span class="string">'UTF-8'</span>;
+    (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] 
+    || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);
+})();
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="comment">&lt;!-- Duoshuo Comment END --&gt;</span>
+</code></pre>]]></summary>
+    
+      <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
+    
+      <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Dvorak键盘布局下的中文输入(一)]]></title>
+    <link href="http://chenss.github.io/2014/05/14/Dvorak%E9%94%AE%E7%9B%98%E5%B8%83%E5%B1%80%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5(%E4%B8%80)/"/>
+    <id>http://chenss.github.io/2014/05/14/Dvorak键盘布局下的中文输入(一)/</id>
+    <published>2014-05-14T12:26:28.000Z</published>
+    <updated>2014-05-16T04:03:33.000Z</updated>
+    <content type="html"><![CDATA[<p>原文：<a href="http://www.douban.com/note/46036145/" target="_blank">Dvorak键盘布局下的中文输入(一)</a></p>
+<p>如果您还没有听说过Dvorak(德沃夏克)键盘布局，可以先从维基百科上了解一下相关背景：<br><a href="http://zh.wikipedia.org/wiki/德沃夏克鍵盤" target="_blank">http://zh.wikipedia.org/wiki/德沃夏克鍵盤</a></p>
+<p>我是一个重度的Dvorak使用者，倘若给我一副普通的Qwerty键盘，我只能盯着它，用两个手指“戳字”。我的相册中有一张图片，是我正在使用的Macbook，按键已经被我重新排了座次。</p>
+<p>Google了一通，似乎目前最快最流行的速记方法称为“亚伟速录”，使用专门定制的键盘和输入法。尽管无法在电脑上模拟，但是其核心内容大概有三点可以吸取：</p>
+<ol>
+<li>根据中文习惯重新安排了键位，常用按键在中间一排。</li>
+<li>将多个字符组成的韵母安排在了固定的按键上，类似“双拼”，只用输入一个字符。</li>
+<li>如同使用乐器一般，多个按键可以同时按下。</li>
+</ol>
+<p>Dvorak键盘布局下中文输入法的讨论几乎是个空白，我想在这一系列文章中对上面三点逐一分析，看看是否能够找到一些提高录入速度的办法。今天是第一部分，对Dvorak在中文输入的键位安排方面做一点研究。</p>
+<a id="more"></a>
+
+<p><img src="/image/p46036145-4.jpg" alt="Dvorak键盘"></p>
+<p>在Dvorak键盘布局下，英文最常用的字母被安排到了手指最容易按到的地方。对这一点的研究已经很多，不用质疑。可是用来输入中文（拼音）的情况又是怎么样呢？</p>
+<p>从前有人对汉字字符集做过统计，在Dvorak布局下，键盘的中排使用率要明显高于Qwerty，这也就意味着同输入英文一样，输入汉语拼音也能从该布局中受益，手指移动的距离更少。但是对字符集的统计毕竟代替不了实际情况，因为在实际输入中，各个汉字的使用频率不同，可能造成实际的使用结果与对字符集的统计存在差别。所以Dvorak的效率究竟如何，还要在实践中检验。</p>
+<p>在下面这段Python代码中，我对自己以前撰写的几篇稿件进行了分析。这些稿件内容大多与IT相关，字数约为五、六万。</p>
+<pre><code><span class="comment">#!/usr/bin/env python</span>
+<span class="comment"># -*- coding: utf-8 -*-</span>
+
+__author__ = <span class="string">"ldx (lispython@gmail.com)"</span>
+__date__   = <span class="string">"Sat Sep 26 08:02:00 2009"</span>
+
+
+<span class="comment">#from pinyin import hanzi2pinyin</span>
+<span class="built_in">from</span> hanzimap import hanzi2pinyin
+import collections
+import numpy <span class="keyword">as</span> np
+import matplotlib.pyplot <span class="keyword">as</span> plt
+
+doc = <span class="built_in">open</span>(<span class="string">'doc.txt'</span>, <span class="string">'r'</span>).<span class="built_in">read</span>()  
+rst = hanzi2pinyin(doc.decode(<span class="string">'utf8'</span>))
+<span class="built_in">result</span> = {}
+<span class="comment"># print rst.count('iong')</span>
+
+data = collections.defaultdict(int)
+
+all_keys = <span class="string">'\',.;abcdefghijklmnopqrstuvwxyz'</span>
+dv_rows = [<span class="string">'\',.pyfgcrl'</span>, <span class="string">'aoeuidhtns'</span>, <span class="string">'qjkxbmwvz'</span>]
+qw_rows = [<span class="string">'qwertyuiop'</span>, <span class="string">'asdfghjkl'</span>, <span class="string">'zxcvbnm,.'</span>]
+
+<span class="keyword">for</span> <span class="keyword">char</span> <span class="operator">in</span> rst:
+    <span class="keyword">if</span> <span class="keyword">char</span> <span class="operator">in</span> all_keys:
+        data[<span class="keyword">char</span>] += <span class="number">1</span>
+        data[<span class="string">'letters'</span>] += <span class="number">1</span>
+
+
+<span class="keyword">for</span> c <span class="operator">in</span> all_keys:
+    <span class="built_in">result</span>[c]=(float(data[c])/data[<span class="string">'letters'</span>]*<span class="number">100</span>)
+
+
+dv = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]
+qw = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]
+
+<span class="keyword">for</span> i <span class="operator">in</span> range(<span class="number">3</span>):
+    <span class="keyword">for</span> c <span class="operator">in</span> dv_rows[i]:
+        dv[i] += <span class="built_in">result</span>[c]
+
+<span class="keyword">for</span> i <span class="operator">in</span> range(<span class="number">3</span>):
+    <span class="keyword">for</span> c <span class="operator">in</span> qw_rows[i]:
+        qw[i] += <span class="built_in">result</span>[c]
+
+
+<span class="built_in">keys</span> = <span class="built_in">result</span>.<span class="built_in">keys</span>()
+<span class="built_in">keys</span>.<span class="built_in">sort</span>()
+val = [<span class="built_in">result</span>[key] <span class="keyword">for</span> key <span class="operator">in</span> <span class="built_in">keys</span>]
+
+plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>,<span class="number">8</span>))
+ax = plt.axes([<span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])
+
+labels = (<span class="string">'up'</span>, <span class="string">'middel'</span>, <span class="string">'down'</span>)
+
+explode = (<span class="number">0.05</span>, <span class="number">0.05</span>, <span class="number">0.05</span>)
+plt.pie(dv, explode=explode, labels=labels, autopct=<span class="string">'%1.1f%%'</span>, shadow=True)
+plt.title(<span class="string">'Dvorak'</span>, bbox={<span class="string">'facecolor'</span>:<span class="string">'0.8'</span>, <span class="string">'pad'</span>:<span class="number">5</span>})
+
+plt.figure(<span class="number">2</span>, figsize=(<span class="number">8</span>,<span class="number">8</span>))
+plt.pie(qw, explode=explode, labels=labels, autopct=<span class="string">'%1.1f%%'</span>, shadow=True)
+plt.title(<span class="string">'Qwerty'</span>, bbox={<span class="string">'facecolor'</span>:<span class="string">'0.8'</span>, <span class="string">'pad'</span>:<span class="number">5</span>})
+
+pos = np.arange(<span class="number">0</span>, <span class="number">60</span>, <span class="number">2</span>)
+plt.figure(<span class="number">3</span>)
+plt.barh(pos, val, <span class="number">1.5</span>, align=<span class="string">'center'</span>, alpha = <span class="number">0.8</span>)
+plt.yticks(pos, <span class="built_in">keys</span>)
+plt.xlabel(<span class="string">'Percentage'</span>)
+plt.grid(True)
+
+plt.show()
+</code></pre><p>对于这段代码有几点需要说明：</p>
+<ol>
+<li>将汉字转换为拼音使用了pyzh中的pinyin模块，但是该模块不能将中文标点转换为英文标点进行统计，因此我做了一点修改，将其命名为hanzimap。</li>
+<li>代码中使用了matplotlib库（同样也不在标准库中），将统计结果生成图像。</li>
+<li>中文文稿样本为doc.txt，使用utf-8编码，与代码放在同一目录下。文稿中的空白不会影响最后结果。</li>
+</ol>
+<p>结果如下：</p>
+<p><img src="/image/p46036145-1.jpg" alt="每个按键的使用频率"></p>
+<p>分别在Qwerty和Dvorak布局下，键盘的上、中、下三排使用情况对比。</p>
+<p><img src="/image/p46036145-2.jpg" alt=""></p>
+<p><img src="/image/p46036145-3.jpg" alt=""></p>
+<p>我们可以看到（清晰一些的图片可以在我的相册中浏览）Qwerty布局中间一排的使用率为34.8％，甚至还不如上面一排。</p>
+<p>Dvorak布局下，中排的使用率则达到了69％，几乎是Qwerty布局的两倍。稍微有点儿可惜的是处于上面一排的字母g，它的使用率很高，甚至高过了中排的许多字母，不过好在该字符位于右手食指上方，是除中排以外最容易触到的按键。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>原文：<a href="http://www.douban.com/note/46036145/" target="_blank">Dvorak键盘布局下的中文输入(一)</a></p>
+<p>如果您还没有听说过Dvorak(德沃夏克)键盘布局，可以先从维基百科上了解一下相关背景：<br><a href="http://zh.wikipedia.org/wiki/德沃夏克鍵盤" target="_blank">http://zh.wikipedia.org/wiki/德沃夏克鍵盤</a></p>
+<p>我是一个重度的Dvorak使用者，倘若给我一副普通的Qwerty键盘，我只能盯着它，用两个手指“戳字”。我的相册中有一张图片，是我正在使用的Macbook，按键已经被我重新排了座次。</p>
+<p>Google了一通，似乎目前最快最流行的速记方法称为“亚伟速录”，使用专门定制的键盘和输入法。尽管无法在电脑上模拟，但是其核心内容大概有三点可以吸取：</p>
+<ol>
+<li>根据中文习惯重新安排了键位，常用按键在中间一排。</li>
+<li>将多个字符组成的韵母安排在了固定的按键上，类似“双拼”，只用输入一个字符。</li>
+<li>如同使用乐器一般，多个按键可以同时按下。</li>
+</ol>
+<p>Dvorak键盘布局下中文输入法的讨论几乎是个空白，我想在这一系列文章中对上面三点逐一分析，看看是否能够找到一些提高录入速度的办法。今天是第一部分，对Dvorak在中文输入的键位安排方面做一点研究。</p>
+]]></summary>
+    
+      <category term="Dvorak" scheme="http://chenss.github.io/tags/Dvorak/"/>
+    
+      <category term="键盘" scheme="http://chenss.github.io/tags/%E9%94%AE%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[一直很安静]]></title>
+    <link href="http://chenss.github.io/2014/05/13/%E4%B8%80%E7%9B%B4%E5%BE%88%E5%AE%89%E9%9D%99/"/>
+    <id>http://chenss.github.io/2014/05/13/一直很安静/</id>
+    <published>2014-05-13T12:45:24.000Z</published>
+    <updated>2014-05-13T12:55:17.000Z</updated>
+    <content type="html"><![CDATA[<embed src="http://player.youku.com/player.php/sid/XNjY2OTg2NDI0/v.swf" allowFullScreen="true" quality="high" width="600" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>]]></content>
+    
+    
+      <category term="MV" scheme="http://chenss.github.io/tags/MV/"/>
+    
+      <category term="神探夏洛克" scheme="http://chenss.github.io/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/"/>
+    
+      <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[python练习：替换文件内容]]></title>
+    <link href="http://chenss.github.io/2014/05/13/python%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/"/>
+    <id>http://chenss.github.io/2014/05/13/python练习：替换文件内容/</id>
+    <published>2014-05-13T12:21:50.000Z</published>
+    <updated>2014-05-13T12:52:47.000Z</updated>
+    <content type="html"><![CDATA[<p>转自：<a href="http://blog.csdn.net/hometohw/article/details/7483404" target="_blank">http://blog.csdn.net/hometohw/article/details/7483404</a></p>
+<p>1.替换</p>
+<pre><code>import re  
+file_name=<span class="string">'new  4.txt'</span>  
+fp=<span class="built_in">open</span>(file_name,<span class="string">'r'</span>)  
+alllines=fp.readlines()  
+fp.<span class="built_in">close</span>()  
+fp=<span class="built_in">open</span>(file_name,<span class="string">'w'</span>)  
+<span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
+    <span class="operator">a</span>=re.sub(<span class="string">'&lt;host_ip&gt;0.0.0.0&lt;/host_ip&gt;'</span>,<span class="string">'&lt;host_ip&gt;1.1.1.1&lt;/host_ip&gt;'</span>,eachline)  
+    fp.writelines(<span class="operator">a</span>)  
+fp.<span class="built_in">close</span>()  
+</code></pre><p>2.单行替换</p>
+<pre><code>import re  
+import os  
+filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
+workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
+os.chdir(workdir)  
+ipold=input(<span class="string">'Please input the old ip : '</span>)  
+ipnew=input(<span class="string">'Please input the new ip : '</span>)  
+<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
+    alllines=fp.<span class="built_in">read</span>()  
+    fp.<span class="built_in">close</span>()  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
+    fp.writelines(re.sub(ipold,ipnew,alllines))  
+    fp.<span class="built_in">close</span>()  
+</code></pre><a id="more"></a>
+
+<p>3.多行替换</p>
+<pre><code>import re  
+import os  
+filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
+workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
+os.chdir(workdir)  
+ipold=input(<span class="string">'Please input the old ip : '</span>)  
+ipnew=input(<span class="string">'Please input the new ip : '</span>)  
+<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
+    alllines=fp.readlines()  
+    fp.<span class="built_in">close</span>()  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
+    fp.truncate()  
+    <span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
+        fp.writelines(re.sub(ipold,ipnew,eachline))  
+    fp.<span class="built_in">close</span>()  
+</code></pre><p>4.能用的</p>
+<pre><code>import re  
+import os  
+filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
+workdir=input(<span class="string">'请输入工作目录，当前目录请直接按回车 : '</span>)  
+<span class="keyword">if</span> workdir!=<span class="string">''</span>:  
+    os.chdir(workdir)  
+oldip=input(<span class="string">'请输入原来IP : '</span>)  
+newip=input(<span class="string">'请输入当前IP : '</span>)  
+<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
+    alllines=fp.<span class="built_in">read</span>()  
+    fp.<span class="built_in">close</span>()  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
+    fp.writelines(re.sub(oldip,newip,alllines))  
+    fp.<span class="built_in">close</span>()  
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>转自：<a href="http://blog.csdn.net/hometohw/article/details/7483404" target="_blank">http://blog.csdn.net/hometohw/article/details/7483404</a></p>
+<p>1.替换</p>
+<pre><code>import re  
+file_name=<span class="string">'new  4.txt'</span>  
+fp=<span class="built_in">open</span>(file_name,<span class="string">'r'</span>)  
+alllines=fp.readlines()  
+fp.<span class="built_in">close</span>()  
+fp=<span class="built_in">open</span>(file_name,<span class="string">'w'</span>)  
+<span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
+    <span class="operator">a</span>=re.sub(<span class="string">'&lt;host_ip&gt;0.0.0.0&lt;/host_ip&gt;'</span>,<span class="string">'&lt;host_ip&gt;1.1.1.1&lt;/host_ip&gt;'</span>,eachline)  
+    fp.writelines(<span class="operator">a</span>)  
+fp.<span class="built_in">close</span>()  
+</code></pre><p>2.单行替换</p>
+<pre><code>import re  
+import os  
+filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
+workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
+os.chdir(workdir)  
+ipold=input(<span class="string">'Please input the old ip : '</span>)  
+ipnew=input(<span class="string">'Please input the new ip : '</span>)  
+<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
+    alllines=fp.<span class="built_in">read</span>()  
+    fp.<span class="built_in">close</span>()  
+    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
+    fp.writelines(re.sub(ipold,ipnew,alllines))  
+    fp.<span class="built_in">close</span>()  
+</code></pre>]]></summary>
+    
+      <category term="python" scheme="http://chenss.github.io/tags/python/"/>
+    
+      <category term="file" scheme="http://chenss.github.io/tags/file/"/>
+    
+      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hexo安装教程]]></title>
+    <link href="http://chenss.github.io/2014/05/13/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>http://chenss.github.io/2014/05/13/hexo安装教程/</id>
+    <published>2014-05-13T03:27:53.000Z</published>
+    <updated>2014-05-16T08:36:14.000Z</updated>
+    <content type="html"><![CDATA[<p>参照<a href="http://zipperary.com/2013/05/28/hexo-guide-2/" title="zipperary.com" target="_blank">这篇教程</a>安装并优化了Hexo，但中间遇到了几个问题：</p>
+<ol>
+<li><p>执行 <code>npm install -g hexo</code> 命令失败。</p>
+<p> 主要是网络的原因（感谢伟大的GFW），可以多试几次，或者换个镜像。换镜像的方法：<a href="http://cnodejs.org/topic/4f9904f9407edba21468f31e" target="_blank">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a></p>
+<p> 另外，<a href="http://hexo.io/" target="_blank">Hexo官网</a>给出的安装命令是 <code>npm install hexo -g</code> ，但似乎没影响。</p>
+</li>
+<li><p>添加多说评论/Jiathis分享时，找不到light目录。</p>
+<p> 这个因为theme不同。Light主题是‘The default theme of legacy Hexo’，而Landscape是‘The default theme of Hexo 2.4+’。</p>
+<p> 我的主题是Landscape，参考的<a href="http://jimliu.net/2013/09/08/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" target="_blank">使用hexo搭建静态博客：调整样式</a>和<a href="http://jiabin.tk/2013/06/21/using-hexo-as-blog-platform/" target="_blank">使用Hexo搭建博客：使用Jiathis作为社会化分享工具</a></p>
+</li>
+<li><p>右键 <code>Git Bash</code> 的时候使用的是Windows自带的难用得要死的cmd.exe，怎么才能换成PowerCmd等第三方的软件？暂时只能在PowerCmd里cd到Hexo目录，然后进行操作。</p>
+</li>
+</ol>
+<p>一切完毕，上传到github之后就可以打开username.github.io看效果了。本地的整个hexo文件可以随意移动，复制到其它地方以后的操作和之前一样，只是目录换了而已。</p>
+<hr>
+<p>官方教程：<a href="http://hexo.io/docs/index.html" target="_blank">http://hexo.io/docs/index.html</a></p>
+<p>Mac版安装教程：<a href="http://kescoode.com/2013/11/17/github-page-and-hexo-guide/" target="_blank">http://kescoode.com/2013/11/17/github-page-and-hexo-guide/</a></p>
+<p>Hexo自定义页面、fancybox、安装主题、常用命令、目录介绍等：<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">http://ibruce.info/2013/11/22/hexo-your-blog/</a></p>
+<p>感觉很高级的一个主题：<a href="http://howiefh.github.io/2014/04/20/hexo-optimize-and-my-theme-landscape-f/" target="_blank">http://howiefh.github.io/2014/04/20/hexo-optimize-and-my-theme-landscape-f/</a></p>
+<p>自制node.js + npm绿色版：<a href="http://ibruce.info/2013/12/05/green-node-and-npm/" target="_blank">http://ibruce.info/2013/12/05/green-node-and-npm/</a></p>
+<p>hexo deply的时候怎么才能不用输入账号密码:<a href="https://github.com/tommy351/hexo/issues/335" target="_blank">https://github.com/tommy351/hexo/issues/335</a></p>
+<p>从https迁移到SSH:<a href="http://blog.csdn.net/u012150179/article/details/24790677" target="_blank">http://blog.csdn.net/u012150179/article/details/24790677</a></p>
+]]></content>
+    
+    
+      <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
+    
+      <category term="github" scheme="http://chenss.github.io/tags/github/"/>
+    
+      <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[开学以来]]></title>
+    <link href="http://chenss.github.io/2013/04/02/%E5%BC%80%E5%AD%A6%E4%BB%A5%E6%9D%A5/"/>
+    <id>http://chenss.github.io/2013/04/02/开学以来/</id>
+    <published>2013-04-02T00:00:00.000Z</published>
+    <updated>2014-05-13T10:31:11.000Z</updated>
+    <content type="html"><![CDATA[<p>开学一个多月，忙忙碌碌却觉得什么也没学到。是时候总结一下了。</p>
+<a id="more"></a>
+
+<p>第一件要说的是天气。竟然要说这个，有点奇怪。不过今年的天气实在是太怪了，忍不住先说了。今年放假迟，开学也迟，回学校时已经快三月份了，天气虽算不上很暖和，但也不用穿羽绒服了。之后的几天更是稳步，甚至是急剧升温，很快就到了28度。才三月中旬就有了夏天的感觉，本来就挺奇怪了。但合肥这天气，都大三了，也该见怪不怪了。万万没有想到，气温突然又降了。几乎是在一夜之间，气温下降了一半。直到现在，最高温度还经常不到14度。明天似乎会升点，但过两天还是会降回来。</p>
+<p>按寒假定的计划，这学期我要早睡早起。本来以为这是一个艰难的过程，要用很长的时间逐渐去实现。结果第二还是第三天我就成功在七点起床，晚上也不会失眠了。</p>
+<p>当然，我不只是为了早起而早起。是时候好好学习了。六级还没过，而且只想着过六级也太狭隘了。Harry Potter的书也买了，上个学期把生词也整理出来了，这学期一定要好好背，好好看。结果是早起背了四五天吧，然后就因为各种讨厌的作业搞得我不想起床，不能集中精力干别的事。终于，这些事今天算是告一段落了（可我已经快两个星期没背过了）。明天只有早上两节课，然后就是清明了。</p>
+<p>老四上星期六考完二级就走了，我都没能见他最后一而。应该是去成都找他女朋友了。唉。</p>
+<p>我越来越讨厌这些老师了。李财富的课永远在抄抄抄。PPT不知道是哪一年制作的了，边上课边调整。声音太沙哑，经常听不清。每张PPT都是满满的都是文字，光抄都不用听他讲了。黄静还好吧。讲课真不怎么样，不过长得漂亮，对我们也不严，还准备组织一个篝火晚会。王成兴只知道讲他的化学，我实在没兴趣，也听不懂。也比较严厉。刘洪真没话说啊。越来越讨厌这些老师，这些课了。其它的也不咋的。</p>
+<p>每天晚上都没课，但周六早上一天的课，实在是有些崩溃。晚上也不能闲着啊。我说过，该学习了。没事陪着老三去上课，不过不听课，而是看自己的书。我不习惯在自习室，尤其是没有陪我。老四要考研，我也没那毅力陪他。还是课堂上热闹些，感觉比较温暖。</p>
+<p>开学第一件事其实是买了样东西——心率表。可惜买来之后几乎还没跑过步。感觉有些浪费了，自己随便跑跑也挺好的。还买了个二手的MP3,跑步的时候用的。质量太差，电池也就撑半个多小时。然后是光驱位硬盘托架。没硬盘，只有个架子。不过老四电脑开不了机的时候它还派上用场了。多亏它，才保住了老四Ｃ盘的一些数据。这些天在等Kindle进入中国市场。希望这次是真的，希望真的那么便宜。</p>
+<p>刚开学就把Kubuntu给格了，但最终还是忍不住，又装了Linux。不过这次是ArchLinux。查了好多资料，终于下了决心。过程异常艰辛啊。具体情况看《 ArchLinux历险记》，这里就不赘述了。可惜，大费周折装好之后，不久还是卸了。忙了这么久忽然觉得，用着舒服就好。我又不是专业人士，何必这么折腾呢！</p>
+<p>现在用的Ubuntu，Unity界面改了一下还是很好看的，就是偶尔会卡。好多天没用Win7了。</p>
+<p>跑步去～</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>开学一个多月，忙忙碌碌却觉得什么也没学到。是时候总结一下了。</p>
+]]></summary>
+    
+      <category term="大三" scheme="http://chenss.github.io/tags/%E5%A4%A7%E4%B8%89/"/>
+    
+      <category term="一个人" scheme="http://chenss.github.io/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/"/>
+    
+      <category term="日记" scheme="http://chenss.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[可惜不是你]]></title>
+    <link href="http://chenss.github.io/2013/03/17/%E5%8F%AF%E6%83%9C%E4%B8%8D%E6%98%AF%E4%BD%A0/"/>
+    <id>http://chenss.github.io/2013/03/17/可惜不是你/</id>
+    <published>2013-03-17T00:00:00.000Z</published>
+    <updated>2014-05-13T10:32:06.000Z</updated>
+    <content type="html"><![CDATA[<iframe width="640" height="480" src="https://www.youtube.com/embed/2IC35VIzwQs" frameborder="0" allowfullscreen></iframe>
+]]></content>
+    
+    
+      <category term="视频" scheme="http://chenss.github.io/tags/%E8%A7%86%E9%A2%91/"/>
+    
+      <category term="MV" scheme="http://chenss.github.io/tags/MV/"/>
+    
+      <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[archlinux历险记(1)]]></title>
+    <link href="http://chenss.github.io/2013/03/07/archlinux%E5%8E%86%E9%99%A9%E8%AE%B0/"/>
+    <id>http://chenss.github.io/2013/03/07/archlinux历险记/</id>
+    <published>2013-03-07T00:00:00.000Z</published>
+    <updated>2014-05-16T04:04:14.000Z</updated>
+    <content type="html"><![CDATA[<p>这次装archlinux可把我折腾坏了，比任何一次——包括第一次装系统和第一次装Linux系统——都让人崩溃。忘了哪天开始的了，反正有四五天了。这四五天里，我牺牲了午休、跑步，甚至是部分吃饭的时间。终于，刚才连上网了。历尽艰辛才装好系统、连上网，按理说我应该很兴奋。但折腾了这么久，我只有种“终于可以松一口气了”的感觉。</p>
+<p>不过，这篇日志不光是用来抱怨的。这么伟大的成果一定要记录下来。为自己，为他人。</p>
+<a id="more"></a>
+
+<p>先说明一下情况。我装的是archlinux(2013-03-01,i686)，连的是安徽大学的校园网，其它情况不保证可行。</p>
+<p>正文开始。</p>
+<p>系统好久没被我折腾坏了，所以也好久没重装了。电脑上本来就有N多软件，这次寒假姐姐又装了一些。最多时桌面上有约40个快捷方式。连开机关机都变得特别慢了。于是决定开学后重装系统。</p>
+<p>一直是Win7+Ubuntu双系统。重装Win7意味着Ubuntu的引导丢失。犹豫了一下。还是决定重装。想想最近，无非是用Ubuntu上上网。Windows完全可以胜任。不再纠结，该放下了。</p>
+<p>当然，你一定猜到了，我还是没放下。</p>
+<p>先说说为什么选arch吧。主要是受维基百科里这几句话的影响：</p>
+<pre><code>Arch Linux是朝向轻量（lightweight）以及简单（simple）的
+Linux发行版。其中“简单”（Simplicity）被定义为“避免不必要或
+复杂的修改”，也就是说，是由开发者角度定义，而非用户角度思考。
+
+Arch Linux项目注力于简洁主义（对开发者而言），其贡献在于对
+发行版的组件提供具有良好注释的配置文件，而非带有图形界面的
+配置工具。这也为其赢得适合“不惧怕命令行的中高级Linux用户”
+的发行版称号。
+
+与Gentoo类似，不同于其他大部分主流Linux发布版比如Fedora和
+Ubuntu。ArchLinux并没有跨版本升级的概念，通过更新，任何时期
+的ArchLinux都可以滚动更新到最新版。
+</code></pre><p>命令行，正中我下怀。</p>
+<p>下面就是安装过程，重点讲我出错的地方，太简单的内容会跳过去。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>这次装archlinux可把我折腾坏了，比任何一次——包括第一次装系统和第一次装Linux系统——都让人崩溃。忘了哪天开始的了，反正有四五天了。这四五天里，我牺牲了午休、跑步，甚至是部分吃饭的时间。终于，刚才连上网了。历尽艰辛才装好系统、连上网，按理说我应该很兴奋。但折腾了这么久，我只有种“终于可以松一口气了”的感觉。</p>
+<p>不过，这篇日志不光是用来抱怨的。这么伟大的成果一定要记录下来。为自己，为他人。</p>
+]]></summary>
+    
+      <category term="archlinux" scheme="http://chenss.github.io/tags/archlinux/"/>
+    
+      <category term="日记" scheme="http://chenss.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+      <category term="操作系统" scheme="http://chenss.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[archlinux历险记(2)]]></title>
+    <link href="http://chenss.github.io/2013/03/07/archlinux%E5%8E%86%E9%99%A9%E8%AE%B0%EF%BC%882%EF%BC%89/"/>
+    <id>http://chenss.github.io/2013/03/07/archlinux历险记（2）/</id>
+    <published>2013-03-07T00:00:00.000Z</published>
+    <updated>2014-05-16T04:04:51.000Z</updated>
+    <content type="html"><![CDATA[<p>1.下载archlinux.iso</p>
+<p>2.win32-image-writer写入U盘</p>
+<p>3.设置为开机从U盘启动</p>
+<p>4.fdisk查看分区（可选）  cfdisk分区</p>
+<p>5.mkfs.ext4和mkswap格式化分区，swapon开启swap分区</p>
+<p>6.联网：安装h3c802.1xClient,查看网卡名称，激活网卡“ip link set 网卡名 up”,运行linux1x,dhcpcd获取动态ip,ping命令查看是否已连网成功。</p>
+<a id="more"></a>
+
+<p>7.为了加快安装速度，修改软件源。</p>
+<p>8.挂载分区 mount /dev/sda7 /mnt    mkdir /mnt/boot &amp;&amp; mount /dev/sda6 /mnt/boot   ……………………</p>
+<p>9.安装基本系统   pacstrap /mnt base base-devel   pacstrap /mnt grub-bios</p>
+<p>10.生成分区表  grub-mkconfig -o /</p>
+<p>11.进入刚安装的系统    arch-chroot /mnt</p>
+<p>12.安装grub  “grub-install”,修改……/grub/40……或安装os-protor</p>
+<p>13.查看/etc/fatab，不正确一定要改，否则可能进不了系统。</p>
+<p>14.卸载分区表 umount /mnt/{boot,home,}</p>
+<p>15.返回原系统 exit</p>
+<p>16.重启，从硬盘启动</p>
+<p>17.wiki.archlinux.org    archlinux吧        ubuntu论坛<br>    建本地源        awesome      内核补丁或fbterm,zhcon<br>    ABS pacman mplayer</p>
+<p>emergency模式</p>
+<p>failed to issue method call: transaction is destructive</p>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?pid=941990" target="_blank">https://bbs.archlinux.org/viewtopic.php?pid=941990</a></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>1.下载archlinux.iso</p>
+<p>2.win32-image-writer写入U盘</p>
+<p>3.设置为开机从U盘启动</p>
+<p>4.fdisk查看分区（可选）  cfdisk分区</p>
+<p>5.mkfs.ext4和mkswap格式化分区，swapon开启swap分区</p>
+<p>6.联网：安装h3c802.1xClient,查看网卡名称，激活网卡“ip link set 网卡名 up”,运行linux1x,dhcpcd获取动态ip,ping命令查看是否已连网成功。</p>
+]]></summary>
+    
+      <category term="archlinux" scheme="http://chenss.github.io/tags/archlinux/"/>
+    
+      <category term="校园网" scheme="http://chenss.github.io/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/"/>
+    
+      <category term="h3c" scheme="http://chenss.github.io/tags/h3c/"/>
+    
+      <category term="操作系统" scheme="http://chenss.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何隐藏你的踪迹，避免跨省追捕[0]：为啥要写此文？]]></title>
+    <link href="http://chenss.github.io/2013/02/16/%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E8%B8%AA%E8%BF%B9%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B7%A8%E7%9C%81%E8%BF%BD%E6%8D%95%5B0%5D%EF%BC%9A%E4%B8%BA%E5%95%A5%E8%A6%81%E5%86%99%E6%AD%A4%E6%96%87%EF%BC%9F/"/>
+    <id>http://chenss.github.io/2013/02/16/如何隐藏你的踪迹，避免跨省追捕[0]：为啥要写此文？/</id>
+    <published>2013-02-16T00:00:00.000Z</published>
+    <updated>2014-05-16T04:42:26.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="★引子">★引子</h2>
+<p>在早年的安全圈内，也曾有一篇名叫“如何隐藏你的踪迹”的帖子（洋文原名叫“How to cover your tracks”，具体看“<a href="http://freeworld.thc.org/papers/COVER-1.TXT" target="_blank">这里</a>”）。那可是国外老牌黑客组织（<a href="http://freeworld.thc.org/" target="_blank">The Hacker’s Choice</a>）在上世纪写的。不过那篇帖子有很大篇幅是在教你如何在入侵系统之后，不留下痕迹。而今天俺要聊的内容，基本和入侵无关。</p>
+<p>本系列的主题是：</p>
+<p>如何从各个层面，防止真实身份的暴露？</p>
+<p>本文面向的受众是：</p>
+<p>那些通过互联网进行各种活动的网友，包括但不限于：异议人士、民运人士、维权人士、……</p>
+<p>不过捏，凡事都有两面性。某些通过网络干坏事的家伙，或许也能从本系列博文中获得启发 :(</p>
+<a id="more"></a>
+
+<h2 id="★为啥要写此文？">★为啥要写此文？</h2>
+<p>从最近2年的趋势来看，互联网越来越成为揭露社会阴暗面、批评党的一个利器。因此，党国为了维护统治阶级的利益，也会想方设法扼杀对党不利的言论（具体如何扼杀，可以参见“<a href="http://program-think.blogspot.com/2009/07/party-pk-internet.html" target="_blank">党和互联网的较量</a>”）。在党国采取的各种措施中，就包括“跨省追捕”这一招。（”跨省追捕”一词来源于09年轰动一时的“<a href="http://zh.wikipedia.org/wiki/%E7%8E%8B%E5%B8%85%E5%8F%91%E8%B4%B4%E4%BA%8B%E4%BB%B6" target="_blank">王帅发帖事件</a>”）</p>
+<p>俺发觉很多网友非常缺乏这方面的技术常识，这可真是大大便宜了党国的爪牙。另外，近来也有好些个读者来信询问这方面的知识。看来这个扫盲帖还是很有必要滴。所以，今天就开始抽空写一个系列。</p>
+<h2 id="★免责声明">★免责声明</h2>
+<p>为了免遭别人拍砖，省却不必要的麻烦，在介绍正式内容前，先来个免责声明：</p>
+<p>免责声明一：本文仅介绍各种保护隐私的技术手段及注意事项。发表本文并不意味着俺鼓励大伙儿去干坏事。</p>
+<p>免责声明二：本文介绍的招数，可以大大降低暴露的可能性，但是并不能确保百分百不暴露。（要知道，绝对的安全是不存在滴）如果你用了这些招数，还是暴露了，那可别怨俺 :)</p>
+<p>为了方便阅读，把本系列帖子的目录整理如下（需翻墙）： </p>
+<ol>
+<li><p><a href="http://program-think.blogspot.com/2010/04/howto-cover-your-tracks-1.html" target="_blank">网络层面的防范</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2010/04/howto-cover-your-tracks-2.html" target="_blank">个人软件的防范</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2010/05/howto-cover-your-tracks-3.html" target="_blank">操作系统的防范</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2012/02/howto-cover-your-tracks-4.html" target="_blank">通讯工具的防范</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2012/03/howto-cover-your-tracks-5.html" target="_blank">用多重代理隐匿公网IP</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2013/01/howto-cover-your-tracks-6.html" target="_blank">用虚拟机隐匿公网IP（原理介绍）</a></p>
+</li>
+<li><p><a href="http://program-think.blogspot.com/2013/01/howto-cover-your-tracks-7.html" target="_blank">用虚拟机隐匿公网IP（配置图解）</a></p>
+</li>
+<li><p>（未完待续）</p>
+</li>
+</ol>
+<hr>
+<p>版权声明</p>
+<p>本博客所有的原创文章，作者皆保留版权。转载必须包含本声明，保持本文完整，并以超链接形式注明作者<a href="mailto:program.think@gmail.com">编程随想</a>和本文原始地址：</p>
+<p><a href="http://program-think.blogspot.com/2010/04/howto-cover-your-tracks-0.html" target="_blank">http://program-think.blogspot.com/2010/04/howto-cover-your-tracks-0.html</a></p>
+<p>Tags: IT, IT.信息安全, 政治</p>
+]]></content>
+    <summary type="html"><![CDATA[<h2 id="★引子">★引子</h2>
+<p>在早年的安全圈内，也曾有一篇名叫“如何隐藏你的踪迹”的帖子（洋文原名叫“How to cover your tracks”，具体看“<a href="http://freeworld.thc.org/papers/COVER-1.TXT" target="_blank">这里</a>”）。那可是国外老牌黑客组织（<a href="http://freeworld.thc.org/" target="_blank">The Hacker’s Choice</a>）在上世纪写的。不过那篇帖子有很大篇幅是在教你如何在入侵系统之后，不留下痕迹。而今天俺要聊的内容，基本和入侵无关。</p>
+<p>本系列的主题是：</p>
+<p>如何从各个层面，防止真实身份的暴露？</p>
+<p>本文面向的受众是：</p>
+<p>那些通过互联网进行各种活动的网友，包括但不限于：异议人士、民运人士、维权人士、……</p>
+<p>不过捏，凡事都有两面性。某些通过网络干坏事的家伙，或许也能从本系列博文中获得启发 :(</p>
+]]></summary>
+    
+      <category term="网络" scheme="http://chenss.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Born to run]]></title>
+    <link href="http://chenss.github.io/2013/02/16/Born%20to%20run/"/>
+    <id>http://chenss.github.io/2013/02/16/Born to run/</id>
+    <published>2013-02-16T00:00:00.000Z</published>
+    <updated>2014-05-13T15:00:26.000Z</updated>
+    <content type="html"><![CDATA[<p>我看的第一部长篇小说是《鲁宾逊漂流记》。真的很喜欢这部小说，但这不是今天的重点，就不说了吧。</p>
+<p>这部小说是受一个真实的故事的启发而创作的。同样流落于荒岛的亚历山大·塞尔柯克没有鲁宾逊那样幸运，没有先进武器的他获救时已经成了一个野人。他能跑步追上山羊！</p>
+<p>不借助任何代步工具，仅凭双脚就追上野生动物，这对于跑一百米都喘半天的我是多么大的震撼啊！！！怎么可能？没几个人能做到吧？我这辈子是不可能了。如果我也能该多好。</p>
+<p>在相当长的一段时间内，在人们变化最大的青春期里，我一直感到太不可思议了。人类和其它动物相比，只有大脑异常发达，运动能力根本不值一提。即使直立行走使我们的腿很强壮，但双腿难敌四蹄啊。腿正是因为少了才不得不变得强壮，而不是足够强壮了才站了起来。</p>
+<p>直到2012年看了Jim Fixx的Complete Book of Running，你知道我有多惊喜吗？</p>
+<p>尼玛，我也要追上山羊！</p>
+<p><a href="http://luo.bo/36596/" target="_blank">http://luo.bo/36596/</a></p>
+]]></content>
+    
+    
+      <category term="跑步" scheme="http://chenss.github.io/tags/%E8%B7%91%E6%AD%A5/"/>
+    
+      <category term="鲁宾逊漂流记" scheme="http://chenss.github.io/tags/%E9%B2%81%E5%AE%BE%E9%80%8A%E6%BC%82%E6%B5%81%E8%AE%B0/"/>
+    
+      <category term="每天进步一点点" scheme="http://chenss.github.io/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[马特·卡茨:尝试做新事情30天]]></title>
+    <link href="http://chenss.github.io/2013/02/15/%E9%A9%AC%E7%89%B9%C2%B7%E5%8D%A1%E8%8C%A8%E5%B0%9D%E8%AF%95%E5%81%9A%E6%96%B0%E4%BA%8B%E6%83%8530%E5%A4%A9/"/>
+    <id>http://chenss.github.io/2013/02/15/马特·卡茨尝试做新事情30天/</id>
+    <published>2013-02-15T00:00:00.000Z</published>
+    <updated>2014-05-13T10:22:10.000Z</updated>
+    <content type="html"><![CDATA[<object width="640" height="360"><param name="movie" value="http://swf.ws.126.net/openplayer/v01/-0-2_M8LD0V9UJ_M8LV25RFF-vimg1_ws_126_net//image/snapshot_movie/2013/2/2/8/M8LV25L28-.swf"></param><param name="allowScriptAccess" value="always"></param><param name="wmode" value="transparent"></param><embed src="http://swf.ws.126.net/openplayer/v01/-0-2_M8LD0V9UJ_M8LV25RFF-vimg1_ws_126_net//image/snapshot_movie/2013/2/2/8/M8LV25L28-.swf" type="application/x-shockwave-flash" width="640" height="360" allowFullScreen="true" wmode="transparent" allowScriptAccess="always"></embed></object>]]></content>
+    
+    
+      <category term="TED" scheme="http://chenss.github.io/tags/TED/"/>
+    
+      <category term="视频" scheme="http://chenss.github.io/tags/%E8%A7%86%E9%A2%91/"/>
+    
+      <category term="每天进步一点点" scheme="http://chenss.github.io/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[长大]]></title>
+    <link href="http://chenss.github.io/2013/02/14/%E9%95%BF%E5%A4%A7/"/>
+    <id>http://chenss.github.io/2013/02/14/长大/</id>
+    <published>2013-02-14T00:00:00.000Z</published>
+    <updated>2014-05-13T11:26:16.000Z</updated>
+    <content type="html"><![CDATA[<p>手掌大不好，因为越掌大越孤单。</p>
+<p>成长就是不断发现自己以前很二的过程。</p>
+<p>小时候总觉得很多事离我们很遥远，而且一直都会这么遥远。电视里的那些离奇古怪的事件，或悲或喜，或善或恶，都不可能发生在我们或周围人的身上。我们不明白亲人逝去的悲痛，从不也很难想像，如果哪一天，最亲的那些人离我们而去了该怎么办。不理解为什么电视剧会比动画片好看。大人总是知道的那么多，力气那么大，我们永远赶不上。</p>
+<p>恋爱是什么滋味？那些乱七八糟的恋爱关系是不是太扯了？不得不说，是我太纯洁了。高一有人跟我说，某某班有个女生怀孕了。我立刻反问，不可能吧！？质疑大于确认。</p>
+<a id="more"></a>
+
+<p>为什么会这么想呢？从电视中得知，几十年前很多人以为牵牵手或者亲亲嘴就能怀孕，就离奇的是坐同一板凳都会。我也忘了自己怎么知道的了（但绝对是正规渠道），反正得先那个了才有可能怀孕。当时我非常坚定地认为，电视剧里“乱搞男女关系”的情节都是骗人的，至少大城市才会那样，而且也很少。既然连男女关系都不会搞，又怎么会怀孕呢？</p>
+<p>那个同学也不确定是不是真的。我也没有深究。或许他的不确定让我以为那是假的。直到高三，当我得知我很熟的两个人已经“乱搞男女关系”很长时间了，才试着去相信。不过直到现在，不亲眼见到或亲耳听到，还是不会主动那样想。</p>
+<p>忘了是哪一年了，一个初中同学对我说他有个被车撞死的小学同学，当时竟有种这是电视剧里才有的情节的感觉。后来，我的亲人中也有人去世。但这对我的影响并不大，甚至很久之后想起我或家人已经很久没去那了，才又想到这个人不在了。如果是家人呢？在外地上学，我已习惯了很久才见他们一次。我不确定，如果再也见不到他们了，是否只是现在感觉的延长、加深，还是完完全全地不同。当某人打电话来，哭着对我说她的亲人去世了，我想像不出她的感受。我没经历过。对我来说如此重要的人不多。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>手掌大不好，因为越掌大越孤单。</p>
+<p>成长就是不断发现自己以前很二的过程。</p>
+<p>小时候总觉得很多事离我们很遥远，而且一直都会这么遥远。电视里的那些离奇古怪的事件，或悲或喜，或善或恶，都不可能发生在我们或周围人的身上。我们不明白亲人逝去的悲痛，从不也很难想像，如果哪一天，最亲的那些人离我们而去了该怎么办。不理解为什么电视剧会比动画片好看。大人总是知道的那么多，力气那么大，我们永远赶不上。</p>
+<p>恋爱是什么滋味？那些乱七八糟的恋爱关系是不是太扯了？不得不说，是我太纯洁了。高一有人跟我说，某某班有个女生怀孕了。我立刻反问，不可能吧！？质疑大于确认。</p>
+]]></summary>
+    
+      <category term="纯洁" scheme="http://chenss.github.io/tags/%E7%BA%AF%E6%B4%81/"/>
+    
+      <category term="小时候" scheme="http://chenss.github.io/tags/%E5%B0%8F%E6%97%B6%E5%80%99/"/>
+    
+      <category term="随想录" scheme="http://chenss.github.io/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[永动机]]></title>
+    <link href="http://chenss.github.io/2013/02/02/%E6%B0%B8%E5%8A%A8%E6%9C%BA/"/>
+    <id>http://chenss.github.io/2013/02/02/永动机/</id>
+    <published>2013-02-02T00:00:00.000Z</published>
+    <updated>2014-05-14T13:09:04.000Z</updated>
+    <content type="html"><![CDATA[<p>我丝毫不怀疑能量守恒定律，当然不会存在不消耗能量或仅消耗少量能量就能永久运转的机器。但第一次在物理课本上看到前人设计的永动机（虽然都失败了）的那一刻起，我就充满了幻想。</p>
+<p>相信很多人都和我一样，第一次看到那些设计时都情不自禁地觉得：好像可以啊，为什么不行？</p>
+<p><img src="/image/01300027512990132869145523241.jpg" alt=""></p>
+<a id="more"></a>
+
+<p>图片中是我见过的最早的两种“永动机”之一。为什么我觉得它可行呢？设计都应该也是这么想的：右侧的小球更容易滚到外侧，根据杠杆原理，右侧向下的力量会大于左侧。当然，细细地想一想机器转一圈的情景，你会发觉事情没这么简单。我也曾以此为原型设计过一个，可惜工具和材料有限，没能做成模型。我也曾退而求其次，想计算一下我的模型可不可行。也曾想编一个程序精确地计算<a href="因为是根据杠杆原理设计的，两侧的力度便以每侧杠杆的总长度代替。">^211</a> ，但当时没有电脑，又忙于学业就耽搁了。</p>
+<p>不过即使是粗略的计算，我已不指望它能永动了。开始便说了，我丝毫不怀疑能量是守恒，从知道有永动机这个玩意之前就盲信了。盲信是很难改变的，因为信它没有理由，便也没了不信的理由。那我为什么还是热衷于设计永动机呢？其实想想上图中的“永动机”，如果它真能永动，它就是严格意义上的永动机了吗？</p>
+<p>曾经人们是如此热衷于永动机，说白了不是想不消耗能量就转动机器，而是花很少钱就转动机器。如果除去转化成本等，其实水能、太阳能、风能等都是不花钱的。当然，这是废话，除去成本，煤炭、石油也是不要钱的。况且除了极低的成本外，人们还需要的是可移动、稳定。不可能把工厂都建在河边吧？</p>
+<p>还是说说图中的永动机吧。即使它能永动也算不上前人所说的永动机，因为它借助了地球引力（否则杠杆原理有个屁用）。还有些设计明显是想利用磁力，磁力也是能量吧？《当代小学生》上有篇“想像文”，说的是如果有种材料可以隔绝地球引力，发射卫星就省事多了。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>我丝毫不怀疑能量守恒定律，当然不会存在不消耗能量或仅消耗少量能量就能永久运转的机器。但第一次在物理课本上看到前人设计的永动机（虽然都失败了）的那一刻起，我就充满了幻想。</p>
+<p>相信很多人都和我一样，第一次看到那些设计时都情不自禁地觉得：好像可以啊，为什么不行？</p>
+<p><img src="/image/01300027512990132869145523241.jpg" alt=""></p>
+]]></summary>
+    
+      <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
+    
+      <category term="github" scheme="http://chenss.github.io/tags/github/"/>
+    
+      <category term="随想录" scheme="http://chenss.github.io/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[先选择，后喜欢]]></title>
+    <link href="http://chenss.github.io/2013/01/30/%E5%85%88%E9%80%89%E6%8B%A9%EF%BC%8C%E5%90%8E%E5%96%9C%E6%AC%A2/"/>
+    <id>http://chenss.github.io/2013/01/30/先选择，后喜欢/</id>
+    <published>2013-01-30T14:27:00.000Z</published>
+    <updated>2014-05-16T04:01:59.000Z</updated>
+    <content type="html"><![CDATA[<p>瑞典心理学家近年来的研究发现，即使是最简单的选择任务，你也可能不知道自己的真正选择是什么。不仅如此，你还可能为自己未曾做过的选择辩护。（<a href="http://www.guokr.com/article/360096/" target="_blank">选择的盲目性：你不一定知道自己在选择什么</a>）</p>
+<p>不知道多少人是这样想的：初中的时候，我希望能和某个女孩从初中谈到结婚；高中的时候发现这不可能了，于是改成从高中开始；上了大学发觉还是不行，从大学开始也不错。现在看来，这也不可能了。</p>
+<p>我曾经非常后悔，如果能重来一次一定要想办法弥补。但不可能重来一次，这将成为我一辈子的后悔。真的很羡慕他们。</p>
+<p>为什么会有这种想法呢？试想一下，两个人一起度过了人生的各个阶段，有那么多的回忆，将是一件多么美好的事。我们一定会有很多共同语言，很了解对方。</p>
+<a id="more"></a>
+
+<p>但老这样惆怅也不是办法，生活总要继续。总有一天，我会结婚生子，也许和一个现在还不认识的人。可能是真的明白了，或许只是在找借口，我渐渐地发觉这个想法很美，也很幼稚。能如此固然好，不能又何妨？只要珍惜，从十几岁开始和从几十岁开始真的没多少区别。各有各的回忆，互相讲给对方听，一点点了解的过程，也是无可替代的经历。也许我偶尔还是会想起他/偶尔难免会惦记着他/就当他是个老朋友啊/也让我心疼/也让我牵挂/只是我心中不再有火花/让往事都随风去吧/</p>
+<p>我们喜欢一个人，究竟是因为她，还是我和她。我一直相信，我们不是爱某个人，而是爱某种人。只是和某个人相处了很久，经历了太多，便觉她与同类人不同了。变的不是她，是我们的感觉。同样，即使很晚才相遇，但抓紧时间，一切还来得及。不就是把十几岁就该做的事推迟了几年吗。</p>
+<p>只是因为选择了，所以喜欢了……即使你选择的其实是另一个。</p>
+<p>一直觉得<em>老爸老妈浪漫史</em>是朵奇葩，演到现在老妈还没出现。但它依然很好看，很感人，很温馨，很欢乐……也许我的“老妈”也是很晚才出现，这倒是给了我一点安慰。可是仔细想想，真正的老妈出现之前，Ted也没闲着啊。我呢？至今还没和女生看过电影，几乎没旅游过，真的虚度了好多时光。但看了<em>男人帮</em>第二十九集，一下子又想明白了。现在的孤单寂寞只等你来结束。第一次电影我要和你一起看，无论多晚。我要一次只有你的旅行，即使不是第一次。（插一句，<em>男人帮</em>最后一集绝对是个败笔！）</p>
+<p>看<em>那些年，我们一起追的女孩</em>，真为柯景腾可惜，看<em>建筑学概论</em>时却好多了。（再插一句，<em>男人帮</em>最后一集绝对是个败笔！）泰国电影<em>HOME 爱·幸福·记忆</em>中有一句，原文不记得了，大意是，多年不见的两个人，或多或少会把对方美化。就这么一句话，改变了我对结局的期望。</p>
+<p>没有谁是命中注定的，一切取决于你的心态。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>瑞典心理学家近年来的研究发现，即使是最简单的选择任务，你也可能不知道自己的真正选择是什么。不仅如此，你还可能为自己未曾做过的选择辩护。（<a href="http://www.guokr.com/article/360096/" target="_blank">选择的盲目性：你不一定知道自己在选择什么</a>）</p>
+<p>不知道多少人是这样想的：初中的时候，我希望能和某个女孩从初中谈到结婚；高中的时候发现这不可能了，于是改成从高中开始；上了大学发觉还是不行，从大学开始也不错。现在看来，这也不可能了。</p>
+<p>我曾经非常后悔，如果能重来一次一定要想办法弥补。但不可能重来一次，这将成为我一辈子的后悔。真的很羡慕他们。</p>
+<p>为什么会有这种想法呢？试想一下，两个人一起度过了人生的各个阶段，有那么多的回忆，将是一件多么美好的事。我们一定会有很多共同语言，很了解对方。</p>
+]]></summary>
+    
+      <category term="爱情" scheme="http://chenss.github.io/tags/%E7%88%B1%E6%83%85/"/>
+    
+      <category term="一个人" scheme="http://chenss.github.io/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/"/>
+    
+      <category term="读书笔记" scheme="http://chenss.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[微博精选]]></title>
+    <link href="http://chenss.github.io/2013/01/29/%E5%BE%AE%E5%8D%9A%E7%B2%BE%E9%80%89/"/>
+    <id>http://chenss.github.io/2013/01/29/微博精选/</id>
+    <published>2013-01-29T00:00:00.000Z</published>
+    <updated>2014-05-13T11:36:56.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>@zmt0516: 和学妹聊天，感觉汉字真是博大精深，一两个字就可以回答一大段文字。</li>
+</ul>
+<p>如果是同一个人，一百次也没关系，大不了不跟她玩了。但一个接一个地这样，该怎么办？</p>
+<ul>
+<li>回忆总是那么伤人，努力的要去忘掉，却忘也忘不掉。</li>
+</ul>
+<p>回忆总是随着时间的流逝而越来越美好，除了那些被遗忘的。</p>
+<ul>
+<li>@Red<em>d</em>: 攻擊就是最好的防禦，年節看到親戚記得先問他們，夫妻失和沒，能領到退休金嗎，有生小孩再問交男女朋友沒，沒生小孩問看看需不需要幫忙。</li>
+</ul>
+<p>最讨厌的就是这些问题了，讨厌被问，也不想问别人。当然，有些人是例外的。</p>
+<a id="more"></a>
+
+<ul>
+<li>@avb001: 问：在抗日战争中，中国军方编制下那个单位消灭鬼子最多？答：八一电影制片厂。</li>
+</ul>
+<p>历史的车轮永远是向前的，只是偶尔会跑偏。</p>
+<ul>
+<li>老师，我11岁，大家都叫你老师所以想问一个问题。” “你好，想问神马？” “基友和炮友有什么不同啊？” 我顿时觉得肩负着一种来自祖国未来的巨大压力。。。然后很认真地回答了他：“基友就是一起吃肯德基的朋友，炮友就是一起吃泡面的朋友。前者注重交流，后者注重效率</li>
+</ul>
+<p>想交流还是去咖啡馆吧。</p>
+<ul>
+<li>@bao3: cctv 居然亲身登上火车，还报道了列车 #盒饭5元 ，目测会成为今天热门词。活在CCTV里，就跟活在童话里，你吃到最便宜的盒饭是多少钱？</li>
+</ul>
+<p>学校超市一桶泡面3.7元，火车上5元。想当然地以为桶装的只有一个面饼，直到我在超市买了桶。</p>
+<ul>
+<li>@keepwalking: 这句话的原始出处是哪里？——当罪恶的链条足够长的时候，链条上的每一环都觉得自己是无辜的。</li>
+</ul>
+<p>你想知道答案吗？我现在就可以告诉你。</p>
+<ul>
+<li>看到一个人人状态：二年级表妹写寒假作业，遇到大坑一题，分别填上适当名词：浅粉色的xx,湖蓝色的xx,翡翠色的xx,橙黄色的xx,紫金色的xx,赤朱色的xx……我发挥想象力仍然捉急，求助各位亲啊！！ //底下有神人回复：酚酞、硫酸铜、硫酸亚铁、甲基橙、高猛酸钾、氧化铁</li>
+</ul>
+<p>我这辈子是做不出来了。</p>
+<ul>
+<li>给我最亲爱的好朋友：如果有一天，你心动了，恋爱了，我不会说什么，只会把祝福给你。如果有一天，你受伤了，疲倦了，我还是不会说什么，只会把肩膀借给你靠。</li>
+</ul>
+<p>我想成为这样一个男人，其实是想找到能让我变成这样的女人。</p>
+<ul>
+<li>对一个朋友信任的深浅，不是看你会不会对他笑，而是看你愿不愿意当着他的面哭。</li>
+</ul>
+<p>小孩爱哭，因为哭可以解决问题。</p>
+<ul>
+<li>德国小伙帅到我根本没有办法专心听他讲话 ， 心动到奶颤！</li>
+</ul>
+<p>奶颤？-_-!</p>
+<ul>
+<li>@localhost_8080: 两个人依偎在一起读一本书，画面其实挺温馨浪漫的，除非把读得快的一方的心理活动也描述出来。</li>
+</ul>
+<p>读书是私事，看电影需要气氛。</p>
+<ul>
+<li>@aiqingfenxiang: 世界上最幸福的事就是你喜欢的人喜欢你，并且他喜欢你比你喜欢他还要多。</li>
+</ul>
+<p>爱我少一点，但爱我久一点。喜欢就足够了。</p>
+<ul>
+<li>@Fredrica_Fanfan: 搞对象不是看对方会为你做什么，而是看对方会为你而改变什么，比如我正在追的女孩，已经为我改了三个手机号了。。。。</li>
+</ul>
+<p>还有把你拉黑，不论是QQ还是手机。</p>
+<ul>
+<li>每一个转发 TWEET 的人，都带有某种心情想要传达给某个人，可惜某个人不懂。</li>
+</ul>
+]]></content>
+    <summary type="html"><![CDATA[<ul>
+<li>@zmt0516: 和学妹聊天，感觉汉字真是博大精深，一两个字就可以回答一大段文字。</li>
+</ul>
+<p>如果是同一个人，一百次也没关系，大不了不跟她玩了。但一个接一个地这样，该怎么办？</p>
+<ul>
+<li>回忆总是那么伤人，努力的要去忘掉，却忘也忘不掉。</li>
+</ul>
+<p>回忆总是随着时间的流逝而越来越美好，除了那些被遗忘的。</p>
+<ul>
+<li>@Red<em>d</em>: 攻擊就是最好的防禦，年節看到親戚記得先問他們，夫妻失和沒，能領到退休金嗎，有生小孩再問交男女朋友沒，沒生小孩問看看需不需要幫忙。</li>
+</ul>
+<p>最讨厌的就是这些问题了，讨厌被问，也不想问别人。当然，有些人是例外的。</p>
+]]></summary>
+    
+      <category term="段子" scheme="http://chenss.github.io/tags/%E6%AE%B5%E5%AD%90/"/>
+    
+      <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[美丽人生]]></title>
+    <link href="http://chenss.github.io/2013/01/27/%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%94%9F/"/>
+    <id>http://chenss.github.io/2013/01/27/美丽人生/</id>
+    <published>2013-01-27T00:00:00.000Z</published>
+    <updated>2014-05-16T04:01:33.000Z</updated>
+    <content type="html"><![CDATA[<p><em>肖申克的救赎</em>还可以，精神、艺术成就等方面我也不懂，不过我的确没觉得它好看在哪。<em>教父</em>算是没看，下过好几次，但最终都是几乎没看就不得不删了。对评分网站所谓的Top250实在没什么好感。</p>
+<p>最初想看<em>美丽人生</em>是在豆瓣上看着介绍还不错吧？要不就是从安青上看到的。不过刚开始的确没抱多大希望。包括看了电影开头之后。</p>
+<p>明显是一部老电影。老电影往往意谓着画面不好，文化背景不熟悉，因此多少有些担心。尤其是发觉这好像是部俗套的喜剧片之后，就更不喜欢了。有些片子把废话多当作笑点，厌烦至极。还好是坐火车时看的，如此无聊的情况下自然能看得下去。</p>
+<p>不得不说，这是部非常好的电影。单纯从好看的角度它就是好电影，况且还有那些触动人心的地方。影片并没有因为时间的流逝而过时。</p>
+<a id="more"></a>
+
+<p>电影的前半部分很好看。主人公的性格十分鲜明。男主幽默调皮，话非常多。女主善良可爱，不喜俗务。男女主角第一次相遇真够特别的。最特别的不是相遇方式本身，只是那个农场再没出现。真怀疑女主是不是农场主？哦，对了，她是个老师。那个农场是谁的？</p>
+<p>管它呢。女主很调皮，调皮得可爱。看完戏剧不想去局长家，气得踢了那个男的一脚。在男主的车上，边打嗝边抱怨。车顶被掀起，裙子被撕破，正好有红地毯，天降钥匙，七秒，十帽子……多么富有戏剧性！幸好男主不会开车，不然就没这些了。</p>
+<p>女主钻到桌下那一幕似曾相识，是不是看过？</p>
+<p>幸福来得太突然，转眼间孩子都会打酱油了。这期间究竟发生了什么？一定是一段无比幸福的时光。悲剧就是把美好的东西打碎给人看。电影的前半部分有很多伏笔，只是我没当回事。</p>
+<p>这是部好电影，因为前半部分很好看，还因为后半部分也很好看。前半部美好地感人，后半部更感人。即使在令人如此绝望的环境中，即使笑得跟哭似的，男主依然笑哈哈的骗着儿子，笑得都没力气了。不只是对儿子，男主自己也不是行尸走肉般活着。他不只想尽办法保证亲人的人身安全，还给他们精神上鼓励，让他们在绝境中充满希望，知道对方还活着。</p>
+<p>男主的叔叔死了，刚开始都没敢确定。主人公的死是那么地轻描淡写，以至于直到最后我才确定他真的死了。导演也许是想说，即使是如主人公这般人的死，在当时的历史背景下，也是微不足道没人在意的。</p>
+<p>无论主人公是多么地坚强，多么地乐观，终究只是小人物。在和平年代，他或许可以活出自己的伟大。但在无情的炮火下，只能是炮灰。</p>
+<p>如果女主没有主动去集中营，男主可能就不会因找她而被发现。但那就不是女主了。如果男主没有去找她，男主也不会死。但那就不是男主了。如果有如果，男主也许根本遇不到女主了。</p>
+<p>公主，你好。</p>
+<p>公主，再见。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p><em>肖申克的救赎</em>还可以，精神、艺术成就等方面我也不懂，不过我的确没觉得它好看在哪。<em>教父</em>算是没看，下过好几次，但最终都是几乎没看就不得不删了。对评分网站所谓的Top250实在没什么好感。</p>
+<p>最初想看<em>美丽人生</em>是在豆瓣上看着介绍还不错吧？要不就是从安青上看到的。不过刚开始的确没抱多大希望。包括看了电影开头之后。</p>
+<p>明显是一部老电影。老电影往往意谓着画面不好，文化背景不熟悉，因此多少有些担心。尤其是发觉这好像是部俗套的喜剧片之后，就更不喜欢了。有些片子把废话多当作笑点，厌烦至极。还好是坐火车时看的，如此无聊的情况下自然能看得下去。</p>
+<p>不得不说，这是部非常好的电影。单纯从好看的角度它就是好电影，况且还有那些触动人心的地方。影片并没有因为时间的流逝而过时。</p>
+]]></summary>
+    
+      <category term="电影" scheme="http://chenss.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+      <category term="读书笔记" scheme="http://chenss.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[缘份]]></title>
+    <link href="http://chenss.github.io/2013/01/26/%E7%BC%98%E4%BB%BD/"/>
+    <id>http://chenss.github.io/2013/01/26/缘份/</id>
+    <published>2013-01-26T00:00:00.000Z</published>
+    <updated>2014-05-13T11:23:02.000Z</updated>
+    <content type="html"><![CDATA[<p>何谓有缘？应该是指在茫茫人海中还能相遇。所以先遇见才有缘，而不是有缘才遇见。即使前六次都是正面朝上，也不能左右第七次硬币哪面朝上。即使你们已经无数次不期而遇，证明了你们非常有缘，也不能保证你们还能不能遇见。</p>
+<p>何谓缘份？相遇并能在一起。于是，两人相爱却不能在一起常被说成有缘无份。你说这两个人有缘份，但他们不一定会在一起。他们在一起了，你还会说他们没缘份吗？</p>
+<p>缘份是个马后炮。</p>
+<p>这么想下去，我们和身边的大多数人其实没什么缘份。人生来注定要遇见很多人，注定要与近乎随机安排的人有缘份。你生在了这里，于是认识了这里的人。在这上学，便遇见了同在这里学习的人。凑巧而已。凑巧是他们便是和他们有缘，凑巧不是他们便和他们无缘。这缘份也太随便了。连出生在地球上都可以看作和地球有缘了。</p>
+<a id="more"></a>
+
+<p>如果非要说怎样才叫有缘，我想得问那些一次又一次不期而遇的人们。第一次见到那些初中同学，我丝毫没有“这么巧，怎么是这些人”的感觉。高中看到有些人又和我同班，我才开始感觉挺巧的。</p>
+<p>就像以前的人很难理解如今的人对“美女”的定义，我也很难理解大多数人口中的缘份。以前的人口中的美女，我见到了肯定会忍不住多看几眼。但如果见到现在的人口中的美女也这样，我的眼早晚会瞎。于是我想像了一下，如果我也把凑巧当成缘份，一天会是这样度过的：</p>
+<p>“哇，我与地球真有缘！”“我与我的被子好有缘！”“我与我的内裤太有缘了！”……“这泡尿、这个牙刷、这滴这滴和这滴水都和我好有缘！”……“这个包子和我这么有缘，该不该吃呢？”……“这个电视，这个频道，这个明星和我太有缘了！”……“咦，这有个女孩，这么有缘，要不要表白呢？”“不好，又过去一个女孩，也许她才是我的真爱”“那个女孩也与我有缘。三选一，好难啊！”……“我与老张的老婆太有缘了”“唉呀，相遇即是有缘，老张你别打我呀”……“我与中国太有缘了，坚决抵制日货，万恶的资本主义！”……“唉，我与地沟油太有缘了，一定要珍惜。”……“这朵花，这棵草，这个井盖，这个人的钱，那个人的命……”……</p>
+<p>…………</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>何谓有缘？应该是指在茫茫人海中还能相遇。所以先遇见才有缘，而不是有缘才遇见。即使前六次都是正面朝上，也不能左右第七次硬币哪面朝上。即使你们已经无数次不期而遇，证明了你们非常有缘，也不能保证你们还能不能遇见。</p>
+<p>何谓缘份？相遇并能在一起。于是，两人相爱却不能在一起常被说成有缘无份。你说这两个人有缘份，但他们不一定会在一起。他们在一起了，你还会说他们没缘份吗？</p>
+<p>缘份是个马后炮。</p>
+<p>这么想下去，我们和身边的大多数人其实没什么缘份。人生来注定要遇见很多人，注定要与近乎随机安排的人有缘份。你生在了这里，于是认识了这里的人。在这上学，便遇见了同在这里学习的人。凑巧而已。凑巧是他们便是和他们有缘，凑巧不是他们便和他们无缘。这缘份也太随便了。连出生在地球上都可以看作和地球有缘了。</p>
+]]></summary>
+    
+      <category term="一个人" scheme="http://chenss.github.io/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/"/>
+    
+      <category term="随想录" scheme="http://chenss.github.io/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[先有鸡还是先有蛋？]]></title>
+    <link href="http://chenss.github.io/2013/01/26/%E5%85%88%E6%9C%89%E9%B8%A1%E8%BF%98%E6%98%AF%E5%85%88%E6%9C%89%E8%9B%8B%EF%BC%9F/"/>
+    <id>http://chenss.github.io/2013/01/26/先有鸡还是先有蛋？/</id>
+    <published>2013-01-26T00:00:00.000Z</published>
+    <updated>2014-05-13T10:57:21.000Z</updated>
+    <content type="html"><![CDATA[<p>明显是先有蛋的，至少恐龙蛋比鸡出现的早吧。那鸡和鸡蛋呢？从变异的角度讲，其它蛋变异成鸡蛋的可能性比其它生物变成鸡的可能性大得多，我猜是先有鸡蛋。不过我们应该是先把那种会打鸣或下蛋的生物命名为鸡，然后才把它的蛋叫做鸡蛋的，这么说应该是先有的鸡。</p>
+<p>10:28 下午 星期六, 一月 26, 2013</p>
+]]></content>
+    
+    
+      <category term="瞎扯" scheme="http://chenss.github.io/tags/%E7%9E%8E%E6%89%AF/"/>
+    
+      <category term="随想录" scheme="http://chenss.github.io/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[微博精选4]]></title>
+    <link href="http://chenss.github.io/2013/01/05/%E5%BE%AE%E5%8D%9A%E7%B2%BE%E9%80%894/"/>
+    <id>http://chenss.github.io/2013/01/05/微博精选4/</id>
+    <published>2013-01-05T00:00:00.000Z</published>
+    <updated>2014-05-13T11:36:51.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><p>我的父母是个奇葩: 有次觉得特别委屈，于是问，妈，为什么我是个女孩子？ 妈妈深情的看我一眼：孩子，因为你上辈子屌爆了啊……….！</p>
+</li>
+<li><p>所以的择偶标准都是为不爱的人准备的。[@演良]</p>
+</li>
+<li><p>当一个人再没有东西可以失去的时候，就自由了。[@帮主胡子]</p>
+</li>
+<li><p>生活总是让我们遍体鳞伤，但到后来，那些受伤的地方一定会变成我们最强壮的地方。——海明威《老人与海》[@野小合]</p>
+</li>
+<li><p>很多时候说“我不想”，实际上是因为“我不敢想”。[@大亲亲]</p>
+</li>
+<li><p>搂上女朋友的腰，面色沉静，思索良久，扭头问她，“亲爱的，是我最近手变短了吗？”(@里八神)</p>
+</li>
+<li><p>家有小萝莉一枚，一天纠缠的我实在烦了，就照屁股打了一巴掌，哇哇大哭，找她妈告状去了。。。抹着眼泪绕屋子一圈，没找到她妈，绕回来了看见我，抱着我大腿，梨花带雨的哭啊：爸爸，妈妈打我。。。我差点笑喷了。。。这孩子忘性得有多大啊。。。还有救嘛？？？</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><p>「先生，我们这里的姑娘价钱可能贵了点，但是质量可是一流的。您看。。。」「恩，不要紧的。」「这个要求倒是比较特别。」via@无节操神吐槽</p>
+</li>
+<li><p>求救，我bf那方面相当冲动，动不动就有欲望，有时候吃饭吃得好好的就把我摁在饭桌上OOXX，勺子碗碎了一地都不管，还有时候我上网上得好好的ckjaosidfjngnaksljfw92138 （via@我的初夜是个传说）</p>
+</li>
+<li><p>听说，人生最辉煌的一断时间是高考前6个月，这时你上知天体运行原理，下知有机无机反应，前有椭圆双曲线，后有杂交生物圈，外可说英语，内可修古文，求得了数列，说得了马哲，溯源中华上下五千年，延推赤州陆海百千万，既知音乐美术计算机，兼修武术民俗</p>
+</li>
+<li><p>很多人都说：我不知道我自己想要什么。其实这句话的真正含义是：<br>我没有勇气面对和足够的努力去争取我想要的。</p>
+</li>
+</ul>
+<p>我不知道自己喜欢什么样的。</p>
+<ul>
+<li><p>最难过看到别人羡慕别人的幸福。他们根本不知道有人陪是多大的幸福。<br>所以，秀恩爱的都得死！！！</p>
+</li>
+<li><p>如果你想要你从未拥有过的东西，那么你必须去做你从未做过的事。</p>
+</li>
+<li><p>话说。有个英国人。觉得每天坐火车上班各种等车很苦逼-。- 终于有一天。他做了一个伟大的决定。。把火车站。。买下来了！ 碰到一个机会，火车站站厅房子出售。。12万英镑 200平米。。3个卧室。2个地下室。。 更关键的。门口一开门就是火车站台啊！ 这下 他表示。。终于可以坐在家里沙发上等车了。呃via@英国那些事儿</p>
+</li>
+<li><p>‏@EnochShau明天要考微积分了，打个电话告诉父母我爱他们，谢谢多年的养育之恩。好好洗个澡，然后最后踢一局实况足球。把宿舍零食大吃一顿，吃不掉的分给舍友。衣服能捐的就捐了。向感到愧对的人说声对不起。睡前对每个朋友发一条晚安，然后向暗恋的女生表白。关机后安静地躺在被窝里，告诉自己，我爱这个世界…</p>
+</li>
+<li><p>孤單，是你心裡沒有人。 寂寞，是你心裡的人不在身邊。</p>
+</li>
+<li><p>问：和女朋友吵架了怎么办？！讲道理？错！冷静？大错！和她争执？大错特错！现在告诉你正解答案！！！大吼一声！“老子要不是看你漂亮、温柔、善良、可爱、早他妈和你分手了！”霸气又戳中妹子软肋。据不完全统计、用完这一招，妹纸们的生气程度立马骤降80%！！</p>
+</li>
+<li><p>「 两只小鸟分别站在零线和火线上，本来他们相安无事，后来那只雄鸟亲了雌鸟一下。。。。」 这个故事告诉我们：秀恩爱的都得烧死！ via @yelumine</p>
+</li>
+<li><p>两只小鸟分别站在零线和火线上，本来他们相安无事。后来那只雄鸟亲了雌鸟一下。这个故事告诉我们，秀恩爱的都得死。——鸟嘴的化学成分是磷灰石，而磷灰石是不导电的。但这两只鸟居然被电死了，显然，它们舌吻了…..﻿</p>
+</li>
+</ul>
+]]></content>
+    <summary type="html"><![CDATA[<ul>
+<li><p>我的父母是个奇葩: 有次觉得特别委屈，于是问，妈，为什么我是个女孩子？ 妈妈深情的看我一眼：孩子，因为你上辈子屌爆了啊……….！</p>
+</li>
+<li><p>所以的择偶标准都是为不爱的人准备的。[@演良]</p>
+</li>
+<li><p>当一个人再没有东西可以失去的时候，就自由了。[@帮主胡子]</p>
+</li>
+<li><p>生活总是让我们遍体鳞伤，但到后来，那些受伤的地方一定会变成我们最强壮的地方。——海明威《老人与海》[@野小合]</p>
+</li>
+<li><p>很多时候说“我不想”，实际上是因为“我不敢想”。[@大亲亲]</p>
+</li>
+<li><p>搂上女朋友的腰，面色沉静，思索良久，扭头问她，“亲爱的，是我最近手变短了吗？”(@里八神)</p>
+</li>
+<li><p>家有小萝莉一枚，一天纠缠的我实在烦了，就照屁股打了一巴掌，哇哇大哭，找她妈告状去了。。。抹着眼泪绕屋子一圈，没找到她妈，绕回来了看见我，抱着我大腿，梨花带雨的哭啊：爸爸，妈妈打我。。。我差点笑喷了。。。这孩子忘性得有多大啊。。。还有救嘛？？？</p>
+</li>
+</ul>
+]]></summary>
+    
+      <category term="段子" scheme="http://chenss.github.io/tags/%E6%AE%B5%E5%AD%90/"/>
+    
+      <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
+    
+  </entry>
+  
+</feed>
