@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matlab中计算程序运行时间的三种方法 | Chiv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="article" property="og:type">
+<meta content="Matlab中计算程序运行时间的三种方法" property="og:title">
+<meta content="http://chenss.github.io//2014/05/25/matlab中计算程序运行时间的三种方法/" property="og:url">
+<meta property="og:image">
+<meta content="Chiv" property="og:site_name">
+<meta content="来源：http://www.matlabsky.com/thread-2607-1-1.html
+经常我们需要计算我们程序到底运行多长时间，这样可以比较程序的执行效率。当然这个对于只有几秒钟的小程序没有什么意义，但是对于大程序就有很重要的意义了。
+下面我们就说说Matlab中计算程序运行时间的三种常用方法吧！
+注意：三种方法由于使用原理不一样，得到结果可能有一定的差距！
+1、tic和toc组合" property="og:description">
+<meta content="summary" name="twitter:card">
+  
+    <link rel="alternative" href="/atom.xml" title="Chiv" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chiv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱上一个人，一定要让她相信，life is beautiful</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://chenss.github.io/"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-matlab中计算程序运行时间的三种方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/25/matlab中计算程序运行时间的三种方法/" class="article-date">
+  <time datetime="2014-05-24T19:26:24.000Z" itemprop="datePublished">5月 25 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matlab中计算程序运行时间的三种方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>来源：<a href="http://www.matlabsky.com/thread-2607-1-1.html" target="_blank">http://www.matlabsky.com/thread-2607-1-1.html</a></p>
+<p>经常我们需要计算我们程序到底运行多长时间，这样可以比较程序的执行效率。当然这个对于只有几秒钟的小程序没有什么意义，但是对于大程序就有很重要的意义了。</p>
+<p>下面我们就说说Matlab中计算程序运行时间的三种常用方法吧！</p>
+<p><strong>注意</strong>：三种方法由于使用原理不一样，得到结果可能有一定的差距！</p>
+<h2 id="1、tic和toc组合(推荐)">1、tic和toc组合(推荐)</h2>
+<p>计算tic和toc之间那段程序之间的运行时间，它的经典格式为</p>
+<pre><code>tic
+。。。。。。。。。。
+toc
+</code></pre><p>换句话说程序，程序遇到tic时Matlab自动开始计时，运行到toc时自动计算此时与最近一次tic之间的时间。这个有点拗口，下面我们举个例子说明</p>
+<pre><code><span class="comment">% by dynamic of Matlab技术论坛</span>
+<span class="comment">% see also http://www.matlabsky.com</span>
+<span class="comment">% contact me matlabsky@gmail.com</span>
+<span class="comment">% 2009-08-18 12:08:47 </span>
+clc
+tic;<span class="comment">%tic1</span>
+t1=clock;
+<span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">3</span>
+    tic ;<span class="comment">%tic2</span>
+    t2=clock;
+    pause(<span class="number">3</span>*<span class="built_in">rand</span>)
+    <span class="comment">%计算到上一次遇到tic的时间，换句话说就是每次循环的时间</span>
+    <span class="built_in">disp</span>(<span class="matrix">[<span class="string">'toc计算第'</span>,num2str(i),<span class="string">'次循环运行时间：'</span>,num2str(toc)]</span>);
+    <span class="comment">%计算每次循环的时间</span>
+    <span class="built_in">disp</span>(<span class="matrix">[<span class="string">'etime计算第'</span>,num2str(i),<span class="string">'次循环运行时间：'</span>,num2str(etime(clock,t2))]</span>);
+    <span class="comment">%计算程序总共的运行时间</span>
+    <span class="built_in">disp</span>(<span class="matrix">[<span class="string">'etime计算程序从开始到现在运行的时间:'</span>,num2str(etime(clock,t1))]</span>);
+    <span class="built_in">disp</span>(<span class="string">'======================================'</span>)
+<span class="keyword">end</span>
+<span class="comment">%计算此时到tic2的时间，由于最后一次遇到tic是在for循环的i=3时，所以计算的是最后一次循环的时间</span>
+<span class="built_in">disp</span>(<span class="matrix">[<span class="string">'toc计算最后一次循环运行时间'</span>,num2str(toc)]</span>)
+<span class="built_in">disp</span>(<span class="matrix">[<span class="string">'etime程序总运行时间：'</span>,num2str(etime(clock,t1))]</span>);
+</code></pre><p>运行结果如下，大家可以自己分析下</p>
+<pre><code>toc计算第1次循环运行时间：2.5628
+etime计算第1次循环运行时间：2.562
+<span class="header">etime计算程序从开始到现在运行的时间:2.562
+======================================</span>
+toc计算第2次循环运行时间：2.8108
+etime计算第2次循环运行时间：2.813
+<span class="header">etime计算程序从开始到现在运行的时间:5.375
+======================================</span>
+toc计算第3次循环运行时间：2.0462
+etime计算第3次循环运行时间：2.046
+<span class="header">etime计算程序从开始到现在运行的时间:7.421
+======================================</span>
+toc计算最后一次循环运行时间2.0479
+etime程序总运行时间：7.421
+</code></pre><a id="more"></a>
+
+<h2 id="2、etime(t1,t2)并和clock配合">2、etime(t1,t2)并和clock配合</h2>
+<p>来计算t1，t2之间的时间差，它是通过调用windows系统的时钟进行时间差计算得到运行时间的，应用的形式</p>
+<pre><code><span class="constant">t1</span>=clock;
+。。。。。。。。。。。
+<span class="constant">t2</span>=clock;
+etime(t2,t1)
+</code></pre><p>至于例子我就不举了，因为在上面的例子中使用了etime函数了</p>
+<h2 id="3、cputime函数来完成">3、cputime函数来完成</h2>
+<p>使用方法和etime相似，只是这个是使用cpu的主频计算的，和前面原理不同，使用格式如下</p>
+<pre><code><span class="constant">t0</span>=cputime
+。。。。。。。。。。。。。
+<span class="constant">t1</span>=cputime-t0
+</code></pre><p>上面说到了三种方法，都是可以进行程序运行时间计算的，<strong>但是Matlab官方推荐使用tic/toc组合</strong>，When timing the duration of an event, use the tic and toc functions instead of clock or etime.</p>
+<p>至于大家可以根据自己的喜好自己选择，但是使用tic/toc的时候一定要注意，<strong>toc计算的是与最后一次运行的tic之间的时间</strong>，不是第一个tic，更不是第二个。。。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+	
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/">matlab</a></li></ul>
+
+	<div class="bdsharebuttonbox" style="float:right"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="������QQ�ռ�"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="����������΢��"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="��������Ѷ΢��"></a><a href="#" class="bds_renren" data-cmd="renren" title="������������"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="������΢��"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/05/24/结构性拖延/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">结构性拖延</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="Matlab中计算程序运行时间的三种方法" data-url="http://chenss.github.io/2014/05/25/matlab中计算程序运行时间的三种方法/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chiv-hexo"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END --></section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/搞笑/">搞笑</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/每天进步一点点/">每天进步一点点</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随想录/">随想录</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dvorak/" style="font-size: 10.00px;">Dvorak</a><a href="/tags/Firebug/" style="font-size: 10.00px;">Firebug</a><a href="/tags/MV/" style="font-size: 13.33px;">MV</a><a href="/tags/NetVideoHunter/" style="font-size: 10.00px;">NetVideoHunter</a><a href="/tags/Sheldon/" style="font-size: 10.00px;">Sheldon</a><a href="/tags/TED/" style="font-size: 10.00px;">TED</a><a href="/tags/archlinux/" style="font-size: 13.33px;">archlinux</a><a href="/tags/file/" style="font-size: 10.00px;">file</a><a href="/tags/github/" style="font-size: 13.33px;">github</a><a href="/tags/h3c/" style="font-size: 10.00px;">h3c</a><a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a><a href="/tags/matlab/" style="font-size: 10.00px;">matlab</a><a href="/tags/porn/" style="font-size: 10.00px;">porn</a><a href="/tags/python/" style="font-size: 10.00px;">python</a><a href="/tags/to do list/" style="font-size: 10.00px;">to do list</a><a href="/tags/一个人/" style="font-size: 20.00px;">一个人</a><a href="/tags/军训/" style="font-size: 13.33px;">军训</a><a href="/tags/回忆/" style="font-size: 10.00px;">回忆</a><a href="/tags/大三/" style="font-size: 10.00px;">大三</a><a href="/tags/安大/" style="font-size: 10.00px;">安大</a><a href="/tags/小时候/" style="font-size: 13.33px;">小时候</a><a href="/tags/山羊/" style="font-size: 10.00px;">山羊</a><a href="/tags/情商/" style="font-size: 10.00px;">情商</a><a href="/tags/拖延症/" style="font-size: 10.00px;">拖延症</a><a href="/tags/日记/" style="font-size: 10.00px;">日记</a><a href="/tags/智商/" style="font-size: 10.00px;">智商</a><a href="/tags/栋哥/" style="font-size: 10.00px;">栋哥</a><a href="/tags/校园网/" style="font-size: 10.00px;">校园网</a><a href="/tags/段子/" style="font-size: 16.67px;">段子</a><a href="/tags/爱情/" style="font-size: 10.00px;">爱情</a><a href="/tags/甩葱舞/" style="font-size: 10.00px;">甩葱舞</a><a href="/tags/电影/" style="font-size: 10.00px;">电影</a><a href="/tags/瞎扯/" style="font-size: 10.00px;">瞎扯</a><a href="/tags/神探夏洛克/" style="font-size: 10.00px;">神探夏洛克</a><a href="/tags/纯洁/" style="font-size: 10.00px;">纯洁</a><a href="/tags/网络/" style="font-size: 10.00px;">网络</a><a href="/tags/萌/" style="font-size: 10.00px;">萌</a><a href="/tags/视频/" style="font-size: 13.33px;">视频</a><a href="/tags/诗/" style="font-size: 10.00px;">诗</a><a href="/tags/谢耳朵/" style="font-size: 10.00px;">谢耳朵</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dvorak/">Dvorak</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firebug/">Firebug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetVideoHunter/">NetVideoHunter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sheldon/">Sheldon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TED/">TED</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/archlinux/">archlinux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/">file</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h3c/">h3c</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/">matlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porn/">porn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/to do list/">to do list</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/一个人/">一个人</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/军训/">军训</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大三/">大三</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安大/">安大</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小时候/">小时候</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/山羊/">山羊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拖延症/">拖延症</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智商/">智商</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栋哥/">栋哥</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/校园网/">校园网</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/段子/">段子</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/甩葱舞/">甩葱舞</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电影/">电影</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/瞎扯/">瞎扯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神探夏洛克/">神探夏洛克</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/纯洁/">纯洁</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/萌/">萌</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗/">诗</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/谢耳朵/">谢耳朵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跑步/">跑步</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键盘/">键盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/陈丹/">陈丹</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/陈玲玲/">陈玲玲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鲁宾逊漂流记/">鲁宾逊漂流记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01">一月 2013</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12">十二月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">四月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10">十月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/09">九月 2010</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08">八月 2010</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/01">一月 2010</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/05/25/matlab中计算程序运行时间的三种方法/">Matlab中计算程序运行时间的三种方法</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/24/结构性拖延/">结构性拖延</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/23/如何下载pornhub和youporn等网站的视频/">如何下载Pornhub和Youporn等网站的视频</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/23/为什么说「智商高的人能用智商碾压的时候为何要用情商」？/">为什么说「智商高的人能用智商碾压的时候为何要用情商」？</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/21/诗三首/">诗三首</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 Chiv<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
