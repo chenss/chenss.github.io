@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-09T19:07:00.407Z</updated>
+  <updated>2014-06-10T06:01:00.322Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -15,11 +15,45 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[二维码照片]]></title>
+    <link href="http://chenss.github.io/2014/06/10/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%85%A7%E7%89%87/"/>
+    <id>http://chenss.github.io/2014/06/10/二维码照片/</id>
+    <published>2014-06-10T04:42:41.000Z</published>
+    <updated>2014-06-10T05:18:43.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p><img src="/image/91014001.jpg" alt="毕业纪念册照片"></p>
+<a id="more"></a>
+
+<p>毕业纪念册要印个人照片，然后我翻了下。本以为自己的个人照不多，因为我不喜欢拍照，尤其是个人的。这些照片选哪个好呢？都不好，所以才有了这张二维码照片。</p>
+<p>最常见的二维码照片是在二维码中嵌入一个Logo，但嵌入的Logo实在太小，不满意。还有这种<br><img src="/image/qart2.png" alt=""><br>可能是我的脸过于复杂，生成的照片太抽象了。</p>
+<p>我试了最后一种方法，先生成二维码，再添加照片。步骤如下：</p>
+<ol>
+<li>打开<a href="http://www.liantu.com/" target="_blank">http://www.liantu.com/</a>，在左侧输入相关信息，在右侧的其它设置中纠错等级选择最高，剩下的自由发挥。</li>
+<li>找一张个人照片，删除背景（透明背景）及其它一切不必要的东西，然后拖到上一步做好的二维码中。</li>
+<li>调整照片的大小、位置，测试能否正确扫出信息。重复此步骤，下到满意为止。</li>
+<li>最后存储为满意的格式。也可以通过“文件-脚本-将图层导出到文件”来保存图层，以便下次修改。</li>
+</ol>
+]]></content>
+    <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p><img src="/image/91014001.jpg" alt="毕业纪念册照片"></p>
+]]></summary>
+    
+      <category term="毕业" scheme="http://chenss.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+      <category term="纪念" scheme="http://chenss.github.io/tags/%E7%BA%AA%E5%BF%B5/"/>
+    
+      <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[彩色记忆]]></title>
     <link href="http://chenss.github.io/2014/06/09/by/"/>
     <id>http://chenss.github.io/2014/06/09/by/</id>
     <published>2014-06-09T00:00:00.000Z</published>
-    <updated>2014-06-09T19:05:37.000Z</updated>
+    <updated>2014-06-10T05:58:10.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <p>多图慎入，建议在Wifi下浏览，或在电脑上打开：chenss.github.io/2014/06/09/by/</p>
@@ -41,7 +75,8 @@
 <p><img src="/image/xxym.JPG" alt="大四下，论文啊"></p>
 <p><img src="/image/20140411_131121.jpg" alt="大四下，怎能不提到在安徽省电力公司的毕业实习"></p>
 <p><img src="/image/20140331_102203.jpg" alt="高中时的俞老师"></p>
-<p><img src="/image/psb457839k.jpg" alt="WZ，熊猫是能拍彩色照片的"></p>
+<p><img src="/image/IMG_5420.jpg" alt=""></p>
+<p><img src="/image/psb457839k.jpg" alt="熊猫是能拍彩色照片的"></p>
 ]]></content>
     <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
@@ -480,36 +515,6 @@ etime程序总运行时间：7.421
 </code></pre>]]></summary>
     
       <category term="matlab" scheme="http://chenss.github.io/tags/matlab/"/>
-    
-      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何下载Pornhub和Youporn等网站的视频]]></title>
-    <link href="http://chenss.github.io/2014/05/23/%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDpornhub%E5%92%8Cyouporn%E7%AD%89%E7%BD%91%E7%AB%99%E7%9A%84%E8%A7%86%E9%A2%91/"/>
-    <id>http://chenss.github.io/2014/05/23/如何下载pornhub和youporn等网站的视频/</id>
-    <published>2014-05-23T06:09:14.000Z</published>
-    <updated>2014-05-23T06:37:19.000Z</updated>
-    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<ol>
-<li>由于相关法律法规，想上这些网站得先翻墙。我用的是Goagent，可能是Ipv6模式，所以速度挺好的，但是不能快进。</li>
-<li>Firefox和Chrome都有下载视频的插件，尤其是Firefox的NetVideoHunter，挺好的，没什么特殊要求就不要往下看了。</li>
-<li>我明明记得已经装了NetVideoHunter（之前装的，肯定已经重启过了），却没看见，就想到了用Firebug试试。本来以为会比较麻烦（至少用这个方法下优酷的视频太麻烦），结果出乎意料的简单。</li>
-<li>首先，打开相应的网站和Firebug。在Firebug中选中“网络”-&gt;“媒体”。</li>
-<li>然后点开想下载的视频。</li>
-<li>结果如图：<img src="/image/wbt56yrt5667itrweq.png" alt=""></li>
-</ol>
-<p>PS：可以复制地址用其它方式下载，也可直接在新标签页中打开自动用浏览器下载，还是挺方便的。但最方便的还是使用插件，功能更强大，操作更简便。</p>
-]]></content>
-    
-    
-      <category term="Firebug" scheme="http://chenss.github.io/tags/Firebug/"/>
-    
-      <category term="NetVideoHunter" scheme="http://chenss.github.io/tags/NetVideoHunter/"/>
-    
-      <category term="porn" scheme="http://chenss.github.io/tags/porn/"/>
     
       <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
