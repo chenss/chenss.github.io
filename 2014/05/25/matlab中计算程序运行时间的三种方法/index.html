@@ -144,16 +144,16 @@ etime程序总运行时间：7.421
 
 <h2 id="2、etime(t1,t2)并和clock配合">2、etime(t1,t2)并和clock配合</h2>
 <p>来计算t1，t2之间的时间差，它是通过调用windows系统的时钟进行时间差计算得到运行时间的，应用的形式</p>
-<pre><code><span class="xml"><span class="tag"><span class="attribute">t1</span>=<span class="value">clock;</span>
+<pre><code><span class="constant">t1</span>=clock;
 。。。。。。。。。。。
-<span class="attribute">t2</span>=<span class="value">clock;</span>
-<span class="attribute">etime</span>(<span class="attribute">t2</span>,<span class="attribute">t1</span>)</span></span>
+<span class="constant">t2</span>=clock;
+etime(t2,t1)
 </code></pre><p>至于例子我就不举了，因为在上面的例子中使用了etime函数了</p>
 <h2 id="3、cputime函数来完成">3、cputime函数来完成</h2>
 <p>使用方法和etime相似，只是这个是使用cpu的主频计算的，和前面原理不同，使用格式如下</p>
-<pre><code><span class="xml"><span class="tag"><span class="attribute">t0</span>=<span class="value">cputime</span>
+<pre><code><span class="constant">t0</span>=cputime
 。。。。。。。。。。。。。
-<span class="attribute">t1</span>=<span class="value">cputime-t0</span></span></span>
+<span class="constant">t1</span>=cputime-t0
 </code></pre><p>上面说到了三种方法，都是可以进行程序运行时间计算的，<strong>但是Matlab官方推荐使用tic/toc组合</strong>，When timing the duration of an event, use the tic and toc functions instead of clock or etime.</p>
 <p>至于大家可以根据自己的喜好自己选择，但是使用tic/toc的时候一定要注意，<strong>toc计算的是与最后一次运行的tic之间的时间</strong>，不是第一个tic，更不是第二个。。。。。</p>
 
