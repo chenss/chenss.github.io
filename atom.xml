@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-12T09:28:15.600Z</updated>
+  <updated>2014-06-12T11:02:42.214Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -69,11 +69,30 @@
   </entry>
   
   <entry>
+    <title><![CDATA[by2]]></title>
+    <link href="http://chenss.github.io/2014/06/09/by2/"/>
+    <id>http://chenss.github.io/2014/06/09/by2/</id>
+    <published>2014-06-09T10:52:20.000Z</published>
+    <updated>2014-06-12T11:02:14.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p><img src="/image/IMG_20140609_145756.jpg" alt="我不会黑自己的"></p>
+<p>待续。。。</p>
+]]></content>
+    
+    
+      <category term="毕业" scheme="http://chenss.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+      <category term="日记" scheme="http://chenss.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[彩色记忆]]></title>
     <link href="http://chenss.github.io/2014/06/09/by/"/>
     <id>http://chenss.github.io/2014/06/09/by/</id>
-    <published>2014-06-09T00:00:00.000Z</published>
-    <updated>2014-06-12T09:27:32.000Z</updated>
+    <published>2014-06-09T10:52:00.000Z</published>
+    <updated>2014-06-12T10:52:58.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <script type="text/javascript">
@@ -101,10 +120,11 @@ document.write('<p align="center">'+srcjs+'</p>')
 <p><img src="/image/20140127_224626.jpg" alt="大四上，我俩长得像不像"></p>
 <p><img src="/image/20140123_192302.jpg" alt="大四上，这次吃药了"></p>
 <p><img src="/image/xxym.JPG" alt="大四下，论文啊"></p>
-<p><img src="/image/20140411_131121.jpg" alt="大四下，怎能不提到在安徽省电力公司的毕业实习"></p>
-<p><img src="/image/20140331_102203.jpg" alt="高中时的俞老师"></p>
+<p><img src="/image/20140411_131121.jpg" alt="大四下，怎能不提在省电力公司实习的日子"></p>
+<p><img src="/image/20140331_102203.jpg" alt="俞老师，俞老师，俞老师"></p>
 <p><img src="/image/IMG_5420.jpg" alt="我们毕业了"></p>
 <p><img src="/image/20140610205615.jpg" alt="我们毕业了"></p>
+<p><img src="/image/20140607_090304.jpg" alt="跪求高人设计台词！"></p>
 <p><img src="/image/psb457839k.jpg" alt="熊猫是能拍彩色照片的"></p>
 ]]></content>
     <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
@@ -868,112 +888,6 @@ plt.show()
       <category term="神探夏洛克" scheme="http://chenss.github.io/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/"/>
     
       <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[python练习：替换文件内容]]></title>
-    <link href="http://chenss.github.io/2014/05/13/python%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/"/>
-    <id>http://chenss.github.io/2014/05/13/python练习：替换文件内容/</id>
-    <published>2014-05-13T12:21:50.000Z</published>
-    <updated>2014-05-13T12:52:47.000Z</updated>
-    <content type="html"><![CDATA[<p>转自：<a href="http://blog.csdn.net/hometohw/article/details/7483404" target="_blank">http://blog.csdn.net/hometohw/article/details/7483404</a></p>
-<p>1.替换</p>
-<pre><code>import re  
-file_name=<span class="string">'new  4.txt'</span>  
-fp=<span class="built_in">open</span>(file_name,<span class="string">'r'</span>)  
-alllines=fp.readlines()  
-fp.<span class="built_in">close</span>()  
-fp=<span class="built_in">open</span>(file_name,<span class="string">'w'</span>)  
-<span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
-    <span class="operator">a</span>=re.sub(<span class="string">'&lt;host_ip&gt;0.0.0.0&lt;/host_ip&gt;'</span>,<span class="string">'&lt;host_ip&gt;1.1.1.1&lt;/host_ip&gt;'</span>,eachline)  
-    fp.writelines(<span class="operator">a</span>)  
-fp.<span class="built_in">close</span>()  
-</code></pre><p>2.单行替换</p>
-<pre><code>import re  
-import os  
-filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
-workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
-os.chdir(workdir)  
-ipold=input(<span class="string">'Please input the old ip : '</span>)  
-ipnew=input(<span class="string">'Please input the new ip : '</span>)  
-<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
-    alllines=fp.<span class="built_in">read</span>()  
-    fp.<span class="built_in">close</span>()  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
-    fp.writelines(re.sub(ipold,ipnew,alllines))  
-    fp.<span class="built_in">close</span>()  
-</code></pre><a id="more"></a>
-
-<p>3.多行替换</p>
-<pre><code>import re  
-import os  
-filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
-workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
-os.chdir(workdir)  
-ipold=input(<span class="string">'Please input the old ip : '</span>)  
-ipnew=input(<span class="string">'Please input the new ip : '</span>)  
-<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
-    alllines=fp.readlines()  
-    fp.<span class="built_in">close</span>()  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
-    fp.truncate()  
-    <span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
-        fp.writelines(re.sub(ipold,ipnew,eachline))  
-    fp.<span class="built_in">close</span>()  
-</code></pre><p>4.能用的</p>
-<pre><code>import re  
-import os  
-filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
-workdir=input(<span class="string">'请输入工作目录，当前目录请直接按回车 : '</span>)  
-<span class="keyword">if</span> workdir!=<span class="string">''</span>:  
-    os.chdir(workdir)  
-oldip=input(<span class="string">'请输入原来IP : '</span>)  
-newip=input(<span class="string">'请输入当前IP : '</span>)  
-<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
-    alllines=fp.<span class="built_in">read</span>()  
-    fp.<span class="built_in">close</span>()  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
-    fp.writelines(re.sub(oldip,newip,alllines))  
-    fp.<span class="built_in">close</span>()  
-</code></pre>]]></content>
-    <summary type="html"><![CDATA[<p>转自：<a href="http://blog.csdn.net/hometohw/article/details/7483404" target="_blank">http://blog.csdn.net/hometohw/article/details/7483404</a></p>
-<p>1.替换</p>
-<pre><code>import re  
-file_name=<span class="string">'new  4.txt'</span>  
-fp=<span class="built_in">open</span>(file_name,<span class="string">'r'</span>)  
-alllines=fp.readlines()  
-fp.<span class="built_in">close</span>()  
-fp=<span class="built_in">open</span>(file_name,<span class="string">'w'</span>)  
-<span class="keyword">for</span> eachline <span class="operator">in</span> alllines:  
-    <span class="operator">a</span>=re.sub(<span class="string">'&lt;host_ip&gt;0.0.0.0&lt;/host_ip&gt;'</span>,<span class="string">'&lt;host_ip&gt;1.1.1.1&lt;/host_ip&gt;'</span>,eachline)  
-    fp.writelines(<span class="operator">a</span>)  
-fp.<span class="built_in">close</span>()  
-</code></pre><p>2.单行替换</p>
-<pre><code>import re  
-import os  
-filelist=[<span class="string">'new  4.txt'</span>,<span class="string">'new  5.txt'</span>]  
-workdir=input(<span class="string">'please input WORK_HOME : '</span>)  
-os.chdir(workdir)  
-ipold=input(<span class="string">'Please input the old ip : '</span>)  
-ipnew=input(<span class="string">'Please input the new ip : '</span>)  
-<span class="keyword">for</span> filename <span class="operator">in</span> filelist:  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'r'</span>)  
-    alllines=fp.<span class="built_in">read</span>()  
-    fp.<span class="built_in">close</span>()  
-    fp=<span class="built_in">open</span>(filename,<span class="string">'w'</span>)  
-    fp.writelines(re.sub(ipold,ipnew,alllines))  
-    fp.<span class="built_in">close</span>()  
-</code></pre>]]></summary>
-    
-      <category term="python" scheme="http://chenss.github.io/tags/python/"/>
-    
-      <category term="file" scheme="http://chenss.github.io/tags/file/"/>
-    
-      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
