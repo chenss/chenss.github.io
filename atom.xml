@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-11T14:48:39.586Z</updated>
+  <updated>2014-06-12T03:46:36.690Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -19,12 +19,16 @@
     <link href="http://chenss.github.io/2014/06/10/%E6%AF%95%E4%B8%9A%E6%99%9A%E5%AE%B4%E8%A7%86%E9%A2%91/"/>
     <id>http://chenss.github.io/2014/06/10/毕业晚宴视频/</id>
     <published>2014-06-10T12:55:49.000Z</published>
-    <updated>2014-06-10T12:59:32.000Z</updated>
+    <updated>2014-06-12T00:15:16.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <p align="center"><embed src="http://player.youku.com/player.php/sid/XNzIyMDQ0OTY0/v.swf" allowFullScreen="true" quality="high" width="600" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 ]]></content>
     
+    
+      <category term="毕业" scheme="http://chenss.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+      <category term="照片" scheme="http://chenss.github.io/tags/%E7%85%A7%E7%89%87/"/>
     
   </entry>
   
@@ -69,10 +73,10 @@
     <link href="http://chenss.github.io/2014/06/09/by/"/>
     <id>http://chenss.github.io/2014/06/09/by/</id>
     <published>2014-06-09T00:00:00.000Z</published>
-    <updated>2014-06-11T10:17:20.000Z</updated>
+    <updated>2014-06-12T03:42:18.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
-<p align="center"><embed src="http://www.xiami.com/widget/0_1773257370/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed></p>
+<p align="center"><script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=35737588&sid=1773257370&mode=js"></script></p>
 
 <a id="more"></a>
 
@@ -98,7 +102,7 @@
 ]]></content>
     <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
-<p align="center"><embed src="http://www.xiami.com/widget/0_1773257370/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed></p>
+<p align="center"><script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=35737588&sid=1773257370&mode=js"></script></p>
 
 ]]></summary>
     
