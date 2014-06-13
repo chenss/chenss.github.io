@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-12T16:02:00.292Z</updated>
+  <updated>2014-06-13T02:52:33.252Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -13,6 +13,36 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[虾米转帖随机音乐]]></title>
+    <link href="http://chenss.github.io/2014/06/13/%E8%99%BE%E7%B1%B3%E8%BD%AC%E5%B8%96%E9%9A%8F%E6%9C%BA%E9%9F%B3%E4%B9%90/"/>
+    <id>http://chenss.github.io/2014/06/13/虾米转帖随机音乐/</id>
+    <published>2014-06-13T02:03:36.000Z</published>
+    <updated>2014-06-13T02:11:43.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+    <span class="keyword">var</span> sid=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1773257370</span>,<span class="number">381546</span>,<span class="number">1773228254</span>,<span class="number">3450523</span>,<span class="number">2051498</span>,<span class="number">374744</span>,<span class="number">1772118451</span>,<span class="number">382446</span>,<span class="number">385041</span>,<span class="number">375918</span>,<span class="number">73358</span>,<span class="number">394329</span>,<span class="number">1771659687</span>,<span class="number">35026</span>,<span class="number">1771933137</span>,<span class="number">1769667723</span>,<span class="number">1769274783</span>,<span class="number">2568233</span>,<span class="number">1771638197</span>,<span class="number">1772274047</span>,<span class="number">1769154074</span>,<span class="number">3320101</span>,<span class="number">142309</span>,<span class="number">108902</span>,<span class="number">3853</span>,<span class="number">1769966152</span>,<span class="number">1769019781</span>,<span class="number">3294902</span>,<span class="number">1813291</span>,<span class="number">2118493</span>,<span class="number">1770005054</span>,<span class="number">1770005054</span>,<span class="number">59457</span>,<span class="number">22143</span>,<span class="number">93357</span>,<span class="number">1771829246</span>,<span class="number">2113248</span>,<span class="number">156254</span>,<span class="number">1769176495</span>,<span class="number">1772340707</span>,<span class="number">3381912</span>,<span class="number">375043</span>,<span class="number">41303</span>)
+    <span class="keyword">var</span> number = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*sid.length)
+    <span class="keyword">var</span> surl=<span class="string">"http://www.xiami.com/widget/player-single?uid=35737588&amp;sid="</span>+sid[number]+<span class="string">"&amp;mode=js"</span>
+    <span class="keyword">var</span> srcjs=<span class="string">'\&lt;script type="text/javascript" src='</span>+surl+<span class="string">'\&gt;\&lt;/script\&gt;'</span>
+    document.write(<span class="string">'&lt;p align="center"&gt;'</span>+srcjs+<span class="string">'&lt;/p&gt;'</span>)
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>参考：</p>
+<ol>
+<li><a href="http://www.cnblogs.com/sirkevin/archive/2010/12/20/1911128.html" target="_blank">JavaScript random方法得到随机整数</a></li>
+<li><a href="http://bbs.csdn.net/topics/340111352" target="_blank">求救script src 后面怎么传递参数！！！</a></li>
+<li><a href="http://www.w3school.com.cn/jsref/jsref_length_array.asp" target="_blank">JavaScript length 属性</a></li>
+</ol>
+]]></content>
+    
+    
+      <category term="JS" scheme="http://chenss.github.io/tags/JS/"/>
+    
+      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[毕业晚宴视频]]></title>
@@ -96,13 +126,13 @@
     <link href="http://chenss.github.io/2014/06/09/by/"/>
     <id>http://chenss.github.io/2014/06/09/by/</id>
     <published>2014-06-09T10:52:00.000Z</published>
-    <updated>2014-06-12T15:56:23.000Z</updated>
+    <updated>2014-06-13T01:59:07.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <script type="text/javascript">
-var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,3294902,1813291,2118493,1770005054,1770005054,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043)
-var now=new Date()
-var number = now.getSeconds()%42
+var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,3294902,1813291,2118493,1770005054,1770005054,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303)
+
+var number = Math.floor(Math.random()*sid.length)
 var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
 var srcjs='\<script type="text/javascript" src='+surl+'\>\</script\>'
 document.write('<p align="center">'+srcjs+'</p>')
@@ -134,9 +164,9 @@ document.write('<p align="center">'+srcjs+'</p>')
     <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <script type="text/javascript">
-var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,3294902,1813291,2118493,1770005054,1770005054,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043)
-var now=new Date()
-var number = now.getSeconds()%42
+var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,3294902,1813291,2118493,1770005054,1770005054,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303)
+
+var number = Math.floor(Math.random()*sid.length)
 var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
 var srcjs='\<script type="text/javascript" src='+surl+'\>\</script\>'
 document.write('<p align="center">'+srcjs+'</p>')
@@ -874,24 +904,6 @@ plt.show()
       <category term="Dvorak" scheme="http://chenss.github.io/tags/Dvorak/"/>
     
       <category term="键盘" scheme="http://chenss.github.io/tags/%E9%94%AE%E7%9B%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[一直很安静]]></title>
-    <link href="http://chenss.github.io/2014/05/13/%E4%B8%80%E7%9B%B4%E5%BE%88%E5%AE%89%E9%9D%99/"/>
-    <id>http://chenss.github.io/2014/05/13/一直很安静/</id>
-    <published>2014-05-13T12:45:24.000Z</published>
-    <updated>2014-06-10T12:34:03.000Z</updated>
-    <content type="html"><![CDATA[<p align="center"><embed src="http://player.youku.com/player.php/sid/XNjY2OTg2NDI0/v.swf" allowFullScreen="true" quality="high" width="600" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-]]></content>
-    
-    
-      <category term="MV" scheme="http://chenss.github.io/tags/MV/"/>
-    
-      <category term="神探夏洛克" scheme="http://chenss.github.io/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/"/>
-    
-      <category term="搞笑" scheme="http://chenss.github.io/categories/%E6%90%9E%E7%AC%91/"/>
     
   </entry>
   
