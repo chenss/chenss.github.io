@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-13T16:47:42.716Z</updated>
+  <updated>2014-06-14T04:30:46.562Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -126,8 +126,60 @@
     <title><![CDATA[彩色记忆]]></title>
     <link href="http://chenss.github.io/2014/06/09/by/"/>
     <id>http://chenss.github.io/2014/06/09/by/</id>
+    <published>2014-06-09T10:52:01.000Z</published>
+    <updated>2014-06-14T04:28:18.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<script type="text/javascript">
+var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,1813291,2118493,1770005054,1770005054,182692,59457,22143,93357,1769966152,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303,1770808806,3381901,163414,377412,1002371,135939,1770612641,1770612645,136064,146619,1769033852,30132,2138604,1769966152)
+
+var number = Math.floor(Math.random()*sid.length)
+var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
+var srcjs='\<script type="text/javascript" src='+surl+'\>\</script\>'
+document.write('<p align="center">'+srcjs+'</p>')
+</script>
+
+<a id="more"></a>
+
+<p><img src="/image/00014_86875980.jpg" alt="大一，那些很二的日子"></p>
+<p><img src="/image/20111231-011.jpg" alt="大二上，我们就要分专业了，你们图书，我档案……"></p>
+<p><img src="/image/20121013-001.jpg" alt="大二下，一起辅修的日子"></p>
+<p><img src="/image/20130206.jpg" alt="大三上，今天没吃药，感觉自己萌萌的"></p>
+<p><img src="/image/20130705.jpg" alt="大三下，哪里怪怪的。。。"></p>
+<p><img src="/image/20140127_224626.jpg" alt="大四上，我俩长得像不像"></p>
+<p><img src="/image/xxym.JPG" alt="大四下，论文啊"></p>
+<p><img src="/image/20140411_131121.jpg" alt="大四下，实习"></p>
+<p><img src="/image/20140331_102203.jpg" alt="俞老师，俞老师，俞老师"></p>
+<p><img src="/image/IMG_5420.jpg" alt="我们毕业了"></p>
+<p><img src="/image/20140610205615.jpg" alt="我和小飞的合影"></p>
+<p><img src="/image/20140607_090304.jpg" alt="跪求高人设计台词！"></p>
+<p><img src="/image/psb457839k.jpg" alt="熊猫是能拍彩色照片的"></p>
+]]></content>
+    <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<script type="text/javascript">
+var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,1772118451,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769667723,1769274783,2568233,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1769966152,1769019781,1813291,2118493,1770005054,1770005054,182692,59457,22143,93357,1769966152,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303,1770808806,3381901,163414,377412,1002371,135939,1770612641,1770612645,136064,146619,1769033852,30132,2138604,1769966152)
+
+var number = Math.floor(Math.random()*sid.length)
+var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
+var srcjs='\<script type="text/javascript" src='+surl+'\>\</script\>'
+document.write('<p align="center">'+srcjs+'</p>')
+</script>
+
+]]></summary>
+    
+      <category term="毕业" scheme="http://chenss.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+      <category term="日记" scheme="http://chenss.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[彩色记忆未删减版]]></title>
+    <link href="http://chenss.github.io/2014/06/09/by%E6%9C%AA%E5%88%A0%E5%87%8F%E7%89%88/"/>
+    <id>http://chenss.github.io/2014/06/09/by未删减版/</id>
     <published>2014-06-09T10:52:00.000Z</published>
-    <updated>2014-06-13T16:23:16.000Z</updated>
+    <updated>2014-06-14T04:26:36.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <script type="text/javascript">
@@ -541,16 +593,16 @@ etime程序总运行时间：7.421
 
 <h2 id="2、etime(t1,t2)并和clock配合">2、etime(t1,t2)并和clock配合</h2>
 <p>来计算t1，t2之间的时间差，它是通过调用windows系统的时钟进行时间差计算得到运行时间的，应用的形式</p>
-<pre><code><span class="constant">t1</span>=clock;
+<pre><code><span class="xml"><span class="tag"><span class="attribute">t1</span>=<span class="value">clock;</span>
 。。。。。。。。。。。
-<span class="constant">t2</span>=clock;
-etime(t2,t1)
+<span class="attribute">t2</span>=<span class="value">clock;</span>
+<span class="attribute">etime</span>(<span class="attribute">t2</span>,<span class="attribute">t1</span>)</span></span>
 </code></pre><p>至于例子我就不举了，因为在上面的例子中使用了etime函数了</p>
 <h2 id="3、cputime函数来完成">3、cputime函数来完成</h2>
 <p>使用方法和etime相似，只是这个是使用cpu的主频计算的，和前面原理不同，使用格式如下</p>
-<pre><code><span class="constant">t0</span>=cputime
+<pre><code><span class="xml"><span class="tag"><span class="attribute">t0</span>=<span class="value">cputime</span>
 。。。。。。。。。。。。。
-<span class="constant">t1</span>=cputime-t0
+<span class="attribute">t1</span>=<span class="value">cputime-t0</span></span></span>
 </code></pre><p>上面说到了三种方法，都是可以进行程序运行时间计算的，<strong>但是Matlab官方推荐使用tic/toc组合</strong>，When timing the duration of an event, use the tic and toc functions instead of clock or etime.</p>
 <p>至于大家可以根据自己的喜好自己选择，但是使用tic/toc的时候一定要注意，<strong>toc计算的是与最后一次运行的tic之间的时间</strong>，不是第一个tic，更不是第二个。。。。。</p>
 ]]></content>
@@ -779,131 +831,6 @@ tags:
       <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
     
       <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Dvorak键盘布局下的中文输入(一)]]></title>
-    <link href="http://chenss.github.io/2014/05/14/Dvorak%E9%94%AE%E7%9B%98%E5%B8%83%E5%B1%80%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5(%E4%B8%80)/"/>
-    <id>http://chenss.github.io/2014/05/14/Dvorak键盘布局下的中文输入(一)/</id>
-    <published>2014-05-14T12:26:28.000Z</published>
-    <updated>2014-05-16T04:03:33.000Z</updated>
-    <content type="html"><![CDATA[<p>原文：<a href="http://www.douban.com/note/46036145/" target="_blank">Dvorak键盘布局下的中文输入(一)</a></p>
-<p>如果您还没有听说过Dvorak(德沃夏克)键盘布局，可以先从维基百科上了解一下相关背景：<br><a href="http://zh.wikipedia.org/wiki/德沃夏克鍵盤" target="_blank">http://zh.wikipedia.org/wiki/德沃夏克鍵盤</a></p>
-<p>我是一个重度的Dvorak使用者，倘若给我一副普通的Qwerty键盘，我只能盯着它，用两个手指“戳字”。我的相册中有一张图片，是我正在使用的Macbook，按键已经被我重新排了座次。</p>
-<p>Google了一通，似乎目前最快最流行的速记方法称为“亚伟速录”，使用专门定制的键盘和输入法。尽管无法在电脑上模拟，但是其核心内容大概有三点可以吸取：</p>
-<ol>
-<li>根据中文习惯重新安排了键位，常用按键在中间一排。</li>
-<li>将多个字符组成的韵母安排在了固定的按键上，类似“双拼”，只用输入一个字符。</li>
-<li>如同使用乐器一般，多个按键可以同时按下。</li>
-</ol>
-<p>Dvorak键盘布局下中文输入法的讨论几乎是个空白，我想在这一系列文章中对上面三点逐一分析，看看是否能够找到一些提高录入速度的办法。今天是第一部分，对Dvorak在中文输入的键位安排方面做一点研究。</p>
-<a id="more"></a>
-
-<p><img src="/image/p46036145-4.jpg" alt="Dvorak键盘"></p>
-<p>在Dvorak键盘布局下，英文最常用的字母被安排到了手指最容易按到的地方。对这一点的研究已经很多，不用质疑。可是用来输入中文（拼音）的情况又是怎么样呢？</p>
-<p>从前有人对汉字字符集做过统计，在Dvorak布局下，键盘的中排使用率要明显高于Qwerty，这也就意味着同输入英文一样，输入汉语拼音也能从该布局中受益，手指移动的距离更少。但是对字符集的统计毕竟代替不了实际情况，因为在实际输入中，各个汉字的使用频率不同，可能造成实际的使用结果与对字符集的统计存在差别。所以Dvorak的效率究竟如何，还要在实践中检验。</p>
-<p>在下面这段Python代码中，我对自己以前撰写的几篇稿件进行了分析。这些稿件内容大多与IT相关，字数约为五、六万。</p>
-<pre><code><span class="comment">#!/usr/bin/env python</span>
-<span class="comment"># -*- coding: utf-8 -*-</span>
-
-__author__ = <span class="string">"ldx (lispython@gmail.com)"</span>
-__date__   = <span class="string">"Sat Sep 26 08:02:00 2009"</span>
-
-
-<span class="comment">#from pinyin import hanzi2pinyin</span>
-<span class="built_in">from</span> hanzimap import hanzi2pinyin
-import collections
-import numpy <span class="keyword">as</span> np
-import matplotlib.pyplot <span class="keyword">as</span> plt
-
-doc = <span class="built_in">open</span>(<span class="string">'doc.txt'</span>, <span class="string">'r'</span>).<span class="built_in">read</span>()  
-rst = hanzi2pinyin(doc.decode(<span class="string">'utf8'</span>))
-<span class="built_in">result</span> = {}
-<span class="comment"># print rst.count('iong')</span>
-
-data = collections.defaultdict(int)
-
-all_keys = <span class="string">'\',.;abcdefghijklmnopqrstuvwxyz'</span>
-dv_rows = [<span class="string">'\',.pyfgcrl'</span>, <span class="string">'aoeuidhtns'</span>, <span class="string">'qjkxbmwvz'</span>]
-qw_rows = [<span class="string">'qwertyuiop'</span>, <span class="string">'asdfghjkl'</span>, <span class="string">'zxcvbnm,.'</span>]
-
-<span class="keyword">for</span> <span class="keyword">char</span> <span class="operator">in</span> rst:
-    <span class="keyword">if</span> <span class="keyword">char</span> <span class="operator">in</span> all_keys:
-        data[<span class="keyword">char</span>] += <span class="number">1</span>
-        data[<span class="string">'letters'</span>] += <span class="number">1</span>
-
-
-<span class="keyword">for</span> c <span class="operator">in</span> all_keys:
-    <span class="built_in">result</span>[c]=(float(data[c])/data[<span class="string">'letters'</span>]*<span class="number">100</span>)
-
-
-dv = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]
-qw = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]
-
-<span class="keyword">for</span> i <span class="operator">in</span> range(<span class="number">3</span>):
-    <span class="keyword">for</span> c <span class="operator">in</span> dv_rows[i]:
-        dv[i] += <span class="built_in">result</span>[c]
-
-<span class="keyword">for</span> i <span class="operator">in</span> range(<span class="number">3</span>):
-    <span class="keyword">for</span> c <span class="operator">in</span> qw_rows[i]:
-        qw[i] += <span class="built_in">result</span>[c]
-
-
-<span class="built_in">keys</span> = <span class="built_in">result</span>.<span class="built_in">keys</span>()
-<span class="built_in">keys</span>.<span class="built_in">sort</span>()
-val = [<span class="built_in">result</span>[key] <span class="keyword">for</span> key <span class="operator">in</span> <span class="built_in">keys</span>]
-
-plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>,<span class="number">8</span>))
-ax = plt.axes([<span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])
-
-labels = (<span class="string">'up'</span>, <span class="string">'middel'</span>, <span class="string">'down'</span>)
-
-explode = (<span class="number">0.05</span>, <span class="number">0.05</span>, <span class="number">0.05</span>)
-plt.pie(dv, explode=explode, labels=labels, autopct=<span class="string">'%1.1f%%'</span>, shadow=True)
-plt.title(<span class="string">'Dvorak'</span>, bbox={<span class="string">'facecolor'</span>:<span class="string">'0.8'</span>, <span class="string">'pad'</span>:<span class="number">5</span>})
-
-plt.figure(<span class="number">2</span>, figsize=(<span class="number">8</span>,<span class="number">8</span>))
-plt.pie(qw, explode=explode, labels=labels, autopct=<span class="string">'%1.1f%%'</span>, shadow=True)
-plt.title(<span class="string">'Qwerty'</span>, bbox={<span class="string">'facecolor'</span>:<span class="string">'0.8'</span>, <span class="string">'pad'</span>:<span class="number">5</span>})
-
-pos = np.arange(<span class="number">0</span>, <span class="number">60</span>, <span class="number">2</span>)
-plt.figure(<span class="number">3</span>)
-plt.barh(pos, val, <span class="number">1.5</span>, align=<span class="string">'center'</span>, alpha = <span class="number">0.8</span>)
-plt.yticks(pos, <span class="built_in">keys</span>)
-plt.xlabel(<span class="string">'Percentage'</span>)
-plt.grid(True)
-
-plt.show()
-</code></pre><p>对于这段代码有几点需要说明：</p>
-<ol>
-<li>将汉字转换为拼音使用了pyzh中的pinyin模块，但是该模块不能将中文标点转换为英文标点进行统计，因此我做了一点修改，将其命名为hanzimap。</li>
-<li>代码中使用了matplotlib库（同样也不在标准库中），将统计结果生成图像。</li>
-<li>中文文稿样本为doc.txt，使用utf-8编码，与代码放在同一目录下。文稿中的空白不会影响最后结果。</li>
-</ol>
-<p>结果如下：</p>
-<p><img src="/image/p46036145-1.jpg" alt="每个按键的使用频率"></p>
-<p>分别在Qwerty和Dvorak布局下，键盘的上、中、下三排使用情况对比。</p>
-<p><img src="/image/p46036145-2.jpg" alt=""></p>
-<p><img src="/image/p46036145-3.jpg" alt=""></p>
-<p>我们可以看到（清晰一些的图片可以在我的相册中浏览）Qwerty布局中间一排的使用率为34.8％，甚至还不如上面一排。</p>
-<p>Dvorak布局下，中排的使用率则达到了69％，几乎是Qwerty布局的两倍。稍微有点儿可惜的是处于上面一排的字母g，它的使用率很高，甚至高过了中排的许多字母，不过好在该字符位于右手食指上方，是除中排以外最容易触到的按键。</p>
-]]></content>
-    <summary type="html"><![CDATA[<p>原文：<a href="http://www.douban.com/note/46036145/" target="_blank">Dvorak键盘布局下的中文输入(一)</a></p>
-<p>如果您还没有听说过Dvorak(德沃夏克)键盘布局，可以先从维基百科上了解一下相关背景：<br><a href="http://zh.wikipedia.org/wiki/德沃夏克鍵盤" target="_blank">http://zh.wikipedia.org/wiki/德沃夏克鍵盤</a></p>
-<p>我是一个重度的Dvorak使用者，倘若给我一副普通的Qwerty键盘，我只能盯着它，用两个手指“戳字”。我的相册中有一张图片，是我正在使用的Macbook，按键已经被我重新排了座次。</p>
-<p>Google了一通，似乎目前最快最流行的速记方法称为“亚伟速录”，使用专门定制的键盘和输入法。尽管无法在电脑上模拟，但是其核心内容大概有三点可以吸取：</p>
-<ol>
-<li>根据中文习惯重新安排了键位，常用按键在中间一排。</li>
-<li>将多个字符组成的韵母安排在了固定的按键上，类似“双拼”，只用输入一个字符。</li>
-<li>如同使用乐器一般，多个按键可以同时按下。</li>
-</ol>
-<p>Dvorak键盘布局下中文输入法的讨论几乎是个空白，我想在这一系列文章中对上面三点逐一分析，看看是否能够找到一些提高录入速度的办法。今天是第一部分，对Dvorak在中文输入的键位安排方面做一点研究。</p>
-]]></summary>
-    
-      <category term="Dvorak" scheme="http://chenss.github.io/tags/Dvorak/"/>
-    
-      <category term="键盘" scheme="http://chenss.github.io/tags/%E9%94%AE%E7%9B%98/"/>
     
   </entry>
   
