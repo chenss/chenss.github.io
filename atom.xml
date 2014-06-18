@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-06-18T12:59:52.817Z</updated>
+  <updated>2014-06-18T14:16:29.935Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -15,11 +15,38 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[hexo速度优化(landscape主题)]]></title>
+    <link href="http://chenss.github.io/2014/06/18/hexo%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/"/>
+    <id>http://chenss.github.io/2014/06/18/hexo速度优化/</id>
+    <published>2014-06-18T13:54:23.000Z</published>
+    <updated>2014-06-18T14:11:16.000Z</updated>
+    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>Hexo原本默认的主题是light，很多解决方法都是针对这个主题的。后来Hexo默认的主题改为了landscape，我用的就是这个。这几天天朝对google的封锁尤为厉害，我不得不优化一下速度了。</p>
+<p>首先是fonts.googleapis.com，也就是google字库载入速度太太太慢的问题，只需把 <code>themes/landscape/layout/_partial/head.ejs</code> 里的 <code>&lt;link href=&quot;http://fonts.googleapis.com/css?family=Source+Code+Pro&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code> 注释掉或者直接删掉就行了。</p>
+<p><code>jquery.min.js</code> 载入过慢的解决方法见此：<a href="http://charyun.com/2014/06/08/hexo-blog-access-speed/" target="_blank">http://charyun.com/2014/06/08/hexo-blog-access-speed/</a>其实就是把google的CDN换成了sina的。实在无聊的话也可以试试这些：<a href="http://www.zhihu.com/question/20227463" target="_blank">国内有哪些靠谱的 Javascript 库 CDN可用？</a></p>
+<p>未经详细测试，欢迎反馈。</p>
+]]></content>
+    
+    
+      <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
+    
+      <category term="landscape" scheme="http://chenss.github.io/tags/landscape/"/>
+    
+      <category term="google" scheme="http://chenss.github.io/tags/google/"/>
+    
+      <category term="速度" scheme="http://chenss.github.io/tags/%E9%80%9F%E5%BA%A6/"/>
+    
+      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[恍如隔世]]></title>
     <link href="http://chenss.github.io/2014/06/17/%E6%81%8D%E5%A6%82%E9%9A%94%E4%B8%96/"/>
     <id>http://chenss.github.io/2014/06/17/恍如隔世/</id>
     <published>2014-06-17T15:29:09.000Z</published>
-    <updated>2014-06-18T12:55:37.000Z</updated>
+    <updated>2014-06-18T13:03:59.000Z</updated>
     <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
 
 <p>每次回家，从149终点站到火车站的那段距离总给我一种恍如隔世的感觉。感觉让我左转，但又清楚的记得应该右转。大约半年之前就是在这个车站，我给一位久未联系的同学打了电话。寒假过后在学校颇过了几天无所事事又自由自在的日子。之后的实习虽算不上无所事事，却总能忙里偷闲，也算逍遥快活。虚度了多少光阴，一晃就临近毕业了。毕业晚宴不是毕业，毕业照不是毕业。这时候同学们至少还能聚在一起。所以，我真的挺开心的。哪天我想谈论这些事的时候，就找不到当事人了。</p>
@@ -27,7 +54,7 @@
 <p>到滕州火车站时已经快天亮了。以往要么直接到我们县，要么取道兖州，滕州还是第一次来。</p>
 <p><img src="/image/20140618_044405.jpg" alt="滕州火车站"></p>
 <p>到家时，早饭已经做好了，没什么胃口。想好好洗个澡，洗到一半时却没水了。还好，我的床还是那么软和，就算是躺着睡时，床面也能完全和背部曲线贴合。半年回一次家，桌子上已经落了一层灰，桌面那些乱糟糟的东西似乎也半年没人动过了。这就是我要搬到原本放杂物的房间来睡的原因吗？</p>
-<p><img src="/image/20140618_073741.jpg" alt=""></p>
+<p><img src="/image/20140618_073741.jpg" alt="某年某月某日 摄于床上"></p>
 <p>就此睡去吧。</p>
 <p>PS：房间的灯坏了，就算我只住几天你们也不能这样对我啊。</p>
 <p>PPS：北京上海不也前两年才开始提速吗,光纤竟然铺到俺们村了。国企的效率什么时候这么快了。</p>
@@ -586,16 +613,16 @@ etime程序总运行时间：7.421
 
 <h2 id="2、etime(t1,t2)并和clock配合">2、etime(t1,t2)并和clock配合</h2>
 <p>来计算t1，t2之间的时间差，它是通过调用windows系统的时钟进行时间差计算得到运行时间的，应用的形式</p>
-<pre><code><span class="constant">t1</span>=clock;
+<pre><code><span class="xml"><span class="tag"><span class="attribute">t1</span>=<span class="value">clock;</span>
 。。。。。。。。。。。
-<span class="constant">t2</span>=clock;
-etime(t2,t1)
+<span class="attribute">t2</span>=<span class="value">clock;</span>
+<span class="attribute">etime</span>(<span class="attribute">t2</span>,<span class="attribute">t1</span>)</span></span>
 </code></pre><p>至于例子我就不举了，因为在上面的例子中使用了etime函数了</p>
 <h2 id="3、cputime函数来完成">3、cputime函数来完成</h2>
 <p>使用方法和etime相似，只是这个是使用cpu的主频计算的，和前面原理不同，使用格式如下</p>
-<pre><code><span class="constant">t0</span>=cputime
+<pre><code><span class="xml"><span class="tag"><span class="attribute">t0</span>=<span class="value">cputime</span>
 。。。。。。。。。。。。。
-<span class="constant">t1</span>=cputime-t0
+<span class="attribute">t1</span>=<span class="value">cputime-t0</span></span></span>
 </code></pre><p>上面说到了三种方法，都是可以进行程序运行时间计算的，<strong>但是Matlab官方推荐使用tic/toc组合</strong>，When timing the duration of an event, use the tic and toc functions instead of clock or etime.</p>
 <p>至于大家可以根据自己的喜好自己选择，但是使用tic/toc的时候一定要注意，<strong>toc计算的是与最后一次运行的tic之间的时间</strong>，不是第一个tic，更不是第二个。。。。。</p>
 ]]></content>
@@ -747,83 +774,6 @@ etime程序总运行时间：7.421
     
     
       <category term="每天进步一点点" scheme="http://chenss.github.io/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hexo配置测试]]></title>
-    <link href="http://chenss.github.io/2014/05/15/Hexo%E9%85%8D%E7%BD%AE%E6%B5%8B%E8%AF%95/"/>
-    <id>http://chenss.github.io/2014/05/15/Hexo配置测试/</id>
-    <published>2014-05-14T16:10:22.000Z</published>
-    <updated>2014-05-14T17:04:06.000Z</updated>
-    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录-->
-
-<p>我的scaffolds/post.md示例：</p>
-<pre><code>title: Hexo配置测试
-date: Thu May 15 2014 00:10:22 GMT+0800 (中国标准时间) 
-categories: 
-tags:
----
-<span class="comment">&lt;!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录--&gt;</span>
-</code></pre><p>我的多说评论框（第四行替换为自己的short name即可）：</p>
-<pre><code><span class="comment">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%= item.title %&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%- item.permalink %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
-<span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"your_short_name"</span>};
-(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    <span class="keyword">var</span> ds = document.createElement(<span class="string">'script'</span>);
-    ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;
-    ds.src = <span class="string">'http://static.duoshuo.com/embed.js'</span>;
-    ds.charset = <span class="string">'UTF-8'</span>;
-    (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] 
-    || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);
-})();
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="comment">&lt;!-- Duoshuo Comment END --&gt;</span>
-</code></pre><a id="more"></a>
-
-<p>我的Jiathis分享按钮：</p>
-<pre><code><span class="comment">&lt;!-- JiaThis Button BEGIN --&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"jiathis_style"</span> <span class="attribute">style</span>=<span class="value">"float:right"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.jiathis.com/share"</span> <span class="attribute">class</span>=<span class="value">"jiathis jiathis_txt"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://v3.jiathis.com/code_mini/images/btn/v1/jiathis1.gif"</span> <span class="attribute">border</span>=<span class="value">"0"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"jiathis_counter_style_margin:3px 0 0 2px"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://v3.jiathis.com/code_mini/jia.js?uid=1394722311483959"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="comment">&lt;!-- JiaThis Button END --&gt;</span>
-</code></pre><p>二级分类： <code>categories: [软件, hexo]</code></p>
-<p><img src="/image/erjiruanjianhexo1ryuowrt5434.JPG" alt=""></p>
-<p>多个标签： <code>tags: [hexo, test]</code></p>
-<p><img src="/image/ehxotest5re845.JPG" alt=""></p>
-]]></content>
-    <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录-->
-
-<p>我的scaffolds/post.md示例：</p>
-<pre><code>title: Hexo配置测试
-date: Thu May 15 2014 00:10:22 GMT+0800 (中国标准时间) 
-categories: 
-tags:
----
-<span class="comment">&lt;!--搞笑 操作系统 日记 每天进步一点点 编程 读后感 软件 随想录--&gt;</span>
-</code></pre><p>我的多说评论框（第四行替换为自己的short name即可）：</p>
-<pre><code><span class="comment">&lt;!-- Duoshuo Comment BEGIN --&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%= item.title %&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%- item.permalink %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
-<span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"your_short_name"</span>};
-(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    <span class="keyword">var</span> ds = document.createElement(<span class="string">'script'</span>);
-    ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;
-    ds.src = <span class="string">'http://static.duoshuo.com/embed.js'</span>;
-    ds.charset = <span class="string">'UTF-8'</span>;
-    (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] 
-    || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);
-})();
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="comment">&lt;!-- Duoshuo Comment END --&gt;</span>
-</code></pre>]]></summary>
-    
-      <category term="hexo" scheme="http://chenss.github.io/tags/hexo/"/>
-    
-      <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
