@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-07-13T14:57:44.558Z</updated>
+  <updated>2014-08-13T06:10:37.675Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -13,6 +13,29 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Dos批量重命名]]></title>
+    <link href="http://chenss.github.io/2014/08/13/dos%E6%89%B9%E9%87%8F%E9%87%8D%E5%91%BD%E5%90%8D/"/>
+    <id>http://chenss.github.io/2014/08/13/dos批量重命名/</id>
+    <published>2014-08-13T05:41:06.000Z</published>
+    <updated>2014-08-13T06:09:36.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>注：只适用于在文件尾部添加字符的情况，两条命令搞定。</strong></p>
+<p>例如我要批量重命名E盘下的几本Mobi文件，进入相应目录后命令如下：</p>
+<pre><code>rename <span class="emphasis">*.mobi *</span>.
+</code></pre><p>此时会批量去掉扩展名（rename时不加“.”会失败，但即使加了也不会有“.”，不知道为什么）。</p>
+<p>然后：</p>
+<pre><code><span class="keyword">rename</span> * <span class="variable">*_test</span>.mobi
+</code></pre><p>此时的文件名与最初相比，只是在文件名后，扩展名前加了“_test”</p>
+<p><img src="/image/renamemobitest132.jpg" alt=""></p>
+]]></content>
+    
+    
+      <category term="rename" scheme="http://chenss.github.io/tags/rename/"/>
+    
+      <category term="编程" scheme="http://chenss.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[最后一批离开的人]]></title>
@@ -78,11 +101,11 @@
     <link href="http://chenss.github.io/2014/06/24/%E6%9D%82%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/"/>
     <id>http://chenss.github.io/2014/06/24/杂记（六）/</id>
     <published>2014-06-24T15:00:06.000Z</published>
-    <updated>2014-06-28T03:50:48.000Z</updated>
+    <updated>2014-07-16T03:35:28.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li>一直想要安稳生活的我，最后还是决定在喜欢你这件事上冒一次险。</li>
 <li>老师曾推荐过一部电影，与佛教内容有关，当时未看完便期末了。后来再想看，却忘了名字，今日在亚马逊买书才猛然想起：了凡四训。</li>
-<li></li>
+<li>凡为夫妇之因，前世三生结缘，始配今生之夫妇。若结缘不合，比是怨家，故来相对……既以二心不同，难归一意，快会及诸亲，各还本道。愿妻娘子相离之后，重梳婵鬓，美扫峨眉，巧呈窈窕之姿，选聘高官之主。解怨释结，更莫相憎。一别两宽，各生欢喜</li>
 </ul>
 ]]></content>
     
@@ -583,27 +606,6 @@ document.write('<p align="center">'+srcjs+'</p>')
       <category term="视频" scheme="http://chenss.github.io/tags/%E8%A7%86%E9%A2%91/"/>
     
       <category term="日记" scheme="http://chenss.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[母校为什么不能骂？]]></title>
-    <link href="http://chenss.github.io/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/"/>
-    <id>http://chenss.github.io/2014/05/29/母校为什么不能骂？/</id>
-    <published>2014-05-29T04:23:07.000Z</published>
-    <updated>2014-05-29T04:30:33.000Z</updated>
-    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<p>“母校就是自己骂了千遍万遍，却不允许别人骂一句的地方。”</p>
-<p>这种心情，我想，有两种原因：</p>
-<ol>
-<li>你骂母校是恨铁不成钢，是饱含着爱的，别人是真骂。</li>
-<li>你骂母校给人母校配不上你的感觉，别人骂就是间接地在骂你。</li>
-</ol>
-]]></content>
-    
-    
-      <category term="随想录" scheme="http://chenss.github.io/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
     
   </entry>
   
