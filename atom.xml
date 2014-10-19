@@ -4,7 +4,7 @@
   <subtitle><![CDATA[爱上一个人，一定要让她相信，life is beautiful]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenss.github.io//"/>
-  <updated>2014-10-01T10:47:09.809Z</updated>
+  <updated>2014-10-19T12:55:26.209Z</updated>
   <id>http://chenss.github.io//</id>
   
   <author>
@@ -13,6 +13,35 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[指数型股票定投]]></title>
+    <link href="http://chenss.github.io/2014/10/19/%E6%8C%87%E6%95%B0%E5%9E%8B%E8%82%A1%E7%A5%A8%E5%AE%9A%E6%8A%95/"/>
+    <id>http://chenss.github.io/2014/10/19/指数型股票定投/</id>
+    <published>2014-10-19T12:32:01.000Z</published>
+    <updated>2014-10-19T12:54:56.000Z</updated>
+    <content type="html"><![CDATA[<p>股票定投: <a href="http://baike.baidu.com/view/5061817.htm" target="_blank">http://baike.baidu.com/view/5061817.htm</a></p>
+<p>指数型基金: <a href="http://baike.baidu.com/view/230026.htm" target="_blank">http://baike.baidu.com/view/230026.htm</a></p>
+<p>上证180指数: <a href="http://baike.baidu.com/view/757420.htm" target="_blank">http://baike.baidu.com/view/757420.htm</a></p>
+<p>深证100指数: <a href="http://baike.baidu.com/view/2050039.htm" target="_blank">http://baike.baidu.com/view/2050039.htm</a></p>
+<p>中证100指数: <a href="http://baike.baidu.com/view/198246.htm" target="_blank">http://baike.baidu.com/view/198246.htm</a></p>
+<p>中小板指数: <a href="http://baike.baidu.com/view/2945593.htm" target="_blank">http://baike.baidu.com/view/2945593.htm</a></p>
+<p>沪深300: <a href="http://baike.baidu.com/view/539529.htm" target="_blank">http://baike.baidu.com/view/539529.htm</a></p>
+<p>股票交易手续费: <a href="http://baike.baidu.com/view/500504.htm" target="_blank">http://baike.baidu.com/view/500504.htm</a></p>
+]]></content>
+    
+    
+      <category term="股票" scheme="http://chenss.github.io/tags/%E8%82%A1%E7%A5%A8/"/>
+    
+      <category term="定投" scheme="http://chenss.github.io/tags/%E5%AE%9A%E6%8A%95/"/>
+    
+      <category term="指数" scheme="http://chenss.github.io/tags/%E6%8C%87%E6%95%B0/"/>
+    
+      <category term="理财" scheme="http://chenss.github.io/tags/%E7%90%86%E8%B4%A2/"/>
+    
+      <category term="每天进步一点点" scheme="http://chenss.github.io/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[开户]]></title>
@@ -487,57 +516,6 @@
       <category term="纪念" scheme="http://chenss.github.io/tags/%E7%BA%AA%E5%BF%B5/"/>
     
       <category term="软件" scheme="http://chenss.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[彩色记忆]]></title>
-    <link href="http://chenss.github.io/2014/06/09/by/"/>
-    <id>http://chenss.github.io/2014/06/09/by/</id>
-    <published>2014-06-09T10:52:01.000Z</published>
-    <updated>2014-06-17T03:26:14.000Z</updated>
-    <content type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<script type="text/javascript">
-var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769274783,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1813291,2118493,182692,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303,1770808806,3381901,163414,377412,1002371,135939,1770612641,1770612645,136064,146619,1769033852,30132,2138604,1769966152,1769019781)
-
-var number = Math.floor(Math.random()*sid.length)
-var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
-var srcjs='\<script type="text/javascript" src="'+surl+'"\>\</script\>'
-document.write('<p align="center">'+srcjs+'</p>')
-</script>
-
-<a id="more"></a>
-
-<p><img src="/image/00014_86875980.jpg" alt="大一，那些很二的日子"></p>
-<p><img src="/image/20111231-011.jpg" alt="大二上，我们就要分专业了，你们图书，我档案……"></p>
-<p><img src="/image/20121013-001.jpg" alt="大二下，一起辅修的日子"></p>
-<p><img src="/image/20130206.jpg" alt="大三上，今天没吃药，感觉自己萌萌的"></p>
-<p><img src="/image/20130705.jpg" alt="大三下，哪里怪怪的。。。"></p>
-<p><img src="/image/xxym.JPG" alt="大四下，论文啊"></p>
-<p><img src="/image/20140411_131121.jpg" alt="大四下，实习"></p>
-<p><img src="/image/20140331_102203.jpg" alt="俞老师，俞老师，俞老师"></p>
-<p><img src="/image/IMG_5420.jpg" alt="我们毕业了"></p>
-<p><img src="/image/20140610205615.jpg" alt="我和小飞的合影"></p>
-<p><img src="/image/20140607_090304.jpg" alt="跪求高人设计台词！"></p>
-<p><img src="/image/psb457839k.jpg" alt="熊猫是能拍彩色照片的"></p>
-]]></content>
-    <summary type="html"><![CDATA[<!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<script type="text/javascript">
-var sid=new Array(1773257370,381546,1773228254,3450523,2051498,374744,382446,385041,375918,73358,394329,1771659687,35026,1771933137,1769274783,1771638197,1772274047,1769154074,3320101,142309,108902,3853,1813291,2118493,182692,59457,22143,93357,1771829246,2113248,156254,1769176495,1772340707,3381912,375043,41303,1770808806,3381901,163414,377412,1002371,135939,1770612641,1770612645,136064,146619,1769033852,30132,2138604,1769966152,1769019781)
-
-var number = Math.floor(Math.random()*sid.length)
-var surl="http://www.xiami.com/widget/player-single?uid=35737588&sid="+sid[number]+"&mode=js"
-var srcjs='\<script type="text/javascript" src="'+surl+'"\>\</script\>'
-document.write('<p align="center">'+srcjs+'</p>')
-</script>
-
-]]></summary>
-    
-      <category term="毕业" scheme="http://chenss.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
-    
-      <category term="日记" scheme="http://chenss.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
