@@ -115,16 +115,16 @@
 <span id="more"></span>
 
 <p>7.为了加快安装速度，修改软件源。</p>
-<p>8.挂载分区 mount &#x2F;dev&#x2F;sda7 &#x2F;mnt    mkdir &#x2F;mnt&#x2F;boot &amp;&amp; mount &#x2F;dev&#x2F;sda6 &#x2F;mnt&#x2F;boot   ……………………</p>
-<p>9.安装基本系统   pacstrap &#x2F;mnt base base-devel   pacstrap &#x2F;mnt grub-bios</p>
-<p>10.生成分区表  grub-mkconfig -o &#x2F;</p>
-<p>11.进入刚安装的系统    arch-chroot &#x2F;mnt</p>
-<p>12.安装grub  “grub-install”,修改……&#x2F;grub&#x2F;40……或安装os-protor</p>
-<p>13.查看&#x2F;etc&#x2F;fatab，不正确一定要改，否则可能进不了系统。</p>
-<p>14.卸载分区表 umount &#x2F;mnt&#x2F;{boot,home,}</p>
+<p>8.挂载分区 mount /dev/sda7 /mnt    mkdir /mnt/boot &amp;&amp; mount /dev/sda6 /mnt/boot   ……………………</p>
+<p>9.安装基本系统   pacstrap /mnt base base-devel   pacstrap /mnt grub-bios</p>
+<p>10.生成分区表  grub-mkconfig -o /</p>
+<p>11.进入刚安装的系统    arch-chroot /mnt</p>
+<p>12.安装grub  “grub-install”,修改……/grub/40……或安装os-protor</p>
+<p>13.查看/etc/fatab，不正确一定要改，否则可能进不了系统。</p>
+<p>14.卸载分区表 umount /mnt/{boot,home,}</p>
 <p>15.返回原系统 exit</p>
 <p>16.重启，从硬盘启动</p>
-<p>17.wiki.archlinux.org	archlinux吧		ubuntu论坛<br>    建本地源		awesome  	内核补丁或fbterm,zhcon<br>    ABS pacman mplayer</p>
+<p>17.wiki.archlinux.org    archlinux吧        ubuntu论坛<br>    建本地源        awesome      内核补丁或fbterm,zhcon<br>    ABS pacman mplayer</p>
 <p>emergency模式</p>
 <p>failed to issue method call: transaction is destructive</p>
 <p><a target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?pid=941990">https://bbs.archlinux.org/viewtopic.php?pid=941990</a></p>
@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2013/03/07/archlinux%E5%8E%86%E9%99%A9%E8%AE%B0%EF%BC%882%EF%BC%89/" data-id="clbhz83mk0019c8v06twfdh04" data-title="archlinux历险记(2)" class="article-share-link">分享</a>
+      <a data-url="http://chenss.github.io/2013/03/07/archlinux%E5%8E%86%E9%99%A9%E8%AE%B0%EF%BC%882%EF%BC%89/" data-id="clbhzha040019mwv071o7az2s" data-title="archlinux历险记(2)" class="article-share-link">分享</a>
       
       
       
