@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Chiv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Chiv">
+<meta property="og:url" content="http://chenss.github.io/page/5/index.html">
+<meta property="og:site_name" content="Chiv">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Chiv">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Chiv" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Chiv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">爱上一个人，一定要让她相信，life is beautiful</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chenss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-django框架下如何使用ajax的post方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2014-05-30T16:31:11.000Z" itemprop="datePublished">2014-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/">Django框架下如何使用ajax的post方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>原文：<a target="_blank" rel="noopener" href="http://nswish.iteye.com/blog/967910">http://nswish.iteye.com/blog/967910</a></p>
+<p>今天在尝试调用jQuery的ajax时发现一个问题，就是使用GET方法服务器可以正常返回，但是使用POST方法却不行。后来再测试表单方式的POST的方法也不行。只要POST必报HTTP 403错误！非常奇怪。。。</p>
+<p>在网上搜了一大堆资料以后原来是因为Django的Cross Site Request Forgery protection机制的问题。这个机制是为了保护不受csrf攻击。解决方案Django的官网已经提供了<a target="_blank" rel="noopener" href="http://docs.djangoproject.com/en/dev/ref/contrib/csrf/">http://docs.djangoproject.com/en/dev/ref/contrib/csrf/</a>，根据说明修改后，ajax可以顺利Post了。</p>
+<p>具体办法是，首先解决表单的POST。在settings.py文件中找到 MIDDLEWARE_CLASSES，在其中加入一个中间件：’django.middleware.csrf.CsrfViewMiddleware’ ，修改后的代码如下：</p>
+<pre><code>MIDDLEWARE_CLASSES = (
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfResponseMiddleware&#39;, #加入这个中间件
+)
+</code></pre>
+<p>经过这番修改，可以解决表单方式的POST提交HTTP 403问题了。ajax的Post提交仅这样改还不行。还需要钩上一个每次提交时的cookie处理过程。也就是每次提交的时候，都触发这个过程，在提交的http头上加入csrf token。不过还好，如果你是用jQuery来处理ajax的话，Django直接送了一段解决问题的代码。把它放在一个独立的js文件中，在html页面中都引入即可。注意这个js文件必须在jquery的js文件引入之后，再引入。代码我直接复制过来了，如下：</p>
+<pre><code>$(&#39;html&#39;).ajaxSend(function(event, xhr, settings) &#123;
+    function getCookie(name) &#123;
+        var cookieValue = null;
+        if (document.cookie &amp;&amp; document.cookie != &#39;&#39;) &#123;
+            var cookies = document.cookie.split(&#39;;&#39;);
+            for (var i = 0; i &lt; cookies.length; i++) &#123;
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + &#39;=&#39;)) &#123;
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        return cookieValue;
+    &#125;
+    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) &#123;
+        // Only send the token to relative URLs i.e. locally.
+        xhr.setRequestHeader(&quot;X-CSRFToken&quot;, getCookie(&#39;csrftoken&#39;));
+    &#125;
+&#125;);
+</code></pre>
+<p>经过这番折腾，算是可以正常用ajax与Django通信了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/" data-id="clbhz83mm001fc8v03eke0zgy" data-title="Django框架下如何使用ajax的post方法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/" rel="tag">post</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-我是个迟钝的人" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/" class="article-date">
+  <time class="dt-published" datetime="2014-05-30T16:23:58.000Z" itemprop="datePublished">2014-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/">我是个迟钝的人</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>前些天在知乎上看到，性描写本身不是重点，重点是它体现了两人的亲密程度。这两天看《挪威的森林》，感觉确实如此。永泽那种自然不在此列，但渡边和直子，和绿子的确是的。这本书看得有些莫名其妙，就好像渡边和直子的关系，明明感觉他们互相喜欢，言语行为如恋人般，但又不那么明朗。或许我真的挺迟钝的，但唯有那些性描写才能让我更确定这些人之间的关系。也正因如此，这些描写让人感到了很多色情以外的感觉。</p>
+<p>曾经觉得自己很纯洁，当我确定自己不再纯洁的时候，才明白，原来只是太迟钝了。﻿</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/" data-id="clbhz83of007mc8v05rwn3n6t" data-title="我是个迟钝的人" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" rel="tag">性描写</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" rel="tag">挪威的森林</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-安徽大学管理学院2014年毕业晚会开场视频" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/" class="article-date">
+  <time class="dt-published" datetime="2014-05-29T11:43:07.000Z" itemprop="datePublished">2014-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/">安徽大学管理学院2014年毕业晚会开场视频</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+<p align="center"><embed src="http://player.youku.com/player.php/sid/XNzE3MTM3Njc2/v.swf" allowFullScreen="true" quality="high" width="600" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/" data-id="clbhz83o10069c8v0bbircyo6" data-title="安徽大学管理学院2014年毕业晚会开场视频" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E9%A2%91/" rel="tag">视频</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-母校为什么不能骂？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/" class="article-date">
+  <time class="dt-published" datetime="2014-05-29T04:23:07.000Z" itemprop="datePublished">2014-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/">母校为什么不能骂？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>“母校就是自己骂了千遍万遍，却不允许别人骂一句的地方。”</p>
+<p>这种心情，我想，有两种原因：</p>
+<ol>
+<li>你骂母校是恨铁不成钢，是饱含着爱的，别人是真骂。</li>
+<li>你骂母校给人母校配不上你的感觉，别人骂就是间接地在骂你。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/" data-id="clbhz83p6009hc8v07lkhercq" data-title="母校为什么不能骂？" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-同桌的你" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/28/%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0/" class="article-date">
+  <time class="dt-published" datetime="2014-05-28T10:42:48.000Z" itemprop="datePublished">2014-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/28/%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0/">同桌的你</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>从“初恋那件小事”、“那些年，我们一起追的女孩”，到“同桌的你”（甚至加上“Yes or No”等)，都让人唏嘘不已。那是我们的青春，我们的青春期。</p>
+<p>为了喜欢的人而发愤图强是它们的共同点，就像我某个同学，早在小学就因为喜欢”沈佳宜”而用功，最终如柯景腾般在成绩上逆袭了女神。这些流行词语总是被烂用，我并不喜欢，否则当真的遇见我的女神时就不知道如何称呼她了。但那些逝去的时光里，曾经被我们长久地喜欢着的人，她们真的已经成神了。在我的眼里，她不食五谷杂粮，不会勾心斗角，从不放屁，从不拉屎，自然也不会性交。不是神又是什么呢？</p>
+<p>可惜啊，单论成绩，几乎没遇到这样的女生。但成绩普通的“沈佳宜”和“周小桅”却是真实存在，合二为一的。她也被几个关系很好的同学喜欢着或暗恋着，她也是插班生。看“那些年”时，我想到了她，看“同桌的你”，想到的还是她。</p>
+<p>如果早一年，我对“同桌的你”的理解会与现在有很大的不同。那时的我们总是欢乐的，这些电影也是欢乐的。但“同桌的你”，总感觉太扯。那么好的一个女生，老师就那放心让她一直和那个调皮捣蛋的人同桌？沈佳宜也没有坐到最后一排去陪柯景腾啊！什么？就五分钟？你是怎么分得那么清的。五分钟里喊的是哥哥？你以为你是黄蓉啊，还靖哥哥，口味也太重了吧。说五分钟就五分钟，孤男寡女，就算不是男女朋友也不可能开了房只学习啊！</p>
+<p>可是有一点，一年前我只能理解表面，这也是“同桌的你”唯一合理的一点：第一个对插班生好的人，哪怕只是一点点的好，她也会铭记于心。初到一个陌生的圈子，面对那些已经想到熟悉的人，难免会有一点“我非族类”之感，前几个视你为圈内人，正常待你的人，心生好感也很正常吧？为什么当初我不明白呢。初中的周小桅真挺可爱的，如果插到我们班，哪怕不是我同桌。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/28/%E5%90%8C%E6%A1%8C%E7%9A%84%E4%BD%A0/" data-id="clbhz83nl004xc8v099edeio4" data-title="同桌的你" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8C%E6%A1%8C/" rel="tag">同桌</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8F%92%E7%8F%AD%E7%94%9F/" rel="tag">插班生</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9A%97%E6%81%8B/" rel="tag">暗恋</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-话语权与独立思考" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/27/%E8%AF%9D%E8%AF%AD%E6%9D%83%E4%B8%8E%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" class="article-date">
+  <time class="dt-published" datetime="2014-05-27T08:50:36.000Z" itemprop="datePublished">2014-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/27/%E8%AF%9D%E8%AF%AD%E6%9D%83%E4%B8%8E%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/">话语权与独立思考</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>我觉得自己二十多年的生活充满了遗憾，并为此后悔不已。例如没有一场说走就走的旅行。旅行的原意就不深究了，这里特指一人或多人，为了探索新的生活，认识新的世界，而进行的有大概路线的，旅途中再苦再累也会不断思考人生的，尽可能远离家门的活动。我曾经在想，人生至少应该有一次这样的旅行。有时候是闲得无聊，旺盛的精力无处发泄；有时候是羡慕别人，怕人生留下遗憾；也有时是为了逃避，期望改变。</p>
+<p>但为什么偏偏是旅行？我想除了它非常适合于炫耀之处，就是大家都在炫耀。我非常羡慕那些结伴同行的人，又觉得就算独自一人也比宅在家里强。我真的愿意一人去旅行吗？不是，只是听了太多独自旅行找到人生真谛的例子，让我心生向往。但我一直都没想到，我不是这种会放下安逸生活走上陌生旅程的人。更别提那些没钱（并非真的贫困）还想尽办法去旅行的人了。但我依然常常羡慕他们，仿佛连自己安逸的性格都是糟糕的。也有很痛快的时候，例如有人咆哮“没钱就不要旅行了”的时候。我就是没钱啊，为什么非要去旅行，而且是穷游，那些攻略听着就麻烦。瞬间就觉得找到了同类，找到了知己。</p>
+<p>我需要被认可。就是这样，只要有一个人这样说了，我便心安，即使只有一个人。但一个人都没有，我就会很不安。大千世界，无奇不有，怎么可能没有人与我有类似的想法呢。喜欢旅行的人也不见得占多数，但“我想背包去旅行”却和“我从小有一个音乐梦想”一样流行,比“我想宅在家里上网”，比“我想找个肤白貌美大长腿、前突后翘小蛮腰的女朋友”还流行。</p>
+<p>独立思考是一件很难的事。不存在完全独立的思考，尤其是对三观未定的小孩子来说。对于顽固的人，独立思考本身就不重要了。有些问题，要么独自思考，要么集思广议，否则我就会失去独立思考的能力。</p>
+<p>看过一本书《数据会说谎》。其实没看完，感觉太小儿科了，竟抓着细节不放。欺骗一个人不需要说谎，只要告诉他部分真相就可以了。即使美国前5%的富人占了全国90%的财富，而中国的只占了60%，也未必说明美国的贫富差距大。仅这点数据可以画出无数条可能的洛伦兹曲线。</p>
+<p>PS：这个题目与我想说的东西关系不大，只是它够霸气，让我情不自禁。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/27/%E8%AF%9D%E8%AF%AD%E6%9D%83%E4%B8%8E%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" data-id="clbhz83pw00byc8v0a4h444gg" data-title="话语权与独立思考" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" rel="tag">独立思考</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-昆虫记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/26/%E6%98%86%E8%99%AB%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2014-05-26T12:31:31.000Z" itemprop="datePublished">2014-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/26/%E6%98%86%E8%99%AB%E8%AE%B0/">昆虫记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>我买过一本昆虫记选集，充满期待地阅读。但没读下去。它并不如想像中那般有趣。后来老师布置了读书任务，我的那本正巧是《昆虫记》。我已经对它失去兴趣了，即使是面对读书任务，也只是糊弄了过去。交给老师的那篇所谓的读书笔记其实是抄的，而且抄的就是那本书中文版的序。这篇序虽然没能再次勾起我对昆虫的兴趣，却让我了解了法布尔——如果是为了更加了解法布尔，我说不定会对《昆虫记》感兴趣。</p>
+<p>序的大部分内容都忘了，唯有一句话：“如果仅靠兴趣，法布尔是无法写出《昆虫记》这部长篇巨著的……他把兴趣转化为了志趣……”</p>
+<p>面对找工作，我曾疑惑要找擅长的还是感兴趣的。我一度已经说服自己不要以兴趣为工作，这样只会毁了兴趣，就像高中时在读者上看到的一个小故事。后来再思考这件事，我面临着擅长、兴趣、理想三者的选择。除了“钱多事少离家近，位高权重责任轻”，我不确定自己有什么理想。理想被排除了。擅长不是最坏的选择，但兴趣同样不是最好的选择。不知为何志趣就窜入了我的脑海。那么容易被工作毁掉，肯定是兴趣还不够深。志趣则好多了。我没有深究兴趣、志趣、与理想之间有什么区别与联系。但志趣与兴趣如此之像，志趣又似乎与理想相关，况且有法布尔在，我相信这次的想法是对的。虽然我仍不清楚自己的志趣，但法布尔也不是一开始就清楚的。</p>
+<p>我要做好准备，充足的心理准备，接受对兴趣的自以为是的擅长被职业人士视作什么都不懂的准备。如同看不出有什么变化仍忍不住向别人夸自己的字真漂亮，我也要做好夸自己的准备。要耐心，要自信。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/26/%E6%98%86%E8%99%AB%E8%AE%B0/" data-id="clbhz83os008jc8v0a8y1apd4" data-title="昆虫记" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B4%E8%B6%A3/" rel="tag">兴趣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%97%E8%B6%A3/" rel="tag">志趣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%98%86%E8%99%AB%E8%AE%B0/" rel="tag">昆虫记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B3%95%E5%B8%83%E5%B0%94/" rel="tag">法布尔</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%90%86%E6%83%B3/" rel="tag">理想</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-失败与自卑" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/25/%E5%A4%B1%E8%B4%A5%E4%B8%8E%E8%87%AA%E5%8D%91/" class="article-date">
+  <time class="dt-published" datetime="2014-05-25T15:37:53.000Z" itemprop="datePublished">2014-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/25/%E5%A4%B1%E8%B4%A5%E4%B8%8E%E8%87%AA%E5%8D%91/">失败与自卑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>现在已经半夜，刚看完院里的毕业晚会。其是原本不想去的，因为就快答辩了，而论文拖到现在都没心情写。也许看看晚会，热闹一下，就会有激情瞬间完成论文了。这样想着，我便去了。</p>
+<p>与以往的所有晚会一样，刚开始总是很兴奋，然后节目愈加平淡，渐渐的，我的心情像死海一般，低于地面，没有起伏。这是一种近乎对生活失去热情的感觉，却偏又让人不敢改变，因为改变的前提是面对、了解、分析和承认。于是我总是不敢提前离开，仿佛不离开就意味着不害怕。但事实是，离开，独自一人的时候只会让人忍不住去想，一遍又一遍地否定自己。我不想面对，也不敢承认。</p>
+<p>我真的很失败，也深深的为此感到自卑。</p>
+<p>从小到大，我生活在无比简单的环境中，学习成绩是我最自信的事，而其它事，除了恋爱，我都可以不在乎。这种自信，在我没考上县里最好的初中和高中时表现得尤为明显。我不在乎，眼界又一直局限在县城里，所以，总体来说，大学之前我过得比较成功。高中，在度过了成绩倒数的那段日子过后，这种自信反而更加发自内心，又难得地多了份谦虚。我明白，自己很聪明，但也承认了外在因素的重要性。</p>
+<p>以往的毕业是伴着欢乐的：长大了，放假了，就要到崭新的环境，体验好奇许久的生活。而大学毕业，似乎比我想象中悲伤太多。为什么呢？因为这次分开便可能是永别。大部分人，见不到就见不到吧，甚至更好，但有些人，真的不想和他们分开。四年相处，似乎不比中学强多少，但意义却完全不同。大学的自由给了我们更多共同的回忆。</p>
+<p>但也正是这种自由，让我越来越失败，越来越自卑。学习也好，课外活动也罢，我真想不出哪一件事不是倒数的。同时，又是孤单的。</p>
+<p>从最初的晚会，大部分都认识，甚至自己也曾上台演出，到现在，台上的人一个都不认识，越来越多的掌声、喝彩、尖叫、起哄……都让我感到莫名，就像别人讲了一个我无法秒懂的笑话，即使后来明白了，也只能苦笑。我成了一个局外人，在这个为送别我们而举办的晚会上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/25/%E5%A4%B1%E8%B4%A5%E4%B8%8E%E8%87%AA%E5%8D%91/" data-id="clbhz83nu005qc8v07vhsgtg2" data-title="失败与自卑" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%B1%E8%B4%A5/" rel="tag">失败</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%8D%91/" rel="tag">自卑</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-matlab中计算程序运行时间的三种方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/25/matlab%E4%B8%AD%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2014-05-24T19:26:24.000Z" itemprop="datePublished">2014-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/25/matlab%E4%B8%AD%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/">Matlab中计算程序运行时间的三种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>来源：<a target="_blank" rel="noopener" href="http://www.matlabsky.com/thread-2607-1-1.html">http://www.matlabsky.com/thread-2607-1-1.html</a></p>
+<p>经常我们需要计算我们程序到底运行多长时间，这样可以比较程序的执行效率。当然这个对于只有几秒钟的小程序没有什么意义，但是对于大程序就有很重要的意义了。</p>
+<p>下面我们就说说Matlab中计算程序运行时间的三种常用方法吧！</p>
+<p><strong>注意</strong>：三种方法由于使用原理不一样，得到结果可能有一定的差距！</p>
+<h2 id="1、tic和toc组合-推荐"><a href="#1、tic和toc组合-推荐" class="headerlink" title="1、tic和toc组合(推荐)"></a>1、tic和toc组合(推荐)</h2><p>计算tic和toc之间那段程序之间的运行时间，它的经典格式为</p>
+<pre><code>tic
+。。。。。。。。。。
+toc
+</code></pre>
+<p>换句话说程序，程序遇到tic时Matlab自动开始计时，运行到toc时自动计算此时与最近一次tic之间的时间。这个有点拗口，下面我们举个例子说明</p>
+<pre><code>% by dynamic of Matlab技术论坛
+% see also http://www.matlabsky.com
+% contact me matlabsky@gmail.com
+% 2009-08-18 12:08:47 
+clc
+tic;%tic1
+t1=clock;
+for i=1:3
+    tic ;%tic2
+    t2=clock;
+    pause(3*rand)
+    %计算到上一次遇到tic的时间，换句话说就是每次循环的时间
+    disp([&#39;toc计算第&#39;,num2str(i),&#39;次循环运行时间：&#39;,num2str(toc)]);
+    %计算每次循环的时间
+    disp([&#39;etime计算第&#39;,num2str(i),&#39;次循环运行时间：&#39;,num2str(etime(clock,t2))]);
+    %计算程序总共的运行时间
+    disp([&#39;etime计算程序从开始到现在运行的时间:&#39;,num2str(etime(clock,t1))]);
+    disp(&#39;======================================&#39;)
+end
+%计算此时到tic2的时间，由于最后一次遇到tic是在for循环的i=3时，所以计算的是最后一次循环的时间
+disp([&#39;toc计算最后一次循环运行时间&#39;,num2str(toc)])
+disp([&#39;etime程序总运行时间：&#39;,num2str(etime(clock,t1))]);
+</code></pre>
+<p>运行结果如下，大家可以自己分析下</p>
+<pre><code>toc计算第1次循环运行时间：2.5628
+etime计算第1次循环运行时间：2.562
+etime计算程序从开始到现在运行的时间:2.562
+======================================
+toc计算第2次循环运行时间：2.8108
+etime计算第2次循环运行时间：2.813
+etime计算程序从开始到现在运行的时间:5.375
+======================================
+toc计算第3次循环运行时间：2.0462
+etime计算第3次循环运行时间：2.046
+etime计算程序从开始到现在运行的时间:7.421
+======================================
+toc计算最后一次循环运行时间2.0479
+etime程序总运行时间：7.421
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2014/05/25/matlab%E4%B8%AD%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/25/matlab%E4%B8%AD%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/" data-id="clbhz83mt0023c8v03auaas7i" data-title="Matlab中计算程序运行时间的三种方法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-结构性拖延" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/24/%E7%BB%93%E6%9E%84%E6%80%A7%E6%8B%96%E5%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2014-05-24T13:30:09.000Z" itemprop="datePublished">2014-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/">每天进步一点点</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/24/%E7%BB%93%E6%9E%84%E6%80%A7%E6%8B%96%E5%BB%B6/">结构性拖延</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>结构性拖延真的是个好东西，只要你拖得起。</p>
+<p>第一次听闻结构性拖延是于搞笑诺贝尔奖。第一反应就是Jhon Perry绝对是最坑爹的队友了，我的脸皮可没这么厚。还有就是，有些事情是你不得不做的，就像我早就该写毕业论文了，但整天不是练字、上网、跑步，就是像现在这样写博客。想找一件看似重要，其实不重要，但你在相信它重要的同时又安心结构拖延的事，真！的！很！难！！！</p>
+<p>我就是觉得论文、工作、省考最重要，但我就是不能在这三者中结构性拖延，净干些可以慢慢来的事！以后想阻止自己干什么事，真的很简单，把它放到任务列表上就行了！即使它没有排在列表的第一位！</p>
+<p>但话又说回来了，如果不是结构性拖延，我现在照样不会写论文，反而会做些更无益的事情。</p>
+<p>哦，结构性拖延，我知道这不能怪你，是我不会运用你。改天我一定要好好研究一下你，制定一个合格让你满意的任务列表。我发四！但请允许我先去跑步。</p>
+<hr>
+<p><strong>原文作者John Perry，斯坦福哲学教授通过其对“拖延”的理论获得了2011年的搞笑诺贝尔奖。</strong></p>
+<p>每个人可以做很多事情，只要这些事不是他现在打算做的。 – Rober Benchley, 1949</p>
+<p>我几个月前就想写这篇小文了。为什么我现在才做？因为现在才抽出时间来？错。我要阅卷，安排教程，审阅NSF计划书，阅读论文的稿子。我现在在写这短文，只是因为这些事情我统统都不想做。这种情况就是我所说的结构型拖延。我发现的这个策略能把拖沓成性的人变成高效人士，他们会因为充分利用时间和所获得的成就而受人敬佩和尊敬。这策略的关键思想就是拖延并不意味着什么都没有做。拖沓的人其实很少真的没有做事；他们还是会做一些有用的事情的，像搞搞园艺阿，削削铅笔阿，做个整理文件夹的图表阿，为什么拖拖沓沓的人会做这些事情？因为这是逃避做更重要事情的办法。如果真的只剩下削铅笔这一件事情可做，那么他们是无论如何也不会去着手的。为了避免做一些很重要的事情，这些拖沓的人甚至可以被逼着去做更困难，更紧张，更重要的任务。</p>
+<p>结构型拖延的意思就是根据实际情况，把必须要做的任务做成一个列表。这个任务列表是按重要度来排列的。很紧急很重要的任务在最上面。不太要紧但又必须要做的事排在下面一点，我们可以做这些事情来逃避最上面的更重要的任务。按这种恰当的结构来排列任务，拖沓之人就变成了个有用之人，并且真的可以像我一样获得个多产高效的名声。</p>
+<p>我最完美的结构型延迟的案例，是在我的妻子在斯坦福大学做Resident Fellows的时候。那时，我们就住在大学的宿舍Soto House。每天傍晚，都要阅览试卷，准备课程，还有委员会的工作也要做。每当这时，我都离开住所，到处闲逛或者和那里的舍友玩乒乓球，或者在他们的房间里聊天，或者坐在他们房间里自己阅览试卷。别人都认为我是很棒的Resident Fellows，稀有的教授，竟然肯花时间和低年级学生交流，并了解他们。多好的创意：为了逃避其他重要的任务，去打乒乓球，竟然得了个好好教授的名声。</p>
+<p>拖沓的人往往误入歧途。他们想要减少任务，觉得如果只有很少事情可做的话，他们会立即抖擞精神，把事情搞定。这其实和拖沓之人的本性相反，毁掉了他们更重要的做事的驱动力。列表上任务越少就越显得重要，只有一个方法可以逃避这些任务，那就是什么事情都不做。这样他们就成了扶不上墙的烂泥，远非一个高效人士。</p>
+<p>现在你可能会问：“那列表最上面的，最重要的任务，是不是就永远都不做了？”得承认，这是个问题。</p>
+<p>该把什么样的事情列在任务列表的最上面，这里有个小技巧。理想的任务应该有两个特性，首先，它们好像有最后期限（但实际没有）。然后，它们好像特别重要（其实不是）。幸运的是，我们生活里这样的事情很多。在大学里大部分的课程任务都属于这个种类，我觉得，很多更大的任务也适用。拿我当下列表的最顶端任务为例：为哲学语言方面的专栏写一个短文。它十一个月前就该被搞定了。为了逃避它，我已经完成了其他重要的任务。几个月前，我挺愧疚，就给编辑写了一封信，说延迟了这么久，很不好意思，我一心都在工作上，实在没时间。当然，写这封信也是为了逃避那篇短文的任务。事实证明，我也并不比别人拖延更长时间。关键是这篇文章重要吗？不算重要，如果以后没有更重要的任务，我才会去搞定它。</p>
+<p>另一个例子是书单。我六月份就写了。十月份我会教授认识论的一门课程。但单子在书店已经过期了。把它作为一项重要的而且有明确期限的任务很容易（如果你不拖沓成性，你会把期限设定在一个或两个星期之后）。学校部门的秘书每天都提醒我，学生们有时也问我他们该读什么书。没填完的单子就放在我的办公桌上，就在我上周三吃的三明治的包装纸下面。这个任务差不多在我的列表的最顶端；它困扰着我，逼着我去做其他有用但重要度稍微低一点的事情。但实际上，书店现在正忙着处理那些不拖拉的人交上去的订单。我只需在夏季中旬时在交上单子，订那些大出版商出版的知名的书籍，就不会出差错了。而从现在一 直到，比如，八月一日之间，我很可能会有其他更重要的的新任务出现在表上，到时候，我就去会为了避免这些新重要任务而去搞定书单，那时，我的心里就会舒服了。</p>
+<p>善于观察的读者现在可能会觉得，结构型拖延需要一点自我欺骗，因为这好像不断的对自己犯罪。确实是这样。要意识到，并坚持夸大任务的重要度，给任务设定不真实的期限，同时自己要真的觉得这些任务确实很重要很紧急。这不是个问题，因为事实上拖沓成性的人确实有这样杰出自欺能力。使用这种性格缺陷去抵消其他事情的坏处，这不是很棒的么？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/24/%E7%BB%93%E6%9E%84%E6%80%A7%E6%8B%96%E5%BB%B6/" data-id="clbhz83pq00bcc8v07ryp2k06" data-title="结构性拖延" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/to-do-list/" rel="tag">to do list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%96%E5%BB%B6%E7%97%87/" rel="tag">拖延症</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%9E%E7%AC%91/">搞笑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/">每天进步一点点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dvorak/" rel="tag">Dvorak</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firebug/" rel="tag">Firebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HIMYM/" rel="tag">HIMYM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kindle/" rel="tag">Kindle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/" rel="tag">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NetVideoHunter/" rel="tag">NetVideoHunter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sheldon/" rel="tag">Sheldon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TED/" rel="tag">TED</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/archlinux/" rel="tag">archlinux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/" rel="tag">eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/file/" rel="tag">file</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gae/" rel="tag">gae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h3c/" rel="tag">h3c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/landscape/" rel="tag">landscape</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porn/" rel="tag">porn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/" rel="tag">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rename/" rel="tag">rename</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/to-do-list/" rel="tag">to do list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/" rel="tag">一个人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%89%E6%AF%9B/" rel="tag">三毛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8C%BB/" rel="tag">中医</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E8%80%83/" rel="tag">中考</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6%E6%B3%95/" rel="tag">书法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E4%B8%AD/" rel="tag">二中</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%B4%E9%83%8E/" rel="tag">伴郎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%96%87/" rel="tag">作文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%97/" rel="tag">俗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E9%A5%AD/" rel="tag">做饭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%83%E6%97%A6/" rel="tag">元旦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B3%E4%BD%A0%E5%B1%81%E4%BA%8B/" rel="tag">关你屁事</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B3%E5%BF%83/" rel="tag">关心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B4%E8%B6%A3/" rel="tag">兴趣</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%9B%E8%AE%AD/" rel="tag">军训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%89%8B/" rel="tag">分手</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E4%B8%AD/" rel="tag">初中</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%B0%E7%AB%A0/" rel="tag">印章</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%91%E5%A3%B0%E7%BB%83%E4%B9%A0/" rel="tag">发声练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E6%A1%8C/" rel="tag">同桌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%B4%E7%8E%89%E7%94%9F/" rel="tag">吴玉生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E5%AE%B6/" rel="tag">回家</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E5%BF%86/" rel="tag">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E9%87%91/" rel="tag">基金</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%96%E9%AA%A8%E9%AA%BC/" rel="tag">外骨骼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E4%B8%89/" rel="tag">大三</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%B1%E8%B4%A5/" rel="tag">失败</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A9%9A%E7%A4%BC/" rel="tag">婚礼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A4%E7%8B%AC/" rel="tag">孤独</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B8%9A%E6%B0%B4%E5%B9%B3%E6%B5%8B%E8%AF%95/" rel="tag">学业水平测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%A4%A7/" rel="tag">安大</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%BE%BD/" rel="tag">安徽</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E6%8A%95/" rel="tag">定投</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E4%B9%A0/" rel="tag">实习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B3%E6%80%95/" rel="tag">害怕</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%97%B6%E5%80%99/" rel="tag">小时候</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%B1%E7%BE%8A/" rel="tag">山羊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%8C%A0%E6%83%85%E7%BB%93/" rel="tag">工匠情结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%9C%B0%E6%81%8B/" rel="tag">异地恋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%B9%E7%B0%A7%E9%9E%8B/" rel="tag">弹簧鞋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E6%83%85/" rel="tag">心情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%97%E8%B6%A3/" rel="tag">志趣</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" rel="tag">性描写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A8/" rel="tag">恨</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E5%95%86/" rel="tag">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E5%86%92/" rel="tag">感冒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91/" rel="tag">我</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E4%BB%AC/" rel="tag">我们</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%91%E8%A6%81%E8%B5%9A%E9%92%B1/" rel="tag">我要赚钱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%87%E8%B4%9D/" rel="tag">扇贝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E7%94%B5%E8%AF%9D/" rel="tag">打电话</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%96%E5%BB%B6%E7%97%87/" rel="tag">拖延症</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" rel="tag">挪威的森林</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8D%95%E9%BC%A0%E5%99%A8/" rel="tag">捕鼠器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8F%92%E7%8F%AD%E7%94%9F/" rel="tag">插班生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%8C%96/" rel="tag">数字化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E6%B8%B8/" rel="tag">旅游</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E8%81%8A/" rel="tag">无聊</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%98%86%E8%99%AB%E8%AE%B0/" rel="tag">昆虫记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%99%BA%E5%95%86/" rel="tag">智商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9A%97%E6%81%8B/" rel="tag">暗恋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%81%93/" rel="tag">有道</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E9%9E%8B/" rel="tag">机械动力鞋</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%8B%E5%93%A5/" rel="tag">栋哥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/" rel="tag">校园网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%AD%8C%E6%AF%94%E8%B5%9B/" rel="tag">校歌比赛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%A3%E6%A1%88/" rel="tag">档案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AE%B5%E5%AD%90/" rel="tag">段子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B0%B8%E5%8A%A8%E6%9C%BA/" rel="tag">永动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B3%95%E5%B8%83%E5%B0%94/" rel="tag">法布尔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%81%AB%E8%BD%A6/" rel="tag">火车</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%85%A7%E7%89%87/" rel="tag">照片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%B1%E6%83%85/" rel="tag">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" rel="tag">独立思考</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%90%86%E6%83%B3/" rel="tag">理想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%90%86%E8%B4%A2/" rel="tag">理财</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A9%E8%91%B1%E8%88%9E/" rel="tag">甩葱舞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87/" rel="tag">目标</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%B8%E4%BA%B2/" rel="tag">相亲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9C%81%E7%94%B5%E5%8A%9B%E5%85%AC%E5%8F%B8/" rel="tag">省电力公司</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9E%8E%E6%89%AF/" rel="tag">瞎扯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%AB%9E%E8%B5%9B/" rel="tag">知识竞赛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A1%AC%E7%AC%94/" rel="tag">硬笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/" rel="tag">神探夏洛克</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%AA%E5%BF%B5/" rel="tag">纪念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%AF%E6%B4%81/" rel="tag">纯洁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%A9%E8%BF%9B/" rel="tag">缩进</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E7%88%B8%E8%80%81%E5%A6%88%E6%B5%AA%E6%BC%AB%E5%8F%B2/" rel="tag">老爸老妈浪漫史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" rel="tag">职业规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%9A%E4%BC%9A/" rel="tag">聚会</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E4%BC%A0/" rel="tag">自传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8D%91/" rel="tag">自卑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8A%82%E6%93%8D/" rel="tag">节操</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B9%E6%9E%9C/" rel="tag">苹果</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%90%8C/" rel="tag">萌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%A5%B7/" rel="tag">行楷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A3%85%E5%A4%87/" rel="tag">装备</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E5%88%92/" rel="tag">规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91/" rel="tag">视频</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97/" rel="tag">诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6/" rel="tag">读书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%A2%E8%80%B3%E6%9C%B5/" rel="tag">谢耳朵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%91%E6%AD%A5/" rel="tag">跑步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E8%8C%AB/" rel="tag">迷茫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9F%E5%BA%A6/" rel="tag">速度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%AE%E7%9B%98/" rel="tag">键盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%88%E4%B8%B9/" rel="tag">陈丹</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%88%E7%8E%B2%E7%8E%B2/" rel="tag">陈玲玲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E4%BA%8C/" rel="tag">高二</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%B2%81%E5%AE%BE%E9%80%8A%E6%BC%82%E6%B5%81%E8%AE%B0/" rel="tag">鲁宾逊漂流记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BE%99%E8%80%81%E5%B8%88/" rel="tag">龙老师</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Dvorak/" style="font-size: 10px;">Dvorak</a> <a href="/tags/Firebug/" style="font-size: 10px;">Firebug</a> <a href="/tags/HIMYM/" style="font-size: 10px;">HIMYM</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/MV/" style="font-size: 13.33px;">MV</a> <a href="/tags/NetVideoHunter/" style="font-size: 10px;">NetVideoHunter</a> <a href="/tags/Sheldon/" style="font-size: 10px;">Sheldon</a> <a href="/tags/TED/" style="font-size: 10px;">TED</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/archlinux/" style="font-size: 11.67px;">archlinux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/gae/" style="font-size: 10px;">gae</a> <a href="/tags/github/" style="font-size: 11.67px;">github</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/h3c/" style="font-size: 10px;">h3c</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/landscape/" style="font-size: 10px;">landscape</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/porn/" style="font-size: 10px;">porn</a> <a href="/tags/post/" style="font-size: 11.67px;">post</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/rename/" style="font-size: 10px;">rename</a> <a href="/tags/to-do-list/" style="font-size: 10px;">to do list</a> <a href="/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/" style="font-size: 18.33px;">一个人</a> <a href="/tags/%E4%B8%89%E6%AF%9B/" style="font-size: 10px;">三毛</a> <a href="/tags/%E4%B8%AD%E5%8C%BB/" style="font-size: 10px;">中医</a> <a href="/tags/%E4%B8%AD%E8%80%83/" style="font-size: 13.33px;">中考</a> <a href="/tags/%E4%B9%A6%E6%B3%95/" style="font-size: 10px;">书法</a> <a href="/tags/%E4%BA%8C%E4%B8%AD/" style="font-size: 10px;">二中</a> <a href="/tags/%E4%BC%B4%E9%83%8E/" style="font-size: 10px;">伴郎</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 11.67px;">作业</a> <a href="/tags/%E4%BD%9C%E6%96%87/" style="font-size: 10px;">作文</a> <a href="/tags/%E4%BF%97/" style="font-size: 10px;">俗</a> <a href="/tags/%E5%81%9A%E9%A5%AD/" style="font-size: 10px;">做饭</a> <a href="/tags/%E5%85%83%E6%97%A6/" style="font-size: 10px;">元旦</a> <a href="/tags/%E5%85%B3%E4%BD%A0%E5%B1%81%E4%BA%8B/" style="font-size: 10px;">关你屁事</a> <a href="/tags/%E5%85%B3%E5%BF%83/" style="font-size: 10px;">关心</a> <a href="/tags/%E5%85%B4%E8%B6%A3/" style="font-size: 10px;">兴趣</a> <a href="/tags/%E5%86%9B%E8%AE%AD/" style="font-size: 11.67px;">军训</a> <a href="/tags/%E5%88%86%E6%89%8B/" style="font-size: 10px;">分手</a> <a href="/tags/%E5%88%9D%E4%B8%AD/" style="font-size: 10px;">初中</a> <a href="/tags/%E5%8D%B0%E7%AB%A0/" style="font-size: 10px;">印章</a> <a href="/tags/%E5%8F%91%E5%A3%B0%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">发声练习</a> <a href="/tags/%E5%90%8C%E6%A1%8C/" style="font-size: 10px;">同桌</a> <a href="/tags/%E5%90%B4%E7%8E%89%E7%94%9F/" style="font-size: 10px;">吴玉生</a> <a href="/tags/%E5%9B%9E%E5%AE%B6/" style="font-size: 11.67px;">回家</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 11.67px;">回忆</a> <a href="/tags/%E5%9F%BA%E9%87%91/" style="font-size: 13.33px;">基金</a> <a href="/tags/%E5%A4%96%E9%AA%A8%E9%AA%BC/" style="font-size: 10px;">外骨骼</a> <a href="/tags/%E5%A4%A7%E4%B8%89/" style="font-size: 10px;">大三</a> <a href="/tags/%E5%A4%B1%E8%B4%A5/" style="font-size: 10px;">失败</a> <a href="/tags/%E5%A9%9A%E7%A4%BC/" style="font-size: 10px;">婚礼</a> <a href="/tags/%E5%AD%A4%E7%8B%AC/" style="font-size: 10px;">孤独</a> <a href="/tags/%E5%AD%A6%E4%B8%9A%E6%B0%B4%E5%B9%B3%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">学业水平测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 11.67px;">学习</a> <a href="/tags/%E5%AE%89%E5%A4%A7/" style="font-size: 11.67px;">安大</a> <a href="/tags/%E5%AE%89%E5%BE%BD/" style="font-size: 10px;">安徽</a> <a href="/tags/%E5%AE%9A%E6%8A%95/" style="font-size: 10px;">定投</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E5%AE%B3%E6%80%95/" style="font-size: 10px;">害怕</a> <a href="/tags/%E5%B0%8F%E6%97%B6%E5%80%99/" style="font-size: 11.67px;">小时候</a> <a href="/tags/%E5%B1%B1%E7%BE%8A/" style="font-size: 10px;">山羊</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 13.33px;">工作</a> <a href="/tags/%E5%B7%A5%E5%8C%A0%E6%83%85%E7%BB%93/" style="font-size: 10px;">工匠情结</a> <a href="/tags/%E5%BC%82%E5%9C%B0%E6%81%8B/" style="font-size: 10px;">异地恋</a> <a href="/tags/%E5%BC%B9%E7%B0%A7%E9%9E%8B/" style="font-size: 10px;">弹簧鞋</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 20px;">心情</a> <a href="/tags/%E5%BF%97%E8%B6%A3/" style="font-size: 10px;">志趣</a> <a href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" style="font-size: 10px;">性描写</a> <a href="/tags/%E6%81%A8/" style="font-size: 10px;">恨</a> <a href="/tags/%E6%83%85%E5%95%86/" style="font-size: 10px;">情商</a> <a href="/tags/%E6%84%9F%E5%86%92/" style="font-size: 10px;">感冒</a> <a href="/tags/%E6%88%91/" style="font-size: 10px;">我</a> <a href="/tags/%E6%88%91%E4%BB%AC/" style="font-size: 10px;">我们</a> <a href="/tags/%E6%88%91%E8%A6%81%E8%B5%9A%E9%92%B1/" style="font-size: 10px;">我要赚钱</a> <a href="/tags/%E6%89%87%E8%B4%9D/" style="font-size: 10px;">扇贝</a> <a href="/tags/%E6%89%93%E7%94%B5%E8%AF%9D/" style="font-size: 10px;">打电话</a> <a href="/tags/%E6%8B%96%E5%BB%B6%E7%97%87/" style="font-size: 10px;">拖延症</a> <a href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" style="font-size: 10px;">挪威的森林</a> <a href="/tags/%E6%8D%95%E9%BC%A0%E5%99%A8/" style="font-size: 10px;">捕鼠器</a> <a href="/tags/%E6%8F%92%E7%8F%AD%E7%94%9F/" style="font-size: 10px;">插班生</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%8C%96/" style="font-size: 10px;">数字化</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 10px;">旅行</a> <a href="/tags/%E6%97%A0%E8%81%8A/" style="font-size: 10px;">无聊</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13.33px;">日记</a> <a href="/tags/%E6%98%86%E8%99%AB%E8%AE%B0/" style="font-size: 10px;">昆虫记</a> <a href="/tags/%E6%99%BA%E5%95%86/" style="font-size: 10px;">智商</a> <a href="/tags/%E6%9A%97%E6%81%8B/" style="font-size: 10px;">暗恋</a> <a href="/tags/%E6%9C%89%E9%81%93/" style="font-size: 10px;">有道</a> <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E9%9E%8B/" style="font-size: 10px;">机械动力鞋</a> <a href="/tags/%E6%A0%8B%E5%93%A5/" style="font-size: 10px;">栋哥</a> <a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/" style="font-size: 10px;">校园网</a> <a href="/tags/%E6%A0%A1%E6%AD%8C%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">校歌比赛</a> <a href="/tags/%E6%A1%A3%E6%A1%88/" style="font-size: 10px;">档案</a> <a href="/tags/%E6%AE%B5%E5%AD%90/" style="font-size: 13.33px;">段子</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 20px;">毕业</a> <a href="/tags/%E6%B0%B8%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">永动机</a> <a href="/tags/%E6%B3%95%E5%B8%83%E5%B0%94/" style="font-size: 10px;">法布尔</a> <a href="/tags/%E7%81%AB%E8%BD%A6/" style="font-size: 10px;">火车</a> <a href="/tags/%E7%85%A7%E7%89%87/" style="font-size: 13.33px;">照片</a> <a href="/tags/%E7%88%B1%E6%83%85/" style="font-size: 11.67px;">爱情</a> <a href="/tags/%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" style="font-size: 10px;">独立思考</a> <a href="/tags/%E7%90%86%E6%83%B3/" style="font-size: 10px;">理想</a> <a href="/tags/%E7%90%86%E8%B4%A2/" style="font-size: 16.67px;">理财</a> <a href="/tags/%E7%94%A9%E8%91%B1%E8%88%9E/" style="font-size: 10px;">甩葱舞</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 10px;">目标</a> <a href="/tags/%E7%9B%B8%E4%BA%B2/" style="font-size: 10px;">相亲</a> <a href="/tags/%E7%9C%81%E7%94%B5%E5%8A%9B%E5%85%AC%E5%8F%B8/" style="font-size: 10px;">省电力公司</a> <a href="/tags/%E7%9E%8E%E6%89%AF/" style="font-size: 10px;">瞎扯</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AB%9E%E8%B5%9B/" style="font-size: 10px;">知识竞赛</a> <a href="/tags/%E7%A1%AC%E7%AC%94/" style="font-size: 10px;">硬笔</a> <a href="/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/" style="font-size: 10px;">神探夏洛克</a> <a href="/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">程序</a> <a href="/tags/%E7%BA%AA%E5%BF%B5/" style="font-size: 10px;">纪念</a> <a href="/tags/%E7%BA%AF%E6%B4%81/" style="font-size: 10px;">纯洁</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="/tags/%E7%BC%A9%E8%BF%9B/" style="font-size: 10px;">缩进</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%80%81%E7%88%B8%E8%80%81%E5%A6%88%E6%B5%AA%E6%BC%AB%E5%8F%B2/" style="font-size: 10px;">老爸老妈浪漫史</a> <a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" style="font-size: 10px;">职业规划</a> <a href="/tags/%E8%81%9A%E4%BC%9A/" style="font-size: 10px;">聚会</a> <a href="/tags/%E8%82%A1%E7%A5%A8/" style="font-size: 11.67px;">股票</a> <a href="/tags/%E8%87%AA%E4%BC%A0/" style="font-size: 10px;">自传</a> <a href="/tags/%E8%87%AA%E5%8D%91/" style="font-size: 10px;">自卑</a> <a href="/tags/%E8%8A%82%E6%93%8D/" style="font-size: 10px;">节操</a> <a href="/tags/%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">苹果</a> <a href="/tags/%E8%90%8C/" style="font-size: 10px;">萌</a> <a href="/tags/%E8%A1%8C%E6%A5%B7/" style="font-size: 10px;">行楷</a> <a href="/tags/%E8%A3%85%E5%A4%87/" style="font-size: 10px;">装备</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 10px;">规划</a> <a href="/tags/%E8%A7%86%E9%A2%91/" style="font-size: 13.33px;">视频</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E8%AF%BB%E4%B9%A6/" style="font-size: 10px;">读书</a> <a href="/tags/%E8%B0%A2%E8%80%B3%E6%9C%B5/" style="font-size: 10px;">谢耳朵</a> <a href="/tags/%E8%B7%91%E6%AD%A5/" style="font-size: 11.67px;">跑步</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BF%B7%E8%8C%AB/" style="font-size: 10px;">迷茫</a> <a href="/tags/%E9%80%9F%E5%BA%A6/" style="font-size: 10px;">速度</a> <a href="/tags/%E9%94%AE%E7%9B%98/" style="font-size: 10px;">键盘</a> <a href="/tags/%E9%99%88%E4%B8%B9/" style="font-size: 10px;">陈丹</a> <a href="/tags/%E9%99%88%E7%8E%B2%E7%8E%B2/" style="font-size: 10px;">陈玲玲</a> <a href="/tags/%E9%AB%98%E4%BA%8C/" style="font-size: 10px;">高二</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 10px;">高考</a> <a href="/tags/%E9%B2%81%E5%AE%BE%E9%80%8A%E6%BC%82%E6%B5%81%E8%AE%B0/" style="font-size: 10px;">鲁宾逊漂流记</a> <a href="/tags/%E9%BE%99%E8%80%81%E5%B8%88/" style="font-size: 10px;">龙老师</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">十二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">九月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">八月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">四月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">十二月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">八月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/09/">九月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">八月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/01/">一月 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/11/">十一月 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/09/">九月 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">六月 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">三月 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/07/">七月 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">六月 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/05/">五月 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">五月 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">三月 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/12/">十二月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/11/">十一月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/10/">十月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/07/">七月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/05/">五月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/04/">四月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/02/">二月 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/01/">一月 2005</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/12/10/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/15/%E7%8B%AC%E5%9C%A8%E5%BC%82%E4%B9%A1%E4%B8%BA%E5%BC%82%E5%AE%A2/">独在异乡为异客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/10/%E7%B4%A7%E9%94%A3%E5%AF%86%E9%BC%93%E5%9C%B0%E6%94%B9bug/">紧锣密鼓地改bug</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/04/%E5%B8%8C%E6%9C%9B%E6%88%91%E5%96%9C%E6%AC%A2%E7%9A%84%E4%BA%BA%E9%83%BD%E8%BF%87%E5%BE%97%E5%A5%BD/">希望我喜欢的人都过得好</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/01/%E6%A1%A3%E6%A1%88%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AF%E4%BB%B6%E5%86%99%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/">档案数字化软件写得差不多了</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Chiv<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
