@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <div id="container">
@@ -74,233 +74,6 @@
 
       <div class="outer">
         <section id="main">
-  
-    <article id="post-django框架下如何使用ajax的post方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2014-05-30T16:31:11.000Z" itemprop="datePublished">2014-05-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/">Django框架下如何使用ajax的post方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<p>原文：<a target="_blank" rel="noopener" href="http://nswish.iteye.com/blog/967910">http://nswish.iteye.com/blog/967910</a></p>
-<p>今天在尝试调用jQuery的ajax时发现一个问题，就是使用GET方法服务器可以正常返回，但是使用POST方法却不行。后来再测试表单方式的POST的方法也不行。只要POST必报HTTP 403错误！非常奇怪。。。</p>
-<p>在网上搜了一大堆资料以后原来是因为Django的Cross Site Request Forgery protection机制的问题。这个机制是为了保护不受csrf攻击。解决方案Django的官网已经提供了<a target="_blank" rel="noopener" href="http://docs.djangoproject.com/en/dev/ref/contrib/csrf/">http://docs.djangoproject.com/en/dev/ref/contrib/csrf/</a>，根据说明修改后，ajax可以顺利Post了。</p>
-<p>具体办法是，首先解决表单的POST。在settings.py文件中找到 MIDDLEWARE_CLASSES，在其中加入一个中间件：’django.middleware.csrf.CsrfViewMiddleware’ ，修改后的代码如下：</p>
-<pre><code>MIDDLEWARE_CLASSES = (
-    &#39;django.middleware.common.CommonMiddleware&#39;,
-    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
-    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
-    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
-    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
-    &#39;django.middleware.csrf.CsrfResponseMiddleware&#39;, #加入这个中间件
-)
-</code></pre>
-<p>经过这番修改，可以解决表单方式的POST提交HTTP 403问题了。ajax的Post提交仅这样改还不行。还需要钩上一个每次提交时的cookie处理过程。也就是每次提交的时候，都触发这个过程，在提交的http头上加入csrf token。不过还好，如果你是用jQuery来处理ajax的话，Django直接送了一段解决问题的代码。把它放在一个独立的js文件中，在html页面中都引入即可。注意这个js文件必须在jquery的js文件引入之后，再引入。代码我直接复制过来了，如下：</p>
-<pre><code>$(&#39;html&#39;).ajaxSend(function(event, xhr, settings) &#123;
-    function getCookie(name) &#123;
-        var cookieValue = null;
-        if (document.cookie &amp;&amp; document.cookie != &#39;&#39;) &#123;
-            var cookies = document.cookie.split(&#39;;&#39;);
-            for (var i = 0; i &lt; cookies.length; i++) &#123;
-                var cookie = jQuery.trim(cookies[i]);
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + &#39;=&#39;)) &#123;
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                &#125;
-            &#125;
-        &#125;
-        return cookieValue;
-    &#125;
-    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) &#123;
-        // Only send the token to relative URLs i.e. locally.
-        xhr.setRequestHeader(&quot;X-CSRFToken&quot;, getCookie(&#39;csrftoken&#39;));
-    &#125;
-&#125;);
-</code></pre>
-<p>经过这番折腾，算是可以正常用ajax与Django通信了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2014/05/31/django%E6%A1%86%E6%9E%B6%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ajax%E7%9A%84post%E6%96%B9%E6%B3%95/" data-id="clbhz83mm001fc8v03eke0zgy" data-title="Django框架下如何使用ajax的post方法" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/" rel="tag">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-我是个迟钝的人" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/" class="article-date">
-  <time class="dt-published" datetime="2014-05-30T16:23:58.000Z" itemprop="datePublished">2014-05-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/">我是个迟钝的人</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<p>前些天在知乎上看到，性描写本身不是重点，重点是它体现了两人的亲密程度。这两天看《挪威的森林》，感觉确实如此。永泽那种自然不在此列，但渡边和直子，和绿子的确是的。这本书看得有些莫名其妙，就好像渡边和直子的关系，明明感觉他们互相喜欢，言语行为如恋人般，但又不那么明朗。或许我真的挺迟钝的，但唯有那些性描写才能让我更确定这些人之间的关系。也正因如此，这些描写让人感到了很多色情以外的感觉。</p>
-<p>曾经觉得自己很纯洁，当我确定自己不再纯洁的时候，才明白，原来只是太迟钝了。﻿</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2014/05/31/%E6%88%91%E6%98%AF%E4%B8%AA%E8%BF%9F%E9%92%9D%E7%9A%84%E4%BA%BA/" data-id="clbhz83of007mc8v05rwn3n6t" data-title="我是个迟钝的人" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" rel="tag">性描写</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" rel="tag">挪威的森林</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-安徽大学管理学院2014年毕业晚会开场视频" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/" class="article-date">
-  <time class="dt-published" datetime="2014-05-29T11:43:07.000Z" itemprop="datePublished">2014-05-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/">安徽大学管理学院2014年毕业晚会开场视频</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-<p align="center"><embed src="http://player.youku.com/player.php/sid/XNzE3MTM3Njc2/v.swf" allowFullScreen="true" quality="high" width="600" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2014/05/29/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%E7%AE%A1%E7%90%86%E5%AD%A6%E9%99%A22014%E5%B9%B4%E6%AF%95%E4%B8%9A%E6%99%9A%E4%BC%9A%E5%BC%80%E5%9C%BA%E8%A7%86%E9%A2%91/" data-id="clbhz83o10069c8v0bbircyo6" data-title="安徽大学管理学院2014年毕业晚会开场视频" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E9%A2%91/" rel="tag">视频</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-母校为什么不能骂？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/" class="article-date">
-  <time class="dt-published" datetime="2014-05-29T04:23:07.000Z" itemprop="datePublished">2014-05-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9A%8F%E6%83%B3%E5%BD%95/">随想录</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/">母校为什么不能骂？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
-
-<p>“母校就是自己骂了千遍万遍，却不允许别人骂一句的地方。”</p>
-<p>这种心情，我想，有两种原因：</p>
-<ol>
-<li>你骂母校是恨铁不成钢，是饱含着爱的，别人是真骂。</li>
-<li>你骂母校给人母校配不上你的感觉，别人骂就是间接地在骂你。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2014/05/29/%E6%AF%8D%E6%A0%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%AA%82%EF%BC%9F/" data-id="clbhz83p6009hc8v07lkhercq" data-title="母校为什么不能骂？" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
   
     <article id="post-同桌的你" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -669,6 +442,229 @@ etime程序总运行时间：7.421
 
 
   
+    <article id="post-如何下载pornhub和youporn等网站的视频" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/23/%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDpornhub%E5%92%8Cyouporn%E7%AD%89%E7%BD%91%E7%AB%99%E7%9A%84%E8%A7%86%E9%A2%91/" class="article-date">
+  <time class="dt-published" datetime="2014-05-23T06:09:14.000Z" itemprop="datePublished">2014-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/23/%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDpornhub%E5%92%8Cyouporn%E7%AD%89%E7%BD%91%E7%AB%99%E7%9A%84%E8%A7%86%E9%A2%91/">如何下载Pornhub和Youporn等网站的视频</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<ol>
+<li>由于相关法律法规，想上这些网站得先翻墙。我用的是Goagent，可能是Ipv6模式，所以速度挺好的，但是不能快进。</li>
+<li>Firefox和Chrome都有下载视频的插件，尤其是Firefox的NetVideoHunter，挺好的，没什么特殊要求就不要往下看了。</li>
+<li>我明明记得已经装了NetVideoHunter（之前装的，肯定已经重启过了），却没看见，就想到了用Firebug试试。本来以为会比较麻烦（至少用这个方法下优酷的视频太麻烦），结果出乎意料的简单。</li>
+<li>首先，打开相应的网站和Firebug。在Firebug中选中“网络”-&gt;“媒体”。</li>
+<li>然后点开想下载的视频。</li>
+<li>结果如图：<img src="/image/wbt56yrt5667itrweq.png"></li>
+</ol>
+<p>PS：可以复制地址用其它方式下载，也可直接在新标签页中打开自动用浏览器下载，还是挺方便的。但最方便的还是使用插件，功能更强大，操作更简便。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/23/%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDpornhub%E5%92%8Cyouporn%E7%AD%89%E7%BD%91%E7%AB%99%E7%9A%84%E8%A7%86%E9%A2%91/" data-id="clbhz83nv005sc8v0c69efvrq" data-title="如何下载Pornhub和Youporn等网站的视频" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firebug/" rel="tag">Firebug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NetVideoHunter/" rel="tag">NetVideoHunter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/porn/" rel="tag">porn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-为什么说「智商高的人能用智商碾压的时候为何要用情商」？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/23/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E3%80%8C%E6%99%BA%E5%95%86%E9%AB%98%E7%9A%84%E4%BA%BA%E8%83%BD%E7%94%A8%E6%99%BA%E5%95%86%E7%A2%BE%E5%8E%8B%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%BA%E4%BD%95%E8%A6%81%E7%94%A8%E6%83%85%E5%95%86%E3%80%8D%EF%BC%9F/" class="article-date">
+  <time class="dt-published" datetime="2014-05-23T04:19:51.000Z" itemprop="datePublished">2014-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/23/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E3%80%8C%E6%99%BA%E5%95%86%E9%AB%98%E7%9A%84%E4%BA%BA%E8%83%BD%E7%94%A8%E6%99%BA%E5%95%86%E7%A2%BE%E5%8E%8B%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%BA%E4%BD%95%E8%A6%81%E7%94%A8%E6%83%85%E5%95%86%E3%80%8D%EF%BC%9F/">为什么说「智商高的人能用智商碾压的时候为何要用情商」？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>其实我想找的是另外一个回答，一个关于Sheldon如何努力用智商弥补情商的感人叙述，可惜没找到。如果真的是这样，智商与情商应该是可以相互弥补的，希望其中一个或两个不够用的时候，不要忘了另一个。</p>
+<p>姑且先看看下面这个吧。</p>
+<p>来源：<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/22823507">http://www.zhihu.com/question/22823507</a></p>
+<p><strong>当智商高到一定程度，情商就不重要了。</strong></p>
+<p><strong>摘自新浪博客 牛逼顿的一生</strong></p>
+<p>3月28号是牛顿的忌日，但是知道的人很少，我们毕竟更关心沈殿霞和张国荣。其实牛顿老师在科学圈里曾经很有权势，被女王封了爵位成了贵族，人称牛爵爷，官至皇家造币局局长兼皇家学会会长。如果阿尔伯特没有辞了以色列总统的话和他有一拼。</p>
+<p>说他有权势并不仅是官大，主要是贡献大。如果17世纪就有诺贝尔奖的话，牛顿老师至少能连续垄断4届物理学奖（分光计；力学体系的构建；反射望远镜；万有引力），同时为了表彰他在炼金方面的造诣，再奉送他一届化学奖。而且这孙子鼓捣出了流数术，所以菲尔兹数学奖也要给他。要知道，他的这些发现基本都是在26岁以前获得的，30岁以后牛顿就开始玩票了，成天琢磨上帝和炼金，以及怎样把莱布尼茨搞臭，捎带手的把以前的发现整理成书。所以你能想象到他在当时的欧洲是如何的一呼万应，敢跟他叫板的只有莱布尼茨和大主教贝克莱。牛老师死的时候，全英国的名流以给他扶柩为荣，全欧洲的名流蜂拥伦敦。来自法国的傻逼文科生伏尔泰在国葬现场大受刺激，回去就写了首诗，嫉妒之情溢于言表。</p>
+<p>牛顿老师的一生是天才的一生，战斗的一生，也是孤独的一生。一辈子没有朋友，也没有结过婚，很可能到死都是处男，关于牛顿是否处男的问题，由于篇幅过长，我将在另一篇文中论证。当然他肯定不会孤独，因为科学的世界里乐趣无限，快感连连。出乎世俗想象的是，科学其实远比任何娘们儿都风骚，玩科学比玩女人爽得多，得到一个成果所获得的高潮强烈而持久，不仅有快感，更有巨大的自我认同感，远胜于那几秒寒颤之后无边的空虚与落寞。所以陈景润其实是沉溺于美色不能自拔，身体弱架不住高潮过度被爽死了。</p>
+<p>牛顿老师茕茕孑立，形影相吊的原因是多方面的。首先他生性孤傲，自恃高才，瞅谁都是傻逼，当然不会真心跟傻逼交朋友。同时在他眼里人是不分男女的，只有傻逼和巨傻逼两种，所以他对女色没兴趣也就可以理解了。有婚介中心给他介绍过几个名媛，拾掇拾掇都是当王妃的坯子，但一见面就受不了牛顿的牛逼烘烘和不知所云。比如有次相亲，他把姑娘的手指头塞进了烟斗。</p>
+<p>另一方面是外在的，不光他不愿意交朋友，也没有人真正想跟牛顿当朋友，结交他的人都是有目的的。人们对他只有敬畏和仰慕，并不真的喜欢他。这道理其实很浅显，绝大部分人都热衷于跟比自己傻的人待着，很少有人愿意在人精的身边衬托自己的二逼。所以好多人都喜欢小动物和小孩子，就是因为这些东西够傻。不少姑娘一见到小猫小狗小人儿都会迫不及待的搂抱，接踵而至的就是很嗲的说好可爱欧~，听得我阴毛都竖起来了。有时候可爱和憨态可掬的潜台词就是弱智。小猴子也很好玩，喜欢的人就少多了，因为猴子机灵到能戏弄人，那些人没有驾驭猴子的自信。同理，喜欢小孩的都是喜欢他们的单纯与缺心眼，在他们眼里，小孩跟小动物没有本质区别，也都是四条腿走路，露着屁眼随时拉撒。如果遇到一个小天才，3岁就会心算三位数乘法或者知道傻逼二字的正确写法，她们一定会骇破了胆。所以那些喜欢养猫狗的女士们别再标榜自己有爱心了，你们其实比谁都缺德。我从不喜欢猫狗，这是因为我敬畏大自然的生灵而不忍戏弄它们；我也不喜欢小孩，因为我把他们当作一个大写的人而不是小畜生看待。</p>
+<p>大家不喜欢牛顿的另一个原因是他性格暴戾乖张。长年在他身边的人回忆说，牛顿在人前只笑过两回，其中一次还是嘲笑：有人问他，欧几里得的《几何原本》那么老朽，不知道还有什么价值。牛顿闻听放声大笑。而且他人品太差，跟谁都打架。众所周知他从小就有校园暴力的记录，胖子同学不小心踩了他的风车，他抬手就把胖子打哭了，我们的教科书居然说这是他有志气的表现。长大了不以拳脚论高下，他就雇用枪手大骂莱布尼茨，甚至不惜化名亲自去骂，人品至此真是无以复加。莱布尼茨若不是脸皮厚早就跟纳什一样疯了，而且牛顿老师肯定会拍个片子叫《丑陋心灵》继续恶心人家。</p>
+<p>关于牛顿的另一个谎言是他的谦虚，证据就是牛顿老师说过两段著名的话，一段是站在巨人肩膀上，另一段是海边捡石头子。这确实很有迷惑性，我第一次听到后感动的直冒鼻涕泡。但任何话语都是有语境的，巨人肩膀那一句的语境是这样的：胡克其实早就发现了万有引力定律并推导出了正确的公式，但由于数学不好，他只能勉强解释行星绕日的圆周运动，而且他没有认识到支配天体运行的力量其实是普遍存在的，是“万有”的。第谷早在100年前就发现了行星的公转其实是椭圆运动，开普勒甚至提出了行星运动三定律。所以科学界对胡克的成果不太重视。后来数学小狂人牛顿用微积分极其圆满的解决了这个问题并把他提出的力学三条基本定律成功推广到了星系空间，改变了自从亚里士多德以来公认的天地不一的旧观点，被科学界奉为伟大的发现。于是胡克大怒，指责牛顿剽窃了自己的成果。牛顿尖酸刻薄的回敬道：是啊，我他妈还真是站在巨人的肩膀上呢！这本是一句反语，至少不是真的想客气一下。几百年后罗永浩说自己只是站在巨人的肩膀上也是这意思。但后人出于塑造完人的目的，只保留了孤立的原话而去掉了语境，变成了一句彻头彻尾的谦辞。同样的情况出现在另一段话上：牛顿晚年因为树敌过多，来自欧洲大陆比如法德的一些新锐科学家质问他：“牛顿你丫牛逼什么啊？”牛顿此时完全的展现了他科学界大宗师的风度与水平，潇洒的回敬道：“我没有什么牛逼的。我只是一个在海边独自玩耍的小孩，偶尔会为捡到几个美丽的贝壳而欣喜若狂，却对面前浩瀚的真理大海无所察觉。”意思是说你们他妈的连贝壳都看不见有什么资格评价我？几十年的官场毕竟不是白混的，牛老师甩片儿汤话的水平已经到了信手拈来闲庭信步宠辱不惊的境界，所以我们只记住了这一段优美至极、深邃如同诗歌的话语。</p>
+<p>牛顿老师人品差，不谦虚，没朋友，按现在的说法这是典型的高智商低情商，事业不会成功。但我们也发现，当智商高到一定程度的时候是可以取代情商的。所以那些说自己情商低的所谓天才们，你们没成功只是他妈的还不够聪明而已，怨不着人家情商。要知道牛顿是个遗腹子和早产儿，出生时体重不到5斤，没吃过DHA和RHA配方的奶粉。亲娘改嫁后跟文盲姥姥度过无聊的童年，没有任何的早期智力开发和学前启蒙，7岁上学以前脑子里空空如也，牛妈妈对他的期望仅仅是认识点字然后回家务农。但是牛顿上中学后已经熟练掌握了拉丁语希腊语西班牙语和英语，然后被推荐进了剑桥，20出头就当了卢卡斯教席的终身教授。如果他能活到今天，我一定会请他当熊博网的形象代言人兼吉祥物。</p>
+<p>晚年的牛顿除了升官发财再无其他骄傲之处，而且官迷心窍，没退休一直干到85岁寿终。当然他并没闲着，写了150万字的神学著作，同时一心扑在化学事业上，在家里盖了窑子，拿出年轻时搞物理的劲头玩命试验。但这次他的出发点就错了，总是希望从黄铜和煤渣中提炼出黄金。要知道化学反应只能改变分子并不能改变原子，能给原子做变性手术的只能是核反应。他违背了化学定律里的物质不灭原则，所以虾米了。</p>
+<p>最后，说两段悼词。一段是他的墓志铭：伊萨克牛顿爵士，安葬在这里。他以超乎常人的智力，第一个证明了行星的运动与形状；彗星轨道与海洋的潮汐。他孜孜不倦地研究，光线的各种不同的折射角，颜色所产生的种种性质。让人类欢呼，曾经存在过这样一位，伟大的人类之光。另一段是英国诗人写的：自然和自然的规律隐藏在茫茫黑夜之中。上帝说：让牛顿降生吧。于是一片光明。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/23/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E3%80%8C%E6%99%BA%E5%95%86%E9%AB%98%E7%9A%84%E4%BA%BA%E8%83%BD%E7%94%A8%E6%99%BA%E5%95%86%E7%A2%BE%E5%8E%8B%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%BA%E4%BD%95%E8%A6%81%E7%94%A8%E6%83%85%E5%95%86%E3%80%8D%EF%BC%9F/" data-id="clbhz83n40031c8v0clsa4kaa" data-title="为什么说「智商高的人能用智商碾压的时候为何要用情商」？" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sheldon/" rel="tag">Sheldon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%83%85%E5%95%86/" rel="tag">情商</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%99%BA%E5%95%86/" rel="tag">智商</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B0%A2%E8%80%B3%E6%9C%B5/" rel="tag">谢耳朵</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-诗三首" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/21/%E8%AF%97%E4%B8%89%E9%A6%96/" class="article-date">
+  <time class="dt-published" datetime="2014-05-21T13:16:16.000Z" itemprop="datePublished">2014-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/21/%E8%AF%97%E4%B8%89%E9%A6%96/">诗三首</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<h2 id="寒暄"><a href="#寒暄" class="headerlink" title="寒暄"></a>寒暄</h2><p>“好大的雾”</p>
+<p>“雾，好大”</p>
+<p>“好大好大的雾”</p>
+<p>“雾，好大好大”——</p>
+<p>街上相迂</p>
+<p>两双手虚握着摇啊</p>
+<p>寒暄罢</p>
+<p>然后</p>
+<p>慢慢地</p>
+<p>各走各的路</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/05/21/%E8%AF%97%E4%B8%89%E9%A6%96/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/21/%E8%AF%97%E4%B8%89%E9%A6%96/" data-id="clbhz83px00c2c8v014op2g2e" data-title="诗三首" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%97/" rel="tag">诗</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-跑步" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/21/%E8%B7%91%E6%AD%A5/" class="article-date">
+  <time class="dt-published" datetime="2014-05-21T08:34:09.000Z" itemprop="datePublished">2014-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%AF%8F%E5%A4%A9%E8%BF%9B%E6%AD%A5%E4%B8%80%E7%82%B9%E7%82%B9/">每天进步一点点</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/21/%E8%B7%91%E6%AD%A5/">跑步</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!--搞笑 操作系统 日记 每天进步一点点 编程 读书笔记 软件 随想录-->
+
+<p>我真的是一个不爱运动的人，虽然每每想到这都觉得该多运动下，但实际上从小到大，我跑步总是倒数。</p>
+<p>但大二下学期，我真的开始跑了。原因不再是“觉得该运动”之类的，只是太寂寞了。我是一个喜欢安静的人，如果哪天我说自己喜欢热闹，那是因为我对热闹的定义在好动的人看来，也只是一种安静的热闹。在分专业之前，我对周围的环境还是挺满意的，在三点（宿舍、食堂、教室）一线的活动中都有人陪着。但大二下学期开始，我和他们能再在一起上课了，也就很难在放学后一起吃饭了，包括他们在宿舍里聊的话题有时也与我无关了。</p>
+<p>其实刚上大学的那几天我也是跑步的，不过是早上。刚高考完，早起的习惯一时还改不过来，早晨6:30就不得不起床了。8:30才上课，我就充满朝气地决定去跑步了。这个习惯一直延续到了国庆，因为国庆开始宿舍整夜都不停电了，而且我刚买了电脑。早起早睡的习惯就这么轻易地被打败了。</p>
+<p>我忘了当时是怎么愉快地决定去跑步的，但这次的决定也比较愉快。不过是三月份非常普通的一个晚上，刚下了课，回宿舍的路上我都在思考自己今后该怎么消磨这孤单的时光。然后就想到了跑步。我知道，任何一个脚步的犹豫都可能使我回宿舍对着电脑直到睡觉。正是这种担心，使我不敢多想。</p>
+<p>但以当时的天气和穿着，实在不适合跑步。不到一圈，我的嗓子就开始疼，腿也早就酸了。我给自己定的目标是三圈。整整一个学期，我几乎天天去跑，最多的一次也才四圈半。</p>
+<p>我做事非常注重方法，总要准备充分，不会太过随意。这次是个意外，但后来我还是学了很多相关的知识，并且常常拍照留念，想着哪一天能仔细地对比分析。即使为跑步而看而买的东西不断地被弃置，我依然有学习运动理论和买运动装备的冲动。</p>
+<p>跑三圈对我来说已经算不得折磨了，我决定我跑一点。跑到第三圈的时候想着跑四圈，跑到第四圈又觉得还可以跑一圈。三圈、五圈、八圈、十圈，反正没多久就能一口气跑十六圈了。但执着于“慢跑减脂”，每天浪费在跑步上的时间实在太多了，现在想跑快都困难了。</p>
+<p>那时候我的目标是二十四圈，大约十公里，是从我家到县火车站的距离。从三圈到二十四圈也不过是一个月的时间，彻底违背了“每周只能多跑10%”的理论。在国庆最孤单寂寞的那几天，连续两天跑了十公里后，终于受伤了。虽不严重，但自那时起，跑步的次数突然减少，热情似乎也不多了。</p>
+<p>别人说我跑步是为了减肥，我也默认了。其实在寂寞、减肥、健身之外，还有一些可能连我也不清楚的原因。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/21/%E8%B7%91%E6%AD%A5/" data-id="clbhz83py00c5c8v0e32ydcow" data-title="跑步" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/" rel="tag">一个人</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E6%97%B6%E5%80%99/" rel="tag">小时候</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%B1%E7%BE%8A/" rel="tag">山羊</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
   <nav id="page-nav">
@@ -704,7 +700,7 @@ etime程序总运行时间：7.421
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Dvorak/" style="font-size: 10px;">Dvorak</a> <a href="/tags/Firebug/" style="font-size: 10px;">Firebug</a> <a href="/tags/HIMYM/" style="font-size: 10px;">HIMYM</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/MV/" style="font-size: 13.33px;">MV</a> <a href="/tags/NetVideoHunter/" style="font-size: 10px;">NetVideoHunter</a> <a href="/tags/Sheldon/" style="font-size: 10px;">Sheldon</a> <a href="/tags/TED/" style="font-size: 10px;">TED</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/archlinux/" style="font-size: 11.67px;">archlinux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/gae/" style="font-size: 10px;">gae</a> <a href="/tags/github/" style="font-size: 11.67px;">github</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/h3c/" style="font-size: 10px;">h3c</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/landscape/" style="font-size: 10px;">landscape</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/porn/" style="font-size: 10px;">porn</a> <a href="/tags/post/" style="font-size: 11.67px;">post</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/rename/" style="font-size: 10px;">rename</a> <a href="/tags/to-do-list/" style="font-size: 10px;">to do list</a> <a href="/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/" style="font-size: 18.33px;">一个人</a> <a href="/tags/%E4%B8%89%E6%AF%9B/" style="font-size: 10px;">三毛</a> <a href="/tags/%E4%B8%AD%E5%8C%BB/" style="font-size: 10px;">中医</a> <a href="/tags/%E4%B8%AD%E8%80%83/" style="font-size: 13.33px;">中考</a> <a href="/tags/%E4%B9%A6%E6%B3%95/" style="font-size: 10px;">书法</a> <a href="/tags/%E4%BA%8C%E4%B8%AD/" style="font-size: 10px;">二中</a> <a href="/tags/%E4%BC%B4%E9%83%8E/" style="font-size: 10px;">伴郎</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 11.67px;">作业</a> <a href="/tags/%E4%BD%9C%E6%96%87/" style="font-size: 10px;">作文</a> <a href="/tags/%E4%BF%97/" style="font-size: 10px;">俗</a> <a href="/tags/%E5%81%9A%E9%A5%AD/" style="font-size: 10px;">做饭</a> <a href="/tags/%E5%85%83%E6%97%A6/" style="font-size: 10px;">元旦</a> <a href="/tags/%E5%85%B3%E4%BD%A0%E5%B1%81%E4%BA%8B/" style="font-size: 10px;">关你屁事</a> <a href="/tags/%E5%85%B3%E5%BF%83/" style="font-size: 10px;">关心</a> <a href="/tags/%E5%85%B4%E8%B6%A3/" style="font-size: 10px;">兴趣</a> <a href="/tags/%E5%86%9B%E8%AE%AD/" style="font-size: 11.67px;">军训</a> <a href="/tags/%E5%88%86%E6%89%8B/" style="font-size: 10px;">分手</a> <a href="/tags/%E5%88%9D%E4%B8%AD/" style="font-size: 10px;">初中</a> <a href="/tags/%E5%8D%B0%E7%AB%A0/" style="font-size: 10px;">印章</a> <a href="/tags/%E5%8F%91%E5%A3%B0%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">发声练习</a> <a href="/tags/%E5%90%8C%E6%A1%8C/" style="font-size: 10px;">同桌</a> <a href="/tags/%E5%90%B4%E7%8E%89%E7%94%9F/" style="font-size: 10px;">吴玉生</a> <a href="/tags/%E5%9B%9E%E5%AE%B6/" style="font-size: 11.67px;">回家</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 11.67px;">回忆</a> <a href="/tags/%E5%9F%BA%E9%87%91/" style="font-size: 13.33px;">基金</a> <a href="/tags/%E5%A4%96%E9%AA%A8%E9%AA%BC/" style="font-size: 10px;">外骨骼</a> <a href="/tags/%E5%A4%A7%E4%B8%89/" style="font-size: 10px;">大三</a> <a href="/tags/%E5%A4%B1%E8%B4%A5/" style="font-size: 10px;">失败</a> <a href="/tags/%E5%A9%9A%E7%A4%BC/" style="font-size: 10px;">婚礼</a> <a href="/tags/%E5%AD%A4%E7%8B%AC/" style="font-size: 10px;">孤独</a> <a href="/tags/%E5%AD%A6%E4%B8%9A%E6%B0%B4%E5%B9%B3%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">学业水平测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 11.67px;">学习</a> <a href="/tags/%E5%AE%89%E5%A4%A7/" style="font-size: 11.67px;">安大</a> <a href="/tags/%E5%AE%89%E5%BE%BD/" style="font-size: 10px;">安徽</a> <a href="/tags/%E5%AE%9A%E6%8A%95/" style="font-size: 10px;">定投</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E5%AE%B3%E6%80%95/" style="font-size: 10px;">害怕</a> <a href="/tags/%E5%B0%8F%E6%97%B6%E5%80%99/" style="font-size: 11.67px;">小时候</a> <a href="/tags/%E5%B1%B1%E7%BE%8A/" style="font-size: 10px;">山羊</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 13.33px;">工作</a> <a href="/tags/%E5%B7%A5%E5%8C%A0%E6%83%85%E7%BB%93/" style="font-size: 10px;">工匠情结</a> <a href="/tags/%E5%BC%82%E5%9C%B0%E6%81%8B/" style="font-size: 10px;">异地恋</a> <a href="/tags/%E5%BC%B9%E7%B0%A7%E9%9E%8B/" style="font-size: 10px;">弹簧鞋</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 20px;">心情</a> <a href="/tags/%E5%BF%97%E8%B6%A3/" style="font-size: 10px;">志趣</a> <a href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" style="font-size: 10px;">性描写</a> <a href="/tags/%E6%81%A8/" style="font-size: 10px;">恨</a> <a href="/tags/%E6%83%85%E5%95%86/" style="font-size: 10px;">情商</a> <a href="/tags/%E6%84%9F%E5%86%92/" style="font-size: 10px;">感冒</a> <a href="/tags/%E6%88%91/" style="font-size: 10px;">我</a> <a href="/tags/%E6%88%91%E4%BB%AC/" style="font-size: 10px;">我们</a> <a href="/tags/%E6%88%91%E8%A6%81%E8%B5%9A%E9%92%B1/" style="font-size: 10px;">我要赚钱</a> <a href="/tags/%E6%89%87%E8%B4%9D/" style="font-size: 10px;">扇贝</a> <a href="/tags/%E6%89%93%E7%94%B5%E8%AF%9D/" style="font-size: 10px;">打电话</a> <a href="/tags/%E6%8B%96%E5%BB%B6%E7%97%87/" style="font-size: 10px;">拖延症</a> <a href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" style="font-size: 10px;">挪威的森林</a> <a href="/tags/%E6%8D%95%E9%BC%A0%E5%99%A8/" style="font-size: 10px;">捕鼠器</a> <a href="/tags/%E6%8F%92%E7%8F%AD%E7%94%9F/" style="font-size: 10px;">插班生</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%8C%96/" style="font-size: 10px;">数字化</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 10px;">旅行</a> <a href="/tags/%E6%97%A0%E8%81%8A/" style="font-size: 10px;">无聊</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13.33px;">日记</a> <a href="/tags/%E6%98%86%E8%99%AB%E8%AE%B0/" style="font-size: 10px;">昆虫记</a> <a href="/tags/%E6%99%BA%E5%95%86/" style="font-size: 10px;">智商</a> <a href="/tags/%E6%9A%97%E6%81%8B/" style="font-size: 10px;">暗恋</a> <a href="/tags/%E6%9C%89%E9%81%93/" style="font-size: 10px;">有道</a> <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E9%9E%8B/" style="font-size: 10px;">机械动力鞋</a> <a href="/tags/%E6%A0%8B%E5%93%A5/" style="font-size: 10px;">栋哥</a> <a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/" style="font-size: 10px;">校园网</a> <a href="/tags/%E6%A0%A1%E6%AD%8C%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">校歌比赛</a> <a href="/tags/%E6%A1%A3%E6%A1%88/" style="font-size: 10px;">档案</a> <a href="/tags/%E6%AE%B5%E5%AD%90/" style="font-size: 13.33px;">段子</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 20px;">毕业</a> <a href="/tags/%E6%B0%B8%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">永动机</a> <a href="/tags/%E6%B3%95%E5%B8%83%E5%B0%94/" style="font-size: 10px;">法布尔</a> <a href="/tags/%E7%81%AB%E8%BD%A6/" style="font-size: 10px;">火车</a> <a href="/tags/%E7%85%A7%E7%89%87/" style="font-size: 13.33px;">照片</a> <a href="/tags/%E7%88%B1%E6%83%85/" style="font-size: 11.67px;">爱情</a> <a href="/tags/%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" style="font-size: 10px;">独立思考</a> <a href="/tags/%E7%90%86%E6%83%B3/" style="font-size: 10px;">理想</a> <a href="/tags/%E7%90%86%E8%B4%A2/" style="font-size: 16.67px;">理财</a> <a href="/tags/%E7%94%A9%E8%91%B1%E8%88%9E/" style="font-size: 10px;">甩葱舞</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 10px;">目标</a> <a href="/tags/%E7%9B%B8%E4%BA%B2/" style="font-size: 10px;">相亲</a> <a href="/tags/%E7%9C%81%E7%94%B5%E5%8A%9B%E5%85%AC%E5%8F%B8/" style="font-size: 10px;">省电力公司</a> <a href="/tags/%E7%9E%8E%E6%89%AF/" style="font-size: 10px;">瞎扯</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AB%9E%E8%B5%9B/" style="font-size: 10px;">知识竞赛</a> <a href="/tags/%E7%A1%AC%E7%AC%94/" style="font-size: 10px;">硬笔</a> <a href="/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/" style="font-size: 10px;">神探夏洛克</a> <a href="/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">程序</a> <a href="/tags/%E7%BA%AA%E5%BF%B5/" style="font-size: 10px;">纪念</a> <a href="/tags/%E7%BA%AF%E6%B4%81/" style="font-size: 10px;">纯洁</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="/tags/%E7%BC%A9%E8%BF%9B/" style="font-size: 10px;">缩进</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%80%81%E7%88%B8%E8%80%81%E5%A6%88%E6%B5%AA%E6%BC%AB%E5%8F%B2/" style="font-size: 10px;">老爸老妈浪漫史</a> <a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" style="font-size: 10px;">职业规划</a> <a href="/tags/%E8%81%9A%E4%BC%9A/" style="font-size: 10px;">聚会</a> <a href="/tags/%E8%82%A1%E7%A5%A8/" style="font-size: 11.67px;">股票</a> <a href="/tags/%E8%87%AA%E4%BC%A0/" style="font-size: 10px;">自传</a> <a href="/tags/%E8%87%AA%E5%8D%91/" style="font-size: 10px;">自卑</a> <a href="/tags/%E8%8A%82%E6%93%8D/" style="font-size: 10px;">节操</a> <a href="/tags/%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">苹果</a> <a href="/tags/%E8%90%8C/" style="font-size: 10px;">萌</a> <a href="/tags/%E8%A1%8C%E6%A5%B7/" style="font-size: 10px;">行楷</a> <a href="/tags/%E8%A3%85%E5%A4%87/" style="font-size: 10px;">装备</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 10px;">规划</a> <a href="/tags/%E8%A7%86%E9%A2%91/" style="font-size: 13.33px;">视频</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E8%AF%BB%E4%B9%A6/" style="font-size: 10px;">读书</a> <a href="/tags/%E8%B0%A2%E8%80%B3%E6%9C%B5/" style="font-size: 10px;">谢耳朵</a> <a href="/tags/%E8%B7%91%E6%AD%A5/" style="font-size: 11.67px;">跑步</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BF%B7%E8%8C%AB/" style="font-size: 10px;">迷茫</a> <a href="/tags/%E9%80%9F%E5%BA%A6/" style="font-size: 10px;">速度</a> <a href="/tags/%E9%94%AE%E7%9B%98/" style="font-size: 10px;">键盘</a> <a href="/tags/%E9%99%88%E4%B8%B9/" style="font-size: 10px;">陈丹</a> <a href="/tags/%E9%99%88%E7%8E%B2%E7%8E%B2/" style="font-size: 10px;">陈玲玲</a> <a href="/tags/%E9%AB%98%E4%BA%8C/" style="font-size: 10px;">高二</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 10px;">高考</a> <a href="/tags/%E9%B2%81%E5%AE%BE%E9%80%8A%E6%BC%82%E6%B5%81%E8%AE%B0/" style="font-size: 10px;">鲁宾逊漂流记</a> <a href="/tags/%E9%BE%99%E8%80%81%E5%B8%88/" style="font-size: 10px;">龙老师</a>
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Dvorak/" style="font-size: 10px;">Dvorak</a> <a href="/tags/Firebug/" style="font-size: 10px;">Firebug</a> <a href="/tags/HIMYM/" style="font-size: 10px;">HIMYM</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/Kindle/" style="font-size: 10px;">Kindle</a> <a href="/tags/MV/" style="font-size: 13.33px;">MV</a> <a href="/tags/NetVideoHunter/" style="font-size: 10px;">NetVideoHunter</a> <a href="/tags/Sheldon/" style="font-size: 10px;">Sheldon</a> <a href="/tags/TED/" style="font-size: 10px;">TED</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/archlinux/" style="font-size: 11.67px;">archlinux</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/gae/" style="font-size: 10px;">gae</a> <a href="/tags/github/" style="font-size: 11.67px;">github</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/h3c/" style="font-size: 10px;">h3c</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/tags/landscape/" style="font-size: 10px;">landscape</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/porn/" style="font-size: 10px;">porn</a> <a href="/tags/post/" style="font-size: 11.67px;">post</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/rename/" style="font-size: 10px;">rename</a> <a href="/tags/to-do-list/" style="font-size: 10px;">to do list</a> <a href="/tags/%E4%B8%80%E4%B8%AA%E4%BA%BA/" style="font-size: 18.33px;">一个人</a> <a href="/tags/%E4%B8%89%E6%AF%9B/" style="font-size: 10px;">三毛</a> <a href="/tags/%E4%B8%AD%E5%8C%BB/" style="font-size: 10px;">中医</a> <a href="/tags/%E4%B8%AD%E8%80%83/" style="font-size: 13.33px;">中考</a> <a href="/tags/%E4%B9%A6%E6%B3%95/" style="font-size: 10px;">书法</a> <a href="/tags/%E4%BA%8C%E4%B8%AD/" style="font-size: 10px;">二中</a> <a href="/tags/%E4%BC%B4%E9%83%8E/" style="font-size: 10px;">伴郎</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 11.67px;">作业</a> <a href="/tags/%E4%BD%9C%E6%96%87/" style="font-size: 10px;">作文</a> <a href="/tags/%E4%BF%97/" style="font-size: 10px;">俗</a> <a href="/tags/%E5%81%9A%E9%A5%AD/" style="font-size: 10px;">做饭</a> <a href="/tags/%E5%85%83%E6%97%A6/" style="font-size: 10px;">元旦</a> <a href="/tags/%E5%85%B3%E4%BD%A0%E5%B1%81%E4%BA%8B/" style="font-size: 10px;">关你屁事</a> <a href="/tags/%E5%85%B3%E5%BF%83/" style="font-size: 10px;">关心</a> <a href="/tags/%E5%85%B4%E8%B6%A3/" style="font-size: 10px;">兴趣</a> <a href="/tags/%E5%86%9B%E8%AE%AD/" style="font-size: 11.67px;">军训</a> <a href="/tags/%E5%88%86%E6%89%8B/" style="font-size: 10px;">分手</a> <a href="/tags/%E5%88%9D%E4%B8%AD/" style="font-size: 10px;">初中</a> <a href="/tags/%E5%8D%B0%E7%AB%A0/" style="font-size: 10px;">印章</a> <a href="/tags/%E5%8F%91%E5%A3%B0%E7%BB%83%E4%B9%A0/" style="font-size: 10px;">发声练习</a> <a href="/tags/%E5%90%8C%E6%A1%8C/" style="font-size: 10px;">同桌</a> <a href="/tags/%E5%90%B4%E7%8E%89%E7%94%9F/" style="font-size: 10px;">吴玉生</a> <a href="/tags/%E5%9B%9E%E5%AE%B6/" style="font-size: 11.67px;">回家</a> <a href="/tags/%E5%9B%9E%E5%BF%86/" style="font-size: 11.67px;">回忆</a> <a href="/tags/%E5%9F%BA%E9%87%91/" style="font-size: 13.33px;">基金</a> <a href="/tags/%E5%A4%96%E9%AA%A8%E9%AA%BC/" style="font-size: 10px;">外骨骼</a> <a href="/tags/%E5%A4%A7%E4%B8%89/" style="font-size: 10px;">大三</a> <a href="/tags/%E5%A4%B1%E8%B4%A5/" style="font-size: 10px;">失败</a> <a href="/tags/%E5%A9%9A%E7%A4%BC/" style="font-size: 10px;">婚礼</a> <a href="/tags/%E5%AD%A4%E7%8B%AC/" style="font-size: 10px;">孤独</a> <a href="/tags/%E5%AD%A6%E4%B8%9A%E6%B0%B4%E5%B9%B3%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">学业水平测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 11.67px;">学习</a> <a href="/tags/%E5%AE%89%E5%A4%A7/" style="font-size: 11.67px;">安大</a> <a href="/tags/%E5%AE%89%E5%BE%BD/" style="font-size: 10px;">安徽</a> <a href="/tags/%E5%AE%9A%E6%8A%95/" style="font-size: 10px;">定投</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E5%AE%B3%E6%80%95/" style="font-size: 10px;">害怕</a> <a href="/tags/%E5%B0%8F%E6%97%B6%E5%80%99/" style="font-size: 11.67px;">小时候</a> <a href="/tags/%E5%B1%B1%E7%BE%8A/" style="font-size: 10px;">山羊</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 13.33px;">工作</a> <a href="/tags/%E5%B7%A5%E5%8C%A0%E6%83%85%E7%BB%93/" style="font-size: 10px;">工匠情结</a> <a href="/tags/%E5%BC%82%E5%9C%B0%E6%81%8B/" style="font-size: 10px;">异地恋</a> <a href="/tags/%E5%BC%B9%E7%B0%A7%E9%9E%8B/" style="font-size: 10px;">弹簧鞋</a> <a href="/tags/%E5%BF%83%E6%83%85/" style="font-size: 15px;">心情</a> <a href="/tags/%E5%BF%97%E8%B6%A3/" style="font-size: 10px;">志趣</a> <a href="/tags/%E6%80%A7%E6%8F%8F%E5%86%99/" style="font-size: 10px;">性描写</a> <a href="/tags/%E6%81%A8/" style="font-size: 10px;">恨</a> <a href="/tags/%E6%83%85%E5%95%86/" style="font-size: 10px;">情商</a> <a href="/tags/%E6%84%9F%E5%86%92/" style="font-size: 10px;">感冒</a> <a href="/tags/%E6%88%91/" style="font-size: 10px;">我</a> <a href="/tags/%E6%88%91%E4%BB%AC/" style="font-size: 10px;">我们</a> <a href="/tags/%E6%88%91%E8%A6%81%E8%B5%9A%E9%92%B1/" style="font-size: 10px;">我要赚钱</a> <a href="/tags/%E6%89%87%E8%B4%9D/" style="font-size: 10px;">扇贝</a> <a href="/tags/%E6%89%93%E7%94%B5%E8%AF%9D/" style="font-size: 10px;">打电话</a> <a href="/tags/%E6%8B%96%E5%BB%B6%E7%97%87/" style="font-size: 10px;">拖延症</a> <a href="/tags/%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97/" style="font-size: 10px;">挪威的森林</a> <a href="/tags/%E6%8D%95%E9%BC%A0%E5%99%A8/" style="font-size: 10px;">捕鼠器</a> <a href="/tags/%E6%8F%92%E7%8F%AD%E7%94%9F/" style="font-size: 10px;">插班生</a> <a href="/tags/%E6%95%B0%E5%AD%97%E5%8C%96/" style="font-size: 10px;">数字化</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 10px;">旅行</a> <a href="/tags/%E6%97%A0%E8%81%8A/" style="font-size: 10px;">无聊</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 13.33px;">日记</a> <a href="/tags/%E6%98%86%E8%99%AB%E8%AE%B0/" style="font-size: 10px;">昆虫记</a> <a href="/tags/%E6%99%BA%E5%95%86/" style="font-size: 10px;">智商</a> <a href="/tags/%E6%9A%97%E6%81%8B/" style="font-size: 10px;">暗恋</a> <a href="/tags/%E6%9C%89%E9%81%93/" style="font-size: 10px;">有道</a> <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E9%9E%8B/" style="font-size: 10px;">机械动力鞋</a> <a href="/tags/%E6%A0%8B%E5%93%A5/" style="font-size: 10px;">栋哥</a> <a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/" style="font-size: 10px;">校园网</a> <a href="/tags/%E6%A0%A1%E6%AD%8C%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">校歌比赛</a> <a href="/tags/%E6%A1%A3%E6%A1%88/" style="font-size: 10px;">档案</a> <a href="/tags/%E6%AE%B5%E5%AD%90/" style="font-size: 13.33px;">段子</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 20px;">毕业</a> <a href="/tags/%E6%B0%B8%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">永动机</a> <a href="/tags/%E6%B3%95%E5%B8%83%E5%B0%94/" style="font-size: 10px;">法布尔</a> <a href="/tags/%E7%81%AB%E8%BD%A6/" style="font-size: 10px;">火车</a> <a href="/tags/%E7%85%A7%E7%89%87/" style="font-size: 13.33px;">照片</a> <a href="/tags/%E7%88%B1%E6%83%85/" style="font-size: 11.67px;">爱情</a> <a href="/tags/%E7%8B%AC%E7%AB%8B%E6%80%9D%E8%80%83/" style="font-size: 10px;">独立思考</a> <a href="/tags/%E7%90%86%E6%83%B3/" style="font-size: 10px;">理想</a> <a href="/tags/%E7%90%86%E8%B4%A2/" style="font-size: 16.67px;">理财</a> <a href="/tags/%E7%94%A9%E8%91%B1%E8%88%9E/" style="font-size: 10px;">甩葱舞</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%9B%AE%E6%A0%87/" style="font-size: 10px;">目标</a> <a href="/tags/%E7%9B%B8%E4%BA%B2/" style="font-size: 10px;">相亲</a> <a href="/tags/%E7%9C%81%E7%94%B5%E5%8A%9B%E5%85%AC%E5%8F%B8/" style="font-size: 10px;">省电力公司</a> <a href="/tags/%E7%9E%8E%E6%89%AF/" style="font-size: 10px;">瞎扯</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E7%AB%9E%E8%B5%9B/" style="font-size: 10px;">知识竞赛</a> <a href="/tags/%E7%A1%AC%E7%AC%94/" style="font-size: 10px;">硬笔</a> <a href="/tags/%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/" style="font-size: 10px;">神探夏洛克</a> <a href="/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">程序</a> <a href="/tags/%E7%BA%AA%E5%BF%B5/" style="font-size: 10px;">纪念</a> <a href="/tags/%E7%BA%AF%E6%B4%81/" style="font-size: 10px;">纯洁</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a> <a href="/tags/%E7%BC%A9%E8%BF%9B/" style="font-size: 10px;">缩进</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%80%81%E7%88%B8%E8%80%81%E5%A6%88%E6%B5%AA%E6%BC%AB%E5%8F%B2/" style="font-size: 10px;">老爸老妈浪漫史</a> <a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" style="font-size: 10px;">职业规划</a> <a href="/tags/%E8%81%9A%E4%BC%9A/" style="font-size: 10px;">聚会</a> <a href="/tags/%E8%82%A1%E7%A5%A8/" style="font-size: 11.67px;">股票</a> <a href="/tags/%E8%87%AA%E4%BC%A0/" style="font-size: 10px;">自传</a> <a href="/tags/%E8%87%AA%E5%8D%91/" style="font-size: 10px;">自卑</a> <a href="/tags/%E8%8A%82%E6%93%8D/" style="font-size: 10px;">节操</a> <a href="/tags/%E8%8B%B9%E6%9E%9C/" style="font-size: 10px;">苹果</a> <a href="/tags/%E8%90%8C/" style="font-size: 10px;">萌</a> <a href="/tags/%E8%A1%8C%E6%A5%B7/" style="font-size: 10px;">行楷</a> <a href="/tags/%E8%A3%85%E5%A4%87/" style="font-size: 10px;">装备</a> <a href="/tags/%E8%A7%84%E5%88%92/" style="font-size: 10px;">规划</a> <a href="/tags/%E8%A7%86%E9%A2%91/" style="font-size: 13.33px;">视频</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E8%AF%BB%E4%B9%A6/" style="font-size: 10px;">读书</a> <a href="/tags/%E8%B0%A2%E8%80%B3%E6%9C%B5/" style="font-size: 10px;">谢耳朵</a> <a href="/tags/%E8%B7%91%E6%AD%A5/" style="font-size: 11.67px;">跑步</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BF%B7%E8%8C%AB/" style="font-size: 10px;">迷茫</a> <a href="/tags/%E9%80%9F%E5%BA%A6/" style="font-size: 10px;">速度</a> <a href="/tags/%E9%94%AE%E7%9B%98/" style="font-size: 10px;">键盘</a> <a href="/tags/%E9%99%88%E4%B8%B9/" style="font-size: 10px;">陈丹</a> <a href="/tags/%E9%99%88%E7%8E%B2%E7%8E%B2/" style="font-size: 10px;">陈玲玲</a> <a href="/tags/%E9%AB%98%E4%BA%8C/" style="font-size: 10px;">高二</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 10px;">高考</a> <a href="/tags/%E9%B2%81%E5%AE%BE%E9%80%8A%E6%BC%82%E6%B5%81%E8%AE%B0/" style="font-size: 10px;">鲁宾逊漂流记</a> <a href="/tags/%E9%BE%99%E8%80%81%E5%B8%88/" style="font-size: 10px;">龙老师</a>
     </div>
   </div>
 
