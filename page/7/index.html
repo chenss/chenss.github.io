@@ -75,6 +75,81 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo安装教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2014/05/13/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2014-05-13T03:27:53.000Z" itemprop="datePublished">2014-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2014/05/13/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Hexo安装教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参照<a target="_blank" rel="noopener" href="http://zipperary.com/2013/05/28/hexo-guide-2/" title="zipperary.com">这篇教程</a>安装并优化了Hexo，但中间遇到了几个问题：</p>
+<ol>
+<li><p>执行 <code>npm install -g hexo</code> 命令失败。</p>
+<p> 主要是网络的原因（感谢伟大的GFW），可以多试几次，或者换个镜像。换镜像的方法：<a target="_blank" rel="noopener" href="http://cnodejs.org/topic/4f9904f9407edba21468f31e">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a></p>
+<p> 另外，<a target="_blank" rel="noopener" href="http://hexo.io/">Hexo官网</a>给出的安装命令是 <code>npm install hexo -g</code> ，但似乎没影响。</p>
+</li>
+<li><p>添加多说评论/Jiathis分享时，找不到light目录。</p>
+<p> 这个因为theme不同。Light主题是‘The default theme of legacy Hexo’，而Landscape是‘The default theme of Hexo 2.4+’。</p>
+<p> 我的主题是Landscape，参考的<a target="_blank" rel="noopener" href="http://jimliu.net/2013/09/08/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">使用hexo搭建静态博客：调整样式</a>和<a target="_blank" rel="noopener" href="http://jiabin.tk/2013/06/21/using-hexo-as-blog-platform/">使用Hexo搭建博客：使用Jiathis作为社会化分享工具</a></p>
+</li>
+<li><p>右键 <code>Git Bash</code> 的时候使用的是Windows自带的难用得要死的cmd.exe，怎么才能换成PowerCmd等第三方的软件？暂时只能在PowerCmd里cd到Hexo目录，然后进行操作。</p>
+</li>
+</ol>
+<p>一切完毕，上传到github之后就可以打开username.github.io看效果了。本地的整个hexo文件可以随意移动，复制到其它地方以后的操作和之前一样，只是目录换了而已。</p>
+<hr>
+<ul>
+<li>官方教程：<a target="_blank" rel="noopener" href="http://hexo.io/docs/index.html">http://hexo.io/docs/index.html</a></li>
+<li>Mac版安装教程：<a target="_blank" rel="noopener" href="http://kescoode.com/2013/11/17/github-page-and-hexo-guide/">http://kescoode.com/2013/11/17/github-page-and-hexo-guide/</a></li>
+<li>Hexo自定义页面、fancybox、安装主题、常用命令、目录介绍、修改局部页面等（很详细）：<a target="_blank" rel="noopener" href="http://ibruce.info/2013/11/22/hexo-your-blog/">http://ibruce.info/2013/11/22/hexo-your-blog/</a></li>
+<li>感觉很高级的一个主题：<a target="_blank" rel="noopener" href="http://howiefh.github.io/2014/04/20/hexo-optimize-and-my-theme-landscape-f/">http://howiefh.github.io/2014/04/20/hexo-optimize-and-my-theme-landscape-f/</a></li>
+<li>自制node.js + npm绿色版：<a target="_blank" rel="noopener" href="http://ibruce.info/2013/12/05/green-node-and-npm/">http://ibruce.info/2013/12/05/green-node-and-npm/</a></li>
+<li>hexo deply的时候怎么才能不用输入账号密码:<a target="_blank" rel="noopener" href="https://github.com/tommy351/hexo/issues/335">https://github.com/tommy351/hexo/issues/335</a></li>
+<li>Git push时重复输入用户名密码的问题:<a target="_blank" rel="noopener" href="http://zipperary.com/2013/05/26/ssh-errors-with-github/">http://zipperary.com/2013/05/26/ssh-errors-with-github/</a></li>
+<li>从https迁移到SSH:<a target="_blank" rel="noopener" href="http://blog.csdn.net/u012150179/article/details/24790677">http://blog.csdn.net/u012150179/article/details/24790677</a></li>
+<li>Node.js是什么：<a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/what-is-nodejs">http://www.infoq.com/cn/articles/what-is-nodejs</a></li>
+<li>Hexo目录结构：<a target="_blank" rel="noopener" href="http://syxiaqj.github.io/2014/02/18/structure-of-hexo/">http://syxiaqj.github.io/2014/02/18/structure-of-hexo/</a></li>
+<li>定制banner，修改css、js：<a target="_blank" rel="noopener" href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/">http://blog.sunnyxx.com/2014/03/07/hexo_customize/</a></li>
+<li>google字库导致hexo首页加载变慢（modernist主题）：<a target="_blank" rel="noopener" href="http://ibruce.info/2013/12/03/fonts-googleapis-lead-to-slow/">http://ibruce.info/2013/12/03/fonts-googleapis-lead-to-slow/</a></li>
+<li>hexo速度优化(light主题）：<a target="_blank" rel="noopener" href="http://dlutwuwei.github.io/2014/05/20/hexo%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/">http://dlutwuwei.github.io/2014/05/20/hexo%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/</a></li>
+<li>hexo博客访问速度优化：<a target="_blank" rel="noopener" href="http://charyun.com/2014/06/08/hexo-blog-access-speed/">http://charyun.com/2014/06/08/hexo-blog-access-speed/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chenss.github.io/2014/05/13/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" data-id="clbhzha09001nmwv03gss1a7y" data-title="Hexo安装教程" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ubuntu-eclispe-缩进不正常" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2014/05/03/ubuntu-eclispe-%E7%BC%A9%E8%BF%9B%E4%B8%8D%E6%AD%A3%E5%B8%B8/" class="article-date">
@@ -531,56 +606,6 @@
 
 
   
-    <article id="post-如何隐藏你的踪迹，避免跨省追捕[0]：为啥要写此文？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2013/02/16/%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E8%B8%AA%E8%BF%B9%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B7%A8%E7%9C%81%E8%BF%BD%E6%8D%95%5B0%5D%EF%BC%9A%E4%B8%BA%E5%95%A5%E8%A6%81%E5%86%99%E6%AD%A4%E6%96%87%EF%BC%9F/" class="article-date">
-  <time class="dt-published" datetime="2013-02-15T16:00:00.000Z" itemprop="datePublished">2013-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2013/02/16/%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E8%B8%AA%E8%BF%B9%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B7%A8%E7%9C%81%E8%BF%BD%E6%8D%95%5B0%5D%EF%BC%9A%E4%B8%BA%E5%95%A5%E8%A6%81%E5%86%99%E6%AD%A4%E6%96%87%EF%BC%9F/">如何隐藏你的踪迹，避免跨省追捕[0]：为啥要写此文？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="★引子"><a href="#★引子" class="headerlink" title="★引子"></a>★引子</h2><p>在早年的安全圈内，也曾有一篇名叫“如何隐藏你的踪迹”的帖子（洋文原名叫“How to cover your tracks”，具体看“<a target="_blank" rel="noopener" href="http://freeworld.thc.org/papers/COVER-1.TXT">这里</a>”）。那可是国外老牌黑客组织（<a target="_blank" rel="noopener" href="http://freeworld.thc.org/">The Hacker’s Choice</a>）在上世纪写的。不过那篇帖子有很大篇幅是在教你如何在入侵系统之后，不留下痕迹。而今天俺要聊的内容，基本和入侵无关。</p>
-<p>本系列的主题是：</p>
-<p>如何从各个层面，防止真实身份的暴露？</p>
-<p>本文面向的受众是：</p>
-<p>那些通过互联网进行各种活动的网友，包括但不限于：异议人士、民运人士、维权人士、……</p>
-<p>不过捏，凡事都有两面性。某些通过网络干坏事的家伙，或许也能从本系列博文中获得启发 :(</p>
-        
-          <p class="article-more-link">
-            <a href="/2013/02/16/%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E8%B8%AA%E8%BF%B9%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B7%A8%E7%9C%81%E8%BF%BD%E6%8D%95%5B0%5D%EF%BC%9A%E4%B8%BA%E5%95%A5%E8%A6%81%E5%86%99%E6%AD%A4%E6%96%87%EF%BC%9F/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chenss.github.io/2013/02/16/%E5%A6%82%E4%BD%95%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E8%B8%AA%E8%BF%B9%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B7%A8%E7%9C%81%E8%BF%BD%E6%8D%95[0]%EF%BC%9A%E4%B8%BA%E5%95%A5%E8%A6%81%E5%86%99%E6%AD%A4%E6%96%87%EF%BC%9F/" data-id="clbhzha1e005lmwv05icferle" data-title="如何隐藏你的踪迹，避免跨省追捕[0]：为啥要写此文？" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -638,6 +663,10 @@
       <ul>
         
           <li>
+            <a href="/2022/12/10/Hexo%E8%BF%81%E7%A7%BB/">Hexo迁移</a>
+          </li>
+        
+          <li>
             <a href="/2022/12/10/hello-world/">Hello World</a>
           </li>
         
@@ -651,10 +680,6 @@
         
           <li>
             <a href="/2022/02/04/%E5%B8%8C%E6%9C%9B%E6%88%91%E5%96%9C%E6%AC%A2%E7%9A%84%E4%BA%BA%E9%83%BD%E8%BF%87%E5%BE%97%E5%A5%BD/">希望我喜欢的人都过得好</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/01/%E6%A1%A3%E6%A1%88%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AF%E4%BB%B6%E5%86%99%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/">档案数字化软件写得差不多了</a>
           </li>
         
       </ul>
